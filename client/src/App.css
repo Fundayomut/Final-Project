@@ -1,4 +1,42 @@
-.backround{
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(253, 224, 252), rgb(255, 147, 250));
-    height: 600vh;
+body{
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(253, 224, 252), rgb(255, 147, 250));
+        height: 100%;
+}
+.navVor {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-image: linear-gradient(to right, red);
+}
+
+.logo {
+    width: 25%;
+}
+
+.navVorBoot {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.nav {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.serch {
+    background-image: linear-gradient(to right, red);
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 25%;
+    align-items: center;
+}
+.font{
+        font-family: "Satisfy", cursive;
+        font-weight: 400;
+        font-style: normal;
 }
