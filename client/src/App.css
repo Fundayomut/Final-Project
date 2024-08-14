@@ -7,6 +7,7 @@ body{
     justify-content: space-between;
     align-content: center;
     background-image: linear-gradient(to right, red);
+    font-size: 22px;
 }
 
 .logo {
@@ -40,12 +41,81 @@ body{
         font-weight: 400;
         font-style: normal;
 }
+
 .inputsearch{
     border-radius: 8px;
     border: none;
 }
 .nav-item{
-    font-family: "New Amsterdam", sans-serif;
+font-family: "New Amsterdam", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+.homemain{
+    margin-top: 50px;
+    padding: 10px;
+}
+.paragrafdiv{
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: rgb(71, 71, 71);
+}
+.hauptdiv{
+    display: flex;
+    justify-content: space-around;
+}
+.rezeptbutton{
+    background-color: rgb(255, 147, 250) ;
+    box-shadow: 5px 5px 5px 1px rgb(209, 209, 209);
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    color: white;
+    margin-right: 50px;
+}
+.orderbutton{
+    background-color: rgb(255, 255, 255) ;
+    border: rgb(255, 147, 250) ;
+    box-shadow: 5px 5px 5px 1px rgb(255, 147, 250);
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    color:rgb(71, 71, 71) ;
+
+}
+.homebuttonmaindiv{
+margin-top: 70px;
+width: 50%;
+display: flex;
+justify-content: center;
+}
+.homecake{
+    filter: blur(5px);
+}
+.footerMainDiv{
+    background-color:rgb(253, 224, 252) ;
+    margin-top: 200px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 30px;
+    padding: 50px;
+    
+}
+.footerOben{
+    display: flex;
+    justify-content: space-around;
+    color: gray;
+}
+.footerSocial{
+    border-bottom: 2px gray solid;
+    display: flex;
+    justify-content: right;
+    gap: 25px;
+    align-items: center;
+}
+.footerCoby{
+    color: gray;
 }
