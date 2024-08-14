@@ -29,12 +29,12 @@ body{
 }
 
 .search {
-    background-image: linear-gradient(to right, red);
     display: flex;
     justify-content: space-between;
     list-style-type: none;
     width: 25%;
     align-items: center;
+    gap: 10px;
 }
 .font{
         font-family: "Satisfy", cursive;
@@ -45,6 +45,12 @@ body{
 .inputsearch{
     border-radius: 8px;
     border: none;
+    flex-grow: 1;
+}
+
+.navinputlink {
+    display: flex;
+    align-items: center;
 }
 .nav-item{
 font-family: "New Amsterdam", sans-serif;
@@ -118,4 +124,46 @@ justify-content: center;
 }
 .footerCoby{
     color: gray;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .navVor {
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+    .navVorBoot {
+        width: 100%;
+        justify-content: center;
+    }
+    .search {
+        width: 100%;
+        justify-content: center;
+    }
+    .paragrafdiv {
+        font-size: 1.5rem;
+    }
+
+    .maindiv {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .homecake {
+        width: 80%;
+    }
+
+    .homebuttonmaindiv {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rezeptbutton, .orderbutton {
+        margin-right: 0;
+        margin-bottom: 10px; 
+    }
 }
