@@ -5,7 +5,7 @@ export const NavNach = () => {
   return (
         <div className='navVor'>
             <div className='logo'>
-            <img src='/kuchen-boutique-high-resolution-logo-transparent.png' width="200px" height="200px" />
+            <img src='/kuchen-boutiqe-high-resolution-logo-transparent.png' width="200px" height="100px" />
             </div>
             <div className='navVorBoot'>
                 <ul class="nav justify-content-center">
