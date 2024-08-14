@@ -5,8 +5,8 @@ import { NavVor } from './components/NavVor';
 function App() {
   return (
     <div>
-      <NavNach/>
-      {/*<NavVor />*/}
+      <NavVor />
+      <NavNach />
     </div>
   );
 }

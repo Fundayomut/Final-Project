@@ -20,10 +20,10 @@ export const NavVor = () => {
                     </li>
                 </ul>
             </div>
-            <div className='serch'>
+            <div className='search'>
                 <div className=''>
-                    <input placeholder='serch' style={{height:"25px"}} />
-                    <img src='https://cdn0.iconfinder.com/data/icons/essentials-4/1687/search-512.png' width="25px" height="25px" style={{marginLeft:"10px"}} />
+                    <input className='inputsearch' placeholder='search' style={{height:"25px"}} />
+                    <img src='https://cdn0.iconfinder.com/data/icons/essentials-4/1687/search-512.png' width="20px" height="20px" style={{marginLeft:"10px"}} />
                 </div>
                 <img src='https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png' width="25px" height="25px" />
                 <img src='https://cdn4.iconfinder.com/data/icons/top-search-7/128/_signin_in_common_door_exit_login-512.png' width="25px" height="25px" />
