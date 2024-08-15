@@ -1,7 +1,10 @@
 import React from "react";
-
+import NavNach from "./NavNach";
+import Footer from "./Footer";
 export default function Home() {
   return (
+    <div>
+    <NavNach/>
     <div className="homemain">
       <div className="hauptdiv">
         <div className="paragrafdiv">
@@ -29,6 +32,8 @@ export default function Home() {
           <button className="orderbutton">Order Now</button>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }
