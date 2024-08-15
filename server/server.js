@@ -1,9 +1,11 @@
+
 const express = require("express");
 const cors = require("cors");
 const sqlite3 = require("sqlite3");
 const bodyParser = require("body-parser")
 const app=express();
 const Portnummer = 1001; 
+
 
 app.use(cors());
 app.use(bodyParser.json())

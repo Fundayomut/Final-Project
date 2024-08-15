@@ -3,29 +3,37 @@ import { ObjectAntwort } from './ServerCom';
 import { ProductsLinie } from './ProductsLinie';
 
 export const Products = () => {
-    const[productList,setProductList]=useState([]);
+    const [productList, setProductList] = useState([]);
 
-    const abrufList=()=>{
+    const abrufList = () => {
         ObjectAntwort(`/products/abruf/alle`)
-        .then((res)=>{
-            setProductList(res)
-        })
-        .catch((fehler)=>{
-            console.log(fehler)
-        });
+            .then((res) => {
+                setProductList(res)
+                console.log(res)
+            })
+            .catch((fehler) => {
+                console.log(fehler)
+            });
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         abrufList()
-    },[])
+    }, [])
 
-  return (
-    <div>
+    return (
+        <div>
+            {productList.length > 0 ? (productList.map((item) =>
+                <>
+                    <ProductsLinie daten={item} />
+                </>
+            )) : (<p>Problem</p>)}   
+             </div>
+    )
+}
+/*<div>
         {productList.length > 0 ? (productList.map((item)=>
         <>
         <ProductsLinie key={item.productNumber} daten={item}/>
         </>
         )):(<p>Problem</p>)}
-    </div>
-  )
-}
+    </div> */
