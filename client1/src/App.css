@@ -184,8 +184,63 @@ body {
   }
 }
 .prodLiniemain{
-  width: 33%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+
+}
+.prodLiniecard{
+  width: 25%;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 20px;
+}
+.cardratio{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.cardimage{
+  width: 100%;
+}
+.cardheadtext{
+  width: 100%;
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: rgb(71, 71, 71);
+  margin-top: 10px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+}
+.cardtext{
+  width: 100%;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.cardbuttondiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.cardfooter{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  font-size: 13px;
+  color: brown;
+}
+.productcategorie{
+  display: flex;
+  justify-content: space-evenly;
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: rgb(71, 71, 71);
+  margin-top: 30px;
+  margin-bottom: 25px;
 }

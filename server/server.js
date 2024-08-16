@@ -216,6 +216,26 @@ app.get(
     }
 )
 
+app.get(
+    "/products/abruf/wer/:category",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM products
+           WHERE category='${req.params.category}'
+            `,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    console.log(fehler)
+                    res.send("[]");
+                }
+                else {
+                    res.send(JSON.stringify(zeilen))
+                    console.log(zeilen)
+                }
+            }
+        )
+    }
+)
 
 const server = app.listen(
     Portnummer,
