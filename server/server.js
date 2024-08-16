@@ -1,32 +1,21 @@
-<<<<<<< HEAD
-const express = require("express")
-const app =express()
-app.use(express.json());
-
-
-
-app.listen(1001,()=>{
-    console.log("server ist gestartet")
-})
-=======
-
+//
 const express = require("express");
 const cors = require("cors");
 const sqlite3 = require("sqlite3");
 const bodyParser = require("body-parser")
-const app=express();
-const Portnummer = 1001; 
+const app = express();
+const Portnummer = 1001;
 
 
 app.use(cors());
 app.use(bodyParser.json())
 let db = new sqlite3.Database(
     "./finalProject.db",
-    (fehler)=>{
-        if(fehler)
+    (fehler) => {
+        if (fehler)
             console.log(fehler.message)
         else
-        console.log("Verbindung zum Datenbak hergestellt")
+            console.log("Verbindung zum Datenbak hergestellt")
     }
 )
 
@@ -36,29 +25,26 @@ let db = new sqlite3.Database(
 //                   LOGIN
 //************************************************
 
-app.get (
+app.get(
     "/userLastName/i:",
-    (req,res)=>{
+    (req, res) => {
         db.all(
             `SELECT * FROM 
             users
             WHERE
             userNumber='${req.params.i}'
             `,
-            (fehler,zeilen)=>{
-                if(fehler){
+            (fehler, zeilen) => {
+                if (fehler) {
                     console.error(fehler)
                     res.send("")
                 }
-                else
-                {
-                    if(zeilen.length > 0)
-                    {
-                        res.send(zeilen[0].UserFirstName + " "+zeilen[0].UserNachName
+                else {
+                    if (zeilen.length > 0) {
+                        res.send(zeilen[0].UserFirstName + " " + zeilen[0].UserNachName
                         )
                     }
-                    else
-                    {
+                    else {
                         res.send("");
                     }
                 }
@@ -68,7 +54,7 @@ app.get (
 )
 
 app.get("/login/:b/:k",
-    (req,res)=>{
+    (req, res) => {
         db.all(
             `SELECT * FROM
             users
@@ -77,28 +63,24 @@ app.get("/login/:b/:k",
             AND
             password='${req.params.k}'
             `,
-            (fehler,zeilen)=>{
-                if(fehler)
-                {
+            (fehler, zeilen) => {
+                if (fehler) {
                     console.error(fehler);
                     res.send("{}");
                 }
-                else
-                {
-                    if(zeilen.length > 0)
-                    {
-                        let konto ={
-                            id : zeilen[0].userNumber,
-                            kt : zeilen[0].userType,
-                            vn : zeilen[0].userFirstName,
-                            nm : zeilen[0].userLastName,
+                else {
+                    if (zeilen.length > 0) {
+                        let konto = {
+                            id: zeilen[0].userNumber,
+                            kt: zeilen[0].userType,
+                            vn: zeilen[0].userFirstName,
+                            nm: zeilen[0].userLastName,
                         };
                         res.send(
                             JSON.stringify(konto)
                         );
                     }
-                    else
-                    {
+                    else {
                         res.send("{}")
                     }
                 }
@@ -111,31 +93,31 @@ app.get("/login/:b/:k",
 //           ABRUF/DELETE/UPDATE/INSERT
 //************************************************
 app.get("/products/abruf/alle",
-    (req,res)=>{
-    db.all(
-        `SELECT * FROM products`,
-        (fehler,zeilen)=>{
-            if(fehler){
-                res.send(fehler)
-            }else{
-                res.send(zeilen)
+    (req, res) => {
+        db.all(
+            `SELECT * FROM products`,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    res.send(fehler)
+                } else {
+                    res.send(zeilen)
+                }
             }
-        }
-    )
-})
+        )
+    })
 
 app.get(
     "/",
-    (req,res)=>{
+    (req, res) => {
         res.send("Product List");
     }
 )
 
 
 app.get("/products/neu/:name/:category/:size/:price/:image/:description",
-    (req,res)=>{
-    db.run(
-        `INSERT INTO products
+    (req, res) => {
+        db.run(
+            `INSERT INTO products
         (name,category,size,price,image,description)
         VALUES
         (
@@ -147,30 +129,30 @@ app.get("/products/neu/:name/:category/:size/:price/:image/:description",
         '${req.params.description}'
         )
         `,
-        (fehler)=>console.log(fehler)
-    )
-    res.send("Cake Hinzugefügt")
-})
+            (fehler) => console.log(fehler)
+        )
+        res.send("Cake Hinzugefügt")
+    })
 
 
 app.get("/rezept/abruf/alle",
-    (req,res)=>{
-    db.all(
-        `SELECT * FROM rezept`,
-        (fehler,zeilen)=>{
-            if(fehler){
-                res.send(fehler)
-            }else{
-                res.send(zeilen)
+    (req, res) => {
+        db.all(
+            `SELECT * FROM rezept`,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    res.send(fehler)
+                } else {
+                    res.send(zeilen)
+                }
             }
-        }
-    )
-})
+        )
+    })
 
 app.get("/products/update/:id/:name/:category/:size/:price/:image/:description",
-    (req,res)=>{
-    db.run(
-        `UPDATE products SET
+    (req, res) => {
+        db.run(
+            `UPDATE products SET
         name='${req.params.name}',
         category='${req.params.category}',
         size='${req.params.size}',
@@ -179,34 +161,32 @@ app.get("/products/update/:id/:name/:category/:size/:price/:image/:description",
         description='${req.params.description}'
         WHERE 
         productNumber=${req.params.id}`,
-    )
-    res.send("Products update sucsesfully")
-})
+        )
+        res.send("Products update sucsesfully")
+    })
 
 app.get("/products/delete/:id",
-    (req,res)=>{
-    db.run(
+    (req, res) => {
+        db.run(
             `DELETE FROM products
             WHERE productNumber=${req.params.id}`
-    );
-    res.send("Products Entfernen")
-})
+        );
+        res.send("Products Entfernen")
+    })
 
 app.get(
     "/products/abruf/wer/:id",
-    (req,res)=>{
+    (req, res) => {
         db.all(
             `SELECT * FROM products
             WHERE productNumber='${req.params.id}'
             `,
-            (fehler,zeilen)=>{
-                if(fehler)
-                {
+            (fehler, zeilen) => {
+                if (fehler) {
                     console.log(fehler)
                     res.send("[]");
                 }
-                else
-                {
+                else {
                     res.send(JSON.stringify(zeilen))
                 }
             }
@@ -217,20 +197,18 @@ app.get(
 
 app.get(
     "/products/abruf/wer/:category/:id",
-    (req,res)=>{
+    (req, res) => {
         db.all(
             `SELECT * FROM products
             WHERE category='${req.params.category}'
             AND productNumber='${req.params.id}'
             `,
-            (fehler,zeilen)=>{
-                if(fehler)
-                {
+            (fehler, zeilen) => {
+                if (fehler) {
                     console.log(fehler)
                     res.send("[]");
                 }
-                else
-                {
+                else {
                     res.send(JSON.stringify(zeilen))
                 }
             }
@@ -245,4 +223,4 @@ const server = app.listen(
         console.log(`Der Backend-Server mit der Adresse http://localhost:${Portnummer}/ ist aktiv!`);
     }
 );
->>>>>>> 05385d920232ae11e0c6107a48f9065a39e6956e
+
