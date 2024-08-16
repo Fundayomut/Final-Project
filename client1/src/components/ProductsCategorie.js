@@ -8,7 +8,7 @@ export const ProductsCategorie = () => {
     const {category}=useParams();
 
     const abrufList = () => {
-        ObjectAntwort(`/products/abruf/wer/${category}`,
+        ObjectAntwort(`/products/abruf/category/${category}`,
             (res) => {
                 setCategorieList(res)
                 console.log("category list",res)

@@ -217,7 +217,7 @@ app.get(
 )
 
 app.get(
-    "/products/abruf/wer/:category",
+    "/products/abruf/category/:category",
     (req, res) => {
         db.all(
             `SELECT * FROM products
@@ -225,8 +225,8 @@ app.get(
             `,
             (fehler, zeilen) => {
                 if (fehler) {
-                    console.log(fehler)
-                    res.send("[]");
+                    console.log("fehler--->",fehler)
+                    res.send("[fehler]");
                 }
                 else {
                     res.send(JSON.stringify(zeilen))
