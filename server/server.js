@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+const express = require("express")
+const app =express()
+app.use(express.json());
+
+
+
+app.listen(1001,()=>{
+    console.log("server ist gestartet")
+})
+=======
 
 const express = require("express");
 const cors = require("cors");
@@ -234,3 +245,4 @@ const server = app.listen(
         console.log(`Der Backend-Server mit der Adresse http://localhost:${Portnummer}/ ist aktiv!`);
     }
 );
+>>>>>>> 05385d920232ae11e0c6107a48f9065a39e6956e

@@ -10,7 +10,6 @@ function App() {
       {/*<NavVor />*/}
       <Home/>
       <Footer/>
-
     </div>
   );
 }
