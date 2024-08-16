@@ -5,7 +5,7 @@ function Footer() {
     <div className='footerMainDiv'>
         <div className='footerOben'>
             <div>
-                <p><b>Partnership</b>  </p>
+                <p><b>Partnership</b></p>
                 <p> Website </p>
                 <p> Branding</p>
             </div>
@@ -26,10 +26,15 @@ function Footer() {
             </div>
             <div className='footerCoby'>
 
+
                 <p> bla bla blaaaaa </p>
                 <p>All right recived 2024 </p>
 
                 <p>All right recived 2024 bla bla </p>
+
+
+                <p>All right recived 2024</p>
+                <p>**********************</p>
 
             </div>
         </div>
