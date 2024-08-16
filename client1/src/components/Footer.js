@@ -25,8 +25,17 @@ function Footer() {
                 <img src='https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/yotube1-64.png' width="45px" height="45px" />
             </div>
             <div className='footerCoby'>
+
+
+                <p> bla bla blaaaaa </p>
+                <p>All right recived 2024 </p>
+
+                <p>All right recived 2024 bla bla </p>
+
+
                 <p>All right recived 2024</p>
                 <p>**********************</p>
+
             </div>
         </div>
     </div>
