@@ -41,7 +41,7 @@ app.get(
                 }
                 else {
                     if (zeilen.length > 0) {
-                        res.send(zeilen[0].UserFirstName + " " + zeilen[0].UserNachName
+                        res.send(zeilen[0].userFirstName + " " + zeilen[0].userLastName
                         )
                     }
                     else {
