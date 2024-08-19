@@ -12,7 +12,7 @@ export default function  NavNach  ()  {
         />
       </div>
       <div className="navVorBoot">
-        <ul className="nav justify-content-center">
+        <ul className="nav">
           <li className="nav-item">
             <a className="nav-Home" aria-current="page" href="#">
               Home
