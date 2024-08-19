@@ -53,7 +53,7 @@ export default function  NavNach  ()  {
           height="25px"
         />
         <img
-          src="https://cdn4.iconfinder.com/data/icons/basic-user-interface-elements/700/exit-enter-leave-door-out-64.png"
+          src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/login-64.png"
           width="25px"
           height="25px"
         />

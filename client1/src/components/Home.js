@@ -25,8 +25,8 @@ function Home() {
           <div className="homemain">
             <div className="hauptdiv">
               <div className="paragrafdiv">
-                <p style={{ marginTop: "70px" }}>Sie träumen es, </p>
-                <p style={{ marginLeft: "150px" }}>wir machen es...</p>
+                <p className="homeptop">Sie träumen es, </p>
+                <p className="homebottom">wir machen es...</p>
               </div>
               <div className="maindiv">
                 <img
@@ -60,8 +60,8 @@ function Home() {
           <div className="homemain">
             <div className="hauptdiv">
               <div className="paragrafdiv">
-                <p style={{ marginTop: "70px" }}>Sie träumen es, </p>
-                <p style={{ marginLeft: "150px" }}>wir machen es...</p>
+                <p className="homeptop">Sie träumen es, </p>
+                <p className="homebottom">wir machen es...</p>
               </div>
               <div className="maindiv">
                 <img
