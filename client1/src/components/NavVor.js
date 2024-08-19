@@ -50,7 +50,7 @@ export const NavVor = () => {
               alt='basket'
             />
             <Link to="/Login"><img
-              src="https://cdn4.iconfinder.com/data/icons/basic-user-interface-elements/700/exit-enter-leave-door-out-64.png"
+              src="https://cdn4.iconfinder.com/data/icons/hodgepodge-free/32/login_account_enter_door-64.png"
               width="25px"
               height="25px"
               alt='login'
