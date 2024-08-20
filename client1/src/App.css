@@ -166,8 +166,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 20px;
-
 }
+
 .prodLiniecard{
   width: 25%;
   background-color: rgb(255, 255, 255);
@@ -271,6 +271,12 @@ body {
   color: white;
 }
 
+.rezeptListe{
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+}
+
 
 @media only screen and (max-width: 600px) {
   .homecakeblur{
@@ -334,20 +340,16 @@ body {
     margin-right: 0;
     margin-bottom: 10px;
   }
+
 }
 
-.prodLiniemain{
-  width: 33%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 .rezeptListe{
   display: flex;
   justify-content: space-between;
   margin: 50px;
 
 }
+
 
 @media only screen and (max-width: 1381px) {
 
@@ -374,8 +376,5 @@ body {
     width: 34%;
     height:auto;
   }
-
-  
-
 
 }

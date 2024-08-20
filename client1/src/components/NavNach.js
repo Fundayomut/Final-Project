@@ -27,9 +27,7 @@ export default function  NavNach  ()  {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-Profile" href="#">
-              Profile
-            </a>
+          <Link className="nav-order" to="/Profile">Profile</Link>
           </li>
         </ul>
       </div>
