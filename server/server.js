@@ -237,6 +237,108 @@ app.get(
     }
 )
 
+app.get("/user/abruf/alle",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM users`,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    res.send(fehler)
+                } else {
+                    res.send(zeilen)
+                }
+            }
+        )
+    })
+
+
+
+app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:phone/:adresLine1/:adresLine2/:city/:state/:postalCode/:country/:password",
+    (req, res) => {
+        db.run(
+            `INSERT INTO users
+        (userNickName,userFirstName,userLastName,userType,eMail,phone,adresLine1,adresLine2,city,state,postalCode,country,password)
+        VALUES
+        (
+        '${req.params.userNickName}',
+        '${req.params.userFirstName}',
+        '${req.params.userLastName}',
+        '${req.params.userType}',
+        '${req.params.eMail}',
+        '${req.params.phone}',
+        '${req.params.adresLine1}',
+        '${req.params.adresLine2}',
+        '${req.params.city}',
+        '${req.params.state}',
+        '${req.params.postalCode}',
+        '${req.params.country}',
+        '${req.params.password}'
+        )
+        `,
+            (fehler) => console.log(fehler)
+        )
+        res.send("User Hinzugefügt")
+    })
+
+
+
+    app.get("/user/register/:userNickName/:userFirstName/:userLastName/:eMail/:password",
+        (req, res) => {
+            db.run(
+                `INSERT INTO users
+            (userNickName,userFirstName,userLastName,eMail,password)
+            VALUES
+            (
+            '${req.params.userNickName}',
+            '${req.params.userFirstName}',
+            '${req.params.userLastName}',
+            '${req.params.eMail}',
+            '${req.params.password}'
+            )
+            `,
+                (fehler) => console.log(fehler)
+            )
+            res.send("User Register")
+        })
+    
+
+
+    app.get("/user/update/:userNumber/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:phone/:adresLine1/:adresLine2/:city/:state/:postalCode/:country/:password",
+        (req, res) => {
+            db.run(
+                `UPDATE users SET
+            userNickName='${req.params.userNickName}',
+            userFirstName='${req.params.userFirstName}',
+            userLastName='${req.params.userLastName}',
+            userType='${req.params.userType}',
+            eMail='${req.params.eMail}',
+            phone='${req.params.phone}',
+            adresLine1='${req.params.adresLine1}',
+            adresLine2='${req.params.adresLine2}',
+            city='${req.params.city}',
+            state='${req.params.state}',
+            postalcode='${req.params.postalCode}',
+            country='${req.params.country}',
+            password='${req.params.password}'
+            WHERE 
+            userNumber=${req.params.userNumber}`,
+            )
+            res.send("user update sucsesfully")
+        })
+    
+    app.get("/user/delete/:userNumber",
+        (req, res) => {
+            db.run(
+                `DELETE FROM users
+                WHERE userNumber=${req.params.userNumber}`
+            );
+            res.send("User Entfernen")
+        })
+
+
+
+
+
 const server = app.listen(
     Portnummer,
     () => {

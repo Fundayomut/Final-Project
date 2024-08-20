@@ -1,6 +1,6 @@
 import React,{useEffect,useContext} from "react";
 import { AuthKontext } from "./LoginSystem";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login()
 {
@@ -23,11 +23,11 @@ export default function Login()
         <div className="loginmaindiv">
         <div className="logincontainer">
         <div className="loginbuttondiv">
-            <button className="button">REGISTER</button>
+            <Link to="/Register"><button className="button">REGISTER</button></Link>
             </div> 
         <div className="logininnencontainer">
         <form className="loginform" onSubmit={(e)=>LoginVersuch(e)}>
-            <label >Username</label>
+            <label >E-Mail</label>
             <input className="input" type="text"
             placeholder="max@beispiel.com"
             onChange={(e)=>setEMail(e.target.value)}
