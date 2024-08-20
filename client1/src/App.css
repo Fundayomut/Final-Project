@@ -342,18 +342,16 @@ body {
   }
 }
 
-.prodLiniemain{
-  width: 33%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+
+
 .rezeptListe{
   display: flex;
   justify-content: space-between;
   margin: 50px;
 
 }
+
+
 
 @media only screen and (max-width: 1381px) {
 
@@ -382,7 +380,7 @@ body {
   }
 
 }
-/* الفئات الخاصة بمكون Rezept */
+
 .rezeptListe {
   display: flex;
   flex-wrap: wrap;
