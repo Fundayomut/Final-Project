@@ -360,7 +360,25 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
             res.send("User Entfernen")
         })
 
-
+        app.get(
+            "/user/abruf/wer/:userNumber",
+            (req, res) => {
+                db.all(
+                    `SELECT * FROM users
+                    WHERE userNumber='${req.params.userNumber}'
+                    `,
+                    (fehler, zeilen) => {
+                        if (fehler) {
+                            console.log(fehler)
+                            res.send("[]");
+                        }
+                        else {
+                            res.send(JSON.stringify(zeilen))
+                        }
+                    }
+                )
+            }
+        )
 
 
 
