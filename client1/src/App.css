@@ -6,6 +6,7 @@ body {
     rgb(255, 147, 250)
   );
   height: 100%;
+  padding: 20px;
 }
 .navVor {
   display: flex;
@@ -73,9 +74,24 @@ body {
   font-size: 40px;
   color: rgb(71, 71, 71);
 }
+.homeptop{
+  margin-top: 70px;
+}
+.homebottom{
+  margin-left: 150px;
+}
 .hauptdiv {
   display: flex;
   justify-content: space-around;
+}
+.button{
+  background-color: rgb(255, 147, 250);
+  box-shadow: 5px 5px 5px 1px rgb(209, 209, 209);
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 100px;
+  color: white;
 }
 .rezeptbutton {
   background-color: rgb(255, 147, 250);
@@ -95,6 +111,15 @@ body {
   height: 30px;
   width: 100px;
   color: rgb(71, 71, 71);
+}
+
+.input{
+  background-color: rgb(255, 147, 250);
+  box-shadow: 5px 5px 5px 1px rgb(209, 209, 209);
+  border: none;
+  border-radius: 10px;
+  padding: 2px;
+  padding-left: 7px;
 }
 .homebuttonmaindiv {
   margin-top: 70px;
@@ -136,6 +161,133 @@ body {
 .footerCoby {
   color: gray;
 }
+.prodLiniemain{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+
+}
+.prodLiniecard{
+  width: 25%;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 20px;
+}
+.cardratio{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.cardimage{
+  width: 100%;
+}
+.cardheadtext{
+  width: 100%;
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: rgb(71, 71, 71);
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.cardtext{
+  width: 100%;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.cardbuttondiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.cardfooter{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  font-size: 13px;
+  color: brown;
+}
+.productcategorie{
+  display: flex;
+  justify-content: space-evenly;
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: rgb(71, 71, 71);
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.loginmaindiv{
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.logincontainer{
+  width: 700px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.596);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 20px;
+  border-radius: 30px;
+
+}
+.logininnencontainer{
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+}
+.loginbuttondiv{
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: end;
+}
+.loginform{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loginbuttondiv{
+  display: flex;
+  justify-content: center;
+}
+
+.blackbutton{
+  background-color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 5px 1px rgb(209, 209, 209);
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 100px;
+  color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .homecakeblur{
+    width: 10%;
+    height:auto;
+  }
+  .homecake{
+    width: 10%;
+    height:auto;
+  }
+  .paragrafdiv {
+    font-size: 1,2rem;
+  }
+  .homebottom{
+    margin-left: 50px;
+  }
+}
 
 @media only screen and (max-width: 768px) {
   .navVor {
@@ -163,13 +315,13 @@ body {
     margin-top: 20px;
   }
 
-  .homecakeblur {
-    width: 80%;
-    height: 80%;
+  .homecakeblur{
+    width: 30%;
+    height:auto;
   }
-  .homecake {
-    width: 80%;
-    height: 80%;
+  .homecake{
+    width: 30%;
+    height:auto;
   }
 
   .homebuttonmaindiv {
@@ -183,6 +335,7 @@ body {
     margin-bottom: 10px;
   }
 }
+
 .prodLiniemain{
   width: 33%;
   display: flex;
@@ -193,4 +346,36 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 50px;
+
+
+
+@media only screen and (max-width: 1381px) {
+
+  .navVor {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  .homecakeblur{
+    margin-top: 100px;
+    width: 35%;
+    height:auto;
+  }
+
+  .homecake {
+    margin-top: 100px;
+    width: 34%;
+    height:auto;
+  }
+
+  
+
+
 }

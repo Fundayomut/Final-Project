@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
 export const ProductsLinie = ({ daten }) => {
   const [productNumber, setproductNumber] = useState();
   const [name, setName] = useState();
@@ -21,18 +20,13 @@ export const ProductsLinie = ({ daten }) => {
   }, [daten])
   return (
     <div className='prodLiniemain'>
-      <p>probieren</p>
-    <div >
-      <Card style={{ width: '18rem' }}>
-        <Card.Img  variant="top" src={image} />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {description}
-          </Card.Text>
-          <Button variant="primary">Details</Button>
-        </Card.Body>
-      </Card>
+      <div className='prodLiniecard'>
+        <div>ratio</div>
+        <div>{image}</div>
+        <div>{name}</div>
+        <div>{description}</div>
+        <div><button>Details</button></div>
+        <div><p>Lieferung in 3 Tagen</p></div>
       </div>
     </div>
       )
