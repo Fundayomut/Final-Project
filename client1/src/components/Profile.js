@@ -50,19 +50,19 @@ const Profile = () => {
   return (
     <>
     <table>
-        <tr style={{border:"2px solid"}}>
-        <th>{userNickName}</th>
-        <th>{userFirstName}</th>
-        <th>{userLastName}</th>
-        <th>{eMail}</th>
-        <th>{phone}</th>
-        <th>{adresLine1}</th>
-        <th>{adresLine2}</th>
-        <th>{city}</th>
-        <th>{state}</th>
-        <th>{postalCode}</th>
-        <th>{country}</th>
-        <th>{password}</th>
+        <tr >
+        <th style={{border:"2px solid"}}>{userNickName}</th>
+        <th style={{border:"2px solid"}}>{userFirstName}</th>
+        <th style={{border:"2px solid"}}>{userLastName}</th>
+        <th style={{border:"2px solid"}}>{eMail}</th>
+        <th style={{border:"2px solid"}}>{phone}</th>
+        <th style={{border:"2px solid"}}>{adresLine1}</th>
+        <th style={{border:"2px solid"}}>{adresLine2}</th>
+        <th style={{border:"2px solid"}}>{city}</th>
+        <th style={{border:"2px solid"}}>{state}</th>
+        <th style={{border:"2px solid"}}>{postalCode}</th>
+        <th style={{border:"2px solid"}}>{country}</th>
+        <th style={{border:"2px solid"}}>{password}</th>
         </tr>
     </table>
     <div>
