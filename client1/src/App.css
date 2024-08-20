@@ -353,7 +353,7 @@ body {
   justify-content: space-between;
   margin: 50px;
 
-
+}
 
 @media only screen and (max-width: 1381px) {
 
@@ -381,4 +381,109 @@ body {
     height:auto;
   }
 
+}
+/* الفئات الخاصة بمكون Rezept */
+.rezeptListe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  margin: 50px;
+}
+
+.rezeptItem {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+.rezeptHeader {
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-size: 27px;
+  color: rgb(71, 71, 71);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.rezeptText {
+  font-size: 16px;
+  color: rgb(71, 71, 71);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.videoContainer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.videoContainer video {
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.contact-left, .contact-right {
+  width: 45%;
+}
+
+.contact-header {
+
+  font-size: 32px;
+  color: rgb(71, 71, 71);
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: rgb(71, 71, 71);
+}
+
+.contact-address, .contact-phone, .contact-email {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: rgb(71, 71, 71);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-input, .contact-message {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(200, 200, 200);
+  font-size: 16px;
+  width: 100%;
+}
+
+.contact-message {
+  height: 150px;
+  resize: none;
+}
+
+.contact-submit {
+  padding: 10px 20px;
+  background-color: rgb(255, 147, 250);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contact-submit:hover {
+  background-color: rgb(220, 120, 220);
 }

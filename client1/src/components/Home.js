@@ -84,7 +84,9 @@ function Home() {
             </div>
             <div className="homebuttonmaindiv">
               <div class="homebuttondiv">
-                <button className="rezeptbutton">Rezept</button>
+              <Link to="/rezept">
+                  <button className="rezeptbutton">Rezept</button>
+                </Link>
                 <button className="orderbutton">Order Now</button>
               </div>
             </div>

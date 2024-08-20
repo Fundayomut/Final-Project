@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from "react-router-dom";
 
 export const NavVor = () => {
@@ -9,6 +9,7 @@ export const NavVor = () => {
               src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
               width="200px"
               height="100px"
+              alt="logo"
             />
           </div>
           <div className="navVorBoot">
@@ -18,13 +19,11 @@ export const NavVor = () => {
                   Home
                 </a>
               </li>
-             <li className="nav-item">
-             <Link className="nav-order" to="/Products">Order</Link>
+              <li className="nav-item">
+                <Link className="nav-order" to="/Products">Order</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-Contact" href="#">
-                  Contact
-                </a>
+                <Link className="nav-Contact" to="/Contact">Contact</Link>
               </li>
             </ul>
           </div>
@@ -47,16 +46,19 @@ export const NavVor = () => {
               src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
               width="25px"
               height="25px"
-              alt='basket'
+              alt="basket"
             />
-            <Link to="/Login"><img
-              src="https://cdn4.iconfinder.com/data/icons/hodgepodge-free/32/login_account_enter_door-64.png"
-              width="25px"
-              height="25px"
-              alt='login'
-            /></Link>
+            <Link to="/Login">
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/hodgepodge-free/32/login_account_enter_door-64.png"
+                width="25px"
+                height="25px"
+                alt="login"
+              />
+            </Link>
           </div>
         </div>
       );
-    };
-    
+};
+
+export default NavVor;
