@@ -3,10 +3,14 @@ import Home from './components/Home';
 import {Routes, Route } from 'react-router-dom';
 import {Products} from './components/Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Rezept } from './components/Rezept';
+
 import { ProductsCategorie } from './components/ProductsCategorie';
 import Login from './components/Login';
 import { AuthDienst,AuthKontext } from './components/LoginSystem';
 import { Register } from './components/Register';
+
 
 function App() {
 
@@ -15,9 +19,13 @@ function App() {
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path='/Products' element={<Products/>}/>
+
+        <Route path='/Rezept' element={<Rezept/>}/>
+
         <Route path='/Products/ProductsCategorie/:category' element={<ProductsCategorie/>} />
         <Route path='/Login' element={<Login/>} />
         <Route path='/Register' element={<Register/>}  />
+
       </Routes>
     </div>
   );
