@@ -1,6 +1,8 @@
 import React from "react";
 import NavNach from "./NavNach";
 import Footer from "./Footer";
+import Rezept from "./Rezept";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div>
@@ -28,12 +30,14 @@ export default function Home() {
       </div>
       <div className="homebuttonmaindiv">
         <div class="homebuttondiv">
-          <button className="rezeptbutton">Rezept</button>
+          <Link to="/Rezept"><button className="rezeptbutton">Rezept</button></Link>
+
           <button className="orderbutton">Order Now</button>
         </div>
       </div>
     </div>
     <Footer/>
+
     </div>
   );
 }

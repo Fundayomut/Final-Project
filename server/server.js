@@ -149,6 +149,28 @@ app.get("/rezept/abruf/alle",
         )
     })
 
+    ///////////////////////////////
+    app.get(
+        "/rezept/abruf/wer/:id",
+        (req, res) => {
+            db.all(
+                `SELECT * FROM rezept
+                WHERE rezeptNumber='${req.params.id}'
+                `,
+                (fehler, zeilen) => {
+                    if (fehler) {
+                        console.log(fehler)
+                        res.send("[]");
+                    }
+                    else {
+                        res.send(JSON.stringify(zeilen))
+                    }
+                }
+            )
+        }
+    )
+    ////////////////////
+
 app.get("/products/update/:id/:name/:category/:size/:price/:image/:description",
     (req, res) => {
         db.run(
@@ -215,6 +237,8 @@ app.get(
         )
     }
 )
+
+/////////////////////////////////////
 
 
 const server = app.listen(
