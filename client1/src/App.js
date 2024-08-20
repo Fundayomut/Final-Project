@@ -9,7 +9,7 @@ import Login from './components/Login';
 import { AuthDienst,AuthKontext } from './components/LoginSystem';
 import { Register } from './components/Register';
 import Profile from './components/Profile';
-
+import Contact from './components/Contact';
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
     <div>
       <Routes>
       <Route path="/" element={<Home />} />
+      <Route path='/Contact' element={<Contact />} />
         <Route path='/Products' element={<Products/>}/>
         <Route path='/Rezept' element={<Rezept/>}/>
         <Route path='/Products/ProductsCategorie/:category' element={<ProductsCategorie/>} />
