@@ -7,6 +7,7 @@ import { ProductsCategorie } from './components/ProductsCategorie';
 import Login from './components/Login';
 import { AuthDienst,AuthKontext } from './components/LoginSystem';
 import { Register } from './components/Register';
+import Profile from './components/Profile';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/Products/ProductsCategorie/:category' element={<ProductsCategorie/>} />
         <Route path='/Login' element={<Login/>} />
         <Route path='/Register' element={<Register/>}  />
+        <Route path='/Profile' element={<Profile/>}  />
       </Routes>
     </div>
   );
