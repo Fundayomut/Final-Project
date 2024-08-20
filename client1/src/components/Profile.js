@@ -50,7 +50,7 @@ const Profile = () => {
   return (
     <>
     <table>
-        <tr>
+        <tr style={{border:"2px solid"}}>
         <th>{userNickName}</th>
         <th>{userFirstName}</th>
         <th>{userLastName}</th>
