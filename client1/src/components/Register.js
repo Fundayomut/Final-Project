@@ -5,24 +5,29 @@ import {useNavigate } from 'react-router-dom';
 
 export const Register = () => {
 
-    const [userFirstName,setUserFirstName]=useState();
-    const [userLastName,setUserLastName]=useState();
-    const [userNickName,setUserName]=useState();
-    const [eMail,setEmail]=useState();
-    const [password,setPassword]=useState();
+    const [userFirstName,setUserFirstName]=useState("");
+    const [userLastName,setUserLastName]=useState("");
+    const [userNickName,setUserName]=useState("");
+    const [eMail,setEmail]=useState("");
+    const [password,setPassword]=useState("");
 
 const navi=useNavigate();
 
 const newPerson=()=>{
-  TextAntwort(`/user/register/${userNickName}/${userFirstName}/${userLastName}/${eMail}/${password}`,
-      (res)=>{
-          console.log("Hinzugefuged",res)
-      },
-      (fehler)=>{
-          console.log(fehler)
-      }
-  ) 
-  navi("/Login")
+    if(userFirstName!=="" && userLastName!=="" && userNickName!== "" && eMail !=="" && password !==""){
+        TextAntwort(`/user/register/${userNickName}/${userFirstName}/${userLastName}/${eMail}/${password}`,
+            (res)=>{
+                console.log("Hinzugefuged",res)
+            },
+            (fehler)=>{
+                console.log(fehler)
+            }
+        ) 
+        navi("/Login")
+    }
+    else{
+        alert("Markierte Felder müssen ausgefüllt werden")
+    }
 }
     
 
@@ -33,38 +38,38 @@ const newPerson=()=>{
         </div> 
     <div className="logininnencontainer">
     <form className="loginform">
-      <label >First Name</label>
+      <label >*First Name</label>
         <input className="input" type="text"
         placeholder="Max"
         onChange={(e)=>setUserFirstName(e.target.value)}
         onKeyUp={(e)=>setUserFirstName(e.target.value)}/>
         <br/>
-        <label >Last Name</label>
+        <label >*Last Name</label>
         <input className="input" type="text"
         placeholder="Musterman"
         onChange={(e)=>setUserLastName(e.target.value)}
         onKeyUp={(e)=>setUserFirstName(e.target.value)}/>
         <br/>
-        <label >Nick Name</label>
+        <label >*Nick Name</label>
         <input className="input" type="text"
         placeholder="MaxMan"
         onChange={(e)=>setUserName(e.target.value)}
         onKeyUp={(e)=>setUserName(e.target.value)}/>
         <br/>
-        <label >E-Mail</label>
+        <label >*E-Mail</label>
         <input className="input" type="text"
         placeholder="max@beispiel.com"
         onChange={(e)=>setEmail(e.target.value)}
         onKeyUp={(e)=>setEmail(e.target.value)}/>
         <br/>
-        <label>Password</label>
+        <label>*Password</label>
         <input className="input" type="text"
         placeholder="***********"
         onChange={(e)=>setPassword(e.target.value)}
         onKeyUp={(e)=>setPassword(e.target.value)}/>
         <br/>
         <div className="loginbuttondiv">
-        <button className="blackbutton" type="submit" onClick={newPerson}>LOGIN</button>
+        <button className="blackbutton" type="submit" onClick={newPerson}>REGISTER</button>
         </div>
     </form>
         </div>

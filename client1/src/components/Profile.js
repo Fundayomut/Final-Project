@@ -59,6 +59,7 @@ const Profile = () => {
         postalcode={postalcode}
         country={country}
         password={password}
+        userType={userType}
       />
     </div>
   );

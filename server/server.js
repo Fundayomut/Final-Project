@@ -216,7 +216,7 @@ app.get(
     }
 )
 
-
+/*
 app.get(
     "/products/abruf/wer/:category/:id",
     (req, res) => {
@@ -224,6 +224,28 @@ app.get(
             `SELECT * FROM products
             WHERE category='${req.params.category}'
             AND productNumber='${req.params.id}'
+            `,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    console.log(fehler)
+                    res.send("[]");
+                }
+                else {
+                    res.send(JSON.stringify(zeilen))
+                }
+            }
+        )
+    }
+)
+    */
+
+
+app.get(
+    "/products/abruf/:id",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM products
+            WHERE productNumber='${req.params.id}'
             `,
             (fehler, zeilen) => {
                 if (fehler) {
@@ -382,7 +404,50 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
 
 
 
+/*************OrderDetail********************/
+app.get("/orderdetail/abruf/alle",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM orderDetails`,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    res.send(fehler)
+                } else {
+                    res.send(zeilen)
+                }
+            }
+        )
+    })
 
+app.get(
+    "/",
+    (req, res) => {
+        res.send("Order Detail List");
+    }
+)
+
+
+app.get("/orderdetail/neu/:orderNumber/:productNumber/:quantity/:price",
+    (req, res) => {
+        db.run(
+            `INSERT INTO orderDetails
+        (orderNumber,productNumber,quantity,price)
+        VALUES
+        (
+        '${req.params.orderNumber}',
+        '${req.params.productNumber}',
+        '${req.params.quantity}',
+        '${req.params.price}'
+        )
+        `,
+            (fehler) => console.log(fehler)
+        )
+        res.send("orderDetail Hinzugefügt")
+    })
+
+
+
+/*****************************************/
 const server = app.listen(
     Portnummer,
     () => {
