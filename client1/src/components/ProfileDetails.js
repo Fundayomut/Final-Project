@@ -14,7 +14,8 @@ export const ProfileDetails = ({
   state,
   postalcode,
   country,
-  password
+  password,
+  userType
 }) => {
   const [userUpFirstName, setUserUpFirstName] = useState(userFirstName);
   const [userUpLastName, setUserUpLastName] = useState(userLastName);
@@ -28,7 +29,7 @@ export const ProfileDetails = ({
   const [postalCodeUp, setPostalCodeUp] = useState(postalcode);
   const [phoneUp, setPhoneUp] = useState(phone);
   const [countryUp, setCountryUp] = useState(country);
-
+  const [userTypeUp,setUserTypeUp]=useState(0)
   const { userNumber } = useContext(AuthKontext);
 
   useEffect(() => {
@@ -51,7 +52,7 @@ export const ProfileDetails = ({
 
   const updatePerson = () => {
     TextAntwort(
-      `/user/update/${userNumber}/${userUpNickName}/${userUpFirstName}/${userUpLastName}/${eMailUp}/${phoneUp}/${adresLine1Up}/${adresLine2Up}/${cityUp}/${stateUp}/${postalCodeUp}/${countryUp}/${passwordUp}`,
+      `/user/update/${userNumber}/${userUpNickName}/${userUpFirstName}/${userUpLastName}/${userTypeUp}/${eMailUp}/${phoneUp}/${adresLine1Up}/${adresLine2Up}/${cityUp}/${stateUp}/${postalCodeUp}/${countryUp}/${passwordUp}`,
       (res) => {
         console.log("Updated successfully", res);
       },

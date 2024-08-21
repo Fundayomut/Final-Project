@@ -25,6 +25,17 @@ export const ProductsCategorie = () => {
 
   return (
     <div>
+      <div className='productcategorie'>
+      <p>
+  {category === "Boutique" ? (
+    <span>Boutique-Kuchen</span>
+  ) : category === "Hochzeit" ? (
+    <span>Hochzeits und Verlobungstorten</span>
+  ) : category === "Bild" ? (
+    <span>Figure Kuchen</span>
+  ) : null}
+</p>
+      </div>
 {categorieList.length > 0 ? (
 <div className='prodLiniemain'>
   {categorieList.map((item) => (

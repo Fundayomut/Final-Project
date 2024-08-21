@@ -319,6 +319,48 @@ body {
   background-color: rgb(220, 120, 220);
 }
 
+.card-detail-main{
+  background-color: #f9f9f9b2;
+  display: flex;
+  justify-content: center;
+ align-content: center;
+ margin-top: 10%;
+}
+
+.card-detail-link{
+  width: 50%;
+  padding: 20px;
+}
+
+.card-detail-rechts{
+  width: 50%;
+  padding: 20px;
+}
+.card-detail-rechts-header{
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  color: rgb(71, 71, 71);
+}
+
+.card-detail-rechts-description{
+  margin-top: 30px;
+}
+
+.card-detail-rechts-button{
+  display: flex;
+  justify-content: end;
+}
+.card-detail-rechts-size{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
+
+.card-detail-size-select{
+  border: solid 1px gray;
+}
 
 
 @media only screen and (max-width: 600px) {
