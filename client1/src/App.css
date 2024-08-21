@@ -352,15 +352,7 @@ body {
   display: flex;
   justify-content: end;
 }
-.card-detail-rechts-size{
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 25px;
-}
 
-.card-detail-size-select{
-  border: solid 1px gray;
-}
 
 
 @media only screen and (max-width: 600px) {

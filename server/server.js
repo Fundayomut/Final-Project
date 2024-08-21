@@ -402,6 +402,46 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
             }
         )
 
+/**************Order***********************/
+app.get("/orders/abruf/alle",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM orders`,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    res.send(fehler)
+                } else {
+                    res.send(zeilen)
+                }
+            }
+        )
+    })
+
+app.get(
+    "/",
+    (req, res) => {
+        res.send("Order list");
+    }
+)
+
+
+app.get("/order/neu/:userNumber/:orderDate/:totalAmount",
+    (req, res) => {
+        db.run(
+            `INSERT INTO orders
+        (userNumber,orderDate,totalAmount)
+        VALUES
+        (
+        '${req.params.userNumber}',
+        '${req.params.orderDate}',
+        '${req.params.totalAmount}'
+        )
+        `,
+            (fehler) => console.log(fehler)
+        )
+        res.send("Orders Hinzugefügt")
+    })
+
 
 
 /*************OrderDetail********************/
