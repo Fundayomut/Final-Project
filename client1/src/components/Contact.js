@@ -33,6 +33,7 @@ const Contact = () => {
                         <input type="tel" placeholder="Phone Number" className="contact-input" />
                         <textarea placeholder="Your Message" className="contact-message"></textarea>
                         <button type="submit" className="contact-submit">Send Message</button>
+                        <p> last update</p>
                     </form>
                 </div>
             </div>
