@@ -277,6 +277,91 @@ body {
   margin: 50px;
 }
 
+.profile-edit-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile-edit-item {
+  flex: 1 1 calc(50% - 20px); 
+  margin-bottom: 15px;
+}
+
+.profile-edit-item label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.profile-edit-item input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.update-button {
+  background-color: rgb(255, 147, 250);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.update-button:hover {
+  background-color: rgb(220, 120, 220);
+}
+
+.card-detail-main{
+  background-color: #f9f9f9b2;
+  display: flex;
+  justify-content: center;
+ align-content: center;
+ margin-top: 10%;
+}
+
+.card-detail-link{
+  width: 50%;
+  padding: 20px;
+}
+
+.card-detail-rechts{
+  width: 50%;
+  padding: 20px;
+}
+.card-detail-rechts-header{
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  color: rgb(71, 71, 71);
+}
+
+.card-detail-rechts-description{
+  margin-top: 30px;
+}
+
+.card-detail-rechts-button{
+  display: flex;
+  justify-content: end;
+}
+.card-detail-rechts-size{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
+
+.card-detail-size-select{
+  border: solid 1px gray;
+}
+
 
 @media only screen and (max-width: 600px) {
   .homecakeblur{
@@ -340,8 +425,16 @@ body {
     margin-right: 0;
     margin-bottom: 10px;
   }
-}
 
+  .profile-edit-item {
+    flex: 1 1 100%; 
+  }
+  
+  .update-button {
+    width: auto;
+  }
+}
+ 
 
 
 .rezeptListe{
@@ -350,7 +443,6 @@ body {
   margin: 50px;
 
 }
-
 
 
 @media only screen and (max-width: 1381px) {

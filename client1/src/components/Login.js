@@ -1,4 +1,4 @@
-import React,{useEffect,useContext} from "react";
+import React,{useEffect,useContext, useState} from "react";
 import { AuthKontext } from "./LoginSystem";
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -10,13 +10,20 @@ export default function Login()
     useEffect(()=>{
         if(erlaubnis)
             geheZuZeite("/")
+  
     },[erlaubnis,geheZuZeite])
     
-    function LoginVersuch(ErgebnisObject)
+
+   async function LoginVersuch(ErgebnisObject)
     {
         ErgebnisObject.preventDefault();
-        login();
-        geheZuZeite("/")
+        const loginSucsess= await login()
+        if(loginSucsess){
+            geheZuZeite("/")
+        }else{
+            geheZuZeite("/Register")
+        }
+       
     }
 
     return(
@@ -57,8 +64,8 @@ export default function Login()
                 <p>Don`t have an account?</p>
                 <p style={{color:"rgb(250, 65, 241)"}}>REGISTER</p>
             </div>
-
         </div>
         </div>
     )
 }
+

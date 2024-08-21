@@ -1,7 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthKontext } from "./LoginSystem";
 
 export default function  NavNach  ()  {
+
+  const { logout } = useContext(AuthKontext); 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login'); // Redirect to login page after logout
+  };
+
   return (
     <div className="navVor">
       <div className="logo">
@@ -54,6 +64,7 @@ export default function  NavNach  ()  {
           src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/login-64.png"
           width="25px"
           height="25px"
+          onClick={handleLogout}
         />
       </div>
     </div>
