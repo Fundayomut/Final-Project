@@ -12,6 +12,7 @@ export const CardDetails = () => {
   const [orderDate, setOrderDate] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
+  const [quantity, setQuantity] = useState(0);
   //const navi = useNavigate()
 
   console.log("user number--->", userNumber);
@@ -33,19 +34,45 @@ export const CardDetails = () => {
     setOrderDate(today);
   }, []);
 
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("warenkorb");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
   const Aktualisieren = () => {
     const neueDetails = {
       productNumber: productNumber,
-      quantitiy: totalAmount,
+      quantity: quantity,
       price: product?.price,
       size: product?.size,
     };
-    let warenkorb =
-      localStorage.getItem("warenkorb") === null ||
-      localStorage.getItem("warenkorb") === ""
-        ? []
-        : JSON.parse(localStorage.getItem("warenkorb"));
-    warenkorb.push(neueDetails);
+
+    let warenkorb = localStorage.getItem("warenkorb")
+      ? JSON.parse(localStorage.getItem("warenkorb"))
+      : [];
+
+    const existingItemIndex = warenkorb.findIndex(
+      (item) => item.productNumber === productNumber
+    );
+    if (existingItemIndex >= 0) {
+      warenkorb[existingItemIndex].quantity = quantity;
+    } else {
+      warenkorb.push(neueDetails);
+    }
+
+    localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+    setCartItems(warenkorb);
+  };
+
+  const removeItemFromCart = (productNumber) => {
+    let warenkorb = localStorage.getItem("warenkorb")
+      ? JSON.parse(localStorage.getItem("warenkorb"))
+      : [];
+    warenkorb = warenkorb.filter(
+      (item) => item.productNumber !== productNumber
+    );
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
     setCartItems(warenkorb);
   };
@@ -64,7 +91,7 @@ export const CardDetails = () => {
                       <strong>Product Number :</strong> {item.productNumber}
                     </p>
                     <p>
-                      <strong>Quantity :</strong> {totalAmount}
+                      <strong>Quantity :</strong> {item.quantity}
                     </p>
                     <p>
                       <strong> Per Stück Price :</strong> {item.price} €
@@ -72,6 +99,11 @@ export const CardDetails = () => {
                     <p>
                       <strong>Size :</strong> {item.size}
                     </p>
+                    <button
+                      onClick={() => removeItemFromCart(item.productNumber)}
+                    >
+                      Remove from Cart
+                    </button>
                   </div>
                 </div>
               ))}
@@ -98,7 +130,8 @@ export const CardDetails = () => {
                 <input
                   type="number"
                   placeholder="Anzahl"
-                  onChange={(e) => setTotalAmount(Number(e.target.value))}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  value={quantity}
                 />
               </div>
               <div className="card-detail-rechts-button">
