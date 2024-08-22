@@ -6,11 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Rezept } from './components/Rezept';
 import { ProductsCategorie } from './components/ProductsCategorie';
 import Login from './components/Login';
-import { AuthDienst,AuthKontext } from './components/LoginSystem';
+import { AuthDienst} from './components/LoginSystem';
 import { Register } from './components/Register';
 import Profile from './components/Profile';
 import Contact from './components/Contact';
 import { CardDetails } from './components/CardDetails';
+import Warenkorb from './components/Warenkorb';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/Register' element={<Register/>}  />
         <Route path='/Profile' element={<Profile/>}  />
         <Route path="/Products/:productNumber" element={<CardDetails />} />
+        <Route path="/Warenkorb" element={<Warenkorb />} />
       </Routes>
     </div>
   );
