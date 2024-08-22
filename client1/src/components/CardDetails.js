@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ObjectAntwort,TextAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
 import { useContext } from "react";
+//import { useNavigate } from "react-router-dom";
 
 export const CardDetails = () => {
   const { productNumber } = useParams();
@@ -10,7 +11,7 @@ export const CardDetails = () => {
   const [product, setProduct] = useState(null);
   const [orderDate,setOrderDate]=useState("");
   const [totalAmount,setTotalAmount]=useState(0);
-  const [count,setCount]=useState(0);
+  //const navi = useNavigate()
 
 console.log("user number--->",userNumber);
 
@@ -34,23 +35,27 @@ console.log("user number--->",userNumber);
 
 
   const newOrder=()=>{
-  const newCount = count +1
-
     TextAntwort(`/order/neu/${userNumber}/${orderDate}/${totalAmount}`,
         (res)=>{
             console.log("Hinzugefuged",res)
-           setCount(newCount)
-           setTotalAmount(newCount);
         },
         (fehler)=>{
             console.log(fehler)
         }
     ) 
-    //navi("/Login") gehe nach bag
+    //navi("/Warenkorb") 
 }
 
   return (
     <div>
+      <div>
+      <Link to="/Warenkorb"><img
+              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
+              width="25px"
+              height="25px"
+              alt="basket"
+            /></Link>
+      </div>
       <div className="card-detail-main">
         {product ? (
           <>
@@ -64,10 +69,12 @@ console.log("user number--->",userNumber);
               <div className="card-detail-rechts-description">
                 <p>{product.description}</p>
               </div>
+              <div>
+                <input type="number" placeholder="Anzahl" onChange={(e)=>setTotalAmount(e.target.value)}/>
+              </div>
               <div className="card-detail-rechts-button">
                 <button onClick={newOrder} className="rezeptbutton">Add to Bag</button>
               </div>
-              <div><h1>{count}</h1></div>
             </div>
           </>
         ) : (

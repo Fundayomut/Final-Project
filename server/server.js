@@ -443,6 +443,15 @@ app.get("/order/neu/:userNumber/:orderDate/:totalAmount",
     })
 
 
+    app.get("/order/delete/:orderNumber",
+        (req, res) => {
+            db.run(
+                `DELETE FROM orders
+                WHERE orderNumber=${req.params.orderNumber}`
+            );
+            res.send("Order Entfernen")
+        })
+
 
 /*************OrderDetail********************/
 app.get("/orderdetail/abruf/alle",
