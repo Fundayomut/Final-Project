@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ObjectAntwort } from "./ServerCom";
 import { ProductsLinie } from "./ProductsLinie";
 import { Link } from "react-router-dom";
 import { CardDetails } from "./CardDetails";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
+import { AuthKontext } from "./LoginSystem";
 
 export const Products = () => {
   const [productList, setProductList] = useState([]);
+  const { userNumber,erlaubnis } = useContext(AuthKontext);
+
 
   const abrufList = () => {
     ObjectAntwort(
@@ -25,6 +30,8 @@ export const Products = () => {
   }, []);
 
   return (
+    <>
+     {erlaubnis === true ? <NavNach /> : <NavVor />}
     <div>
       <div className="productcategorie">
         <Link to="/Products/ProductsCategorie/Boutique">
@@ -72,6 +79,7 @@ export const Products = () => {
         <p>Problem</p>
       )}
     </div>
+    </>
   );
 };
 /*<div>
@@ -81,7 +89,6 @@ export const Products = () => {
         </>
         )):(<p>Problem</p>)}
     </div> */
-
 
 
 

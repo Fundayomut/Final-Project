@@ -2,26 +2,34 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ObjectAntwort, TextAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
 import { useContext } from "react";
 //import { useNavigate } from "react-router-dom";
 
+
 export const CardDetails = () => {
   const { productNumber } = useParams();
-  const { userNumber } = useContext(AuthKontext);
+  const { userNumber,erlaubnis } = useContext(AuthKontext);
   const [product, setProduct] = useState(null);
   const [orderDate, setOrderDate] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(0);
+
+  const [cartCount, setCartCount] = useState(0)
+
   //const navi = useNavigate()
 
   console.log("user number--->", userNumber);
+
 
   useEffect(() => {
     ObjectAntwort(
       `/products/abruf/${productNumber}`,
       (res) => {
         setProduct(res[0]);
+       //console.log("carddetail produkt",res[0]);
       },
       (fehler) => {
         console.log(fehler);
@@ -30,6 +38,20 @@ export const CardDetails = () => {
   }, [productNumber]);
 
   useEffect(() => {
+    const warenkorb = localStorage.getItem("warenkorb")
+      ? JSON.parse(localStorage.getItem("warenkorb"))
+      : [];
+    const totalItems = warenkorb.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    setCartCount(totalItems); // Sepet sayısını güncelle
+  }, []);
+
+  const handleAddToCart = () => {
+    const newCartItem = {
+      userNumber: userNumber,
+
     const today = new Date().toISOString().split("T")[0];
     setOrderDate(today);
   }, []);
@@ -43,10 +65,13 @@ export const CardDetails = () => {
 
   const Aktualisieren = () => {
     const neueDetails = {
+
       productNumber: productNumber,
       quantity: quantity,
       price: product?.price,
       size: product?.size,
+      image:product?.image,
+      name: product?.name,
     };
 
     let warenkorb = localStorage.getItem("warenkorb")
@@ -63,6 +88,35 @@ export const CardDetails = () => {
     }
 
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+    setCartCount(cartCount + quantity);
+  };
+
+  return (
+    <>
+    {erlaubnis === true ? <NavNach /> : <NavVor />}
+    <div className="card-detail-main">
+      {product ? (
+        <>
+          <div className="card-detail-link">
+            <img src={product.image} alt={product.name} width="100%" />
+          </div>
+          <div className="card-detail-rechts">
+            <div className="card-detail-rechts-header">
+              <h1>{product.name}</h1>
+            </div>
+            <div className="card-detail-rechts-description">
+              <p>{product.description}</p>
+            </div>
+            <div className="card-detail-rechts-description">
+              <p>{product.size} Person</p>
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Anzahl"
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                value={quantity}
+              />
     setCartItems(warenkorb);
   };
 
@@ -119,6 +173,8 @@ export const CardDetails = () => {
             <div className="card-detail-link">
               <img src={product.image} alt={product.name} width="100%" />
             </div>
+            <div>
+            <Link to="/Warenkorb">Go to Cart ({cartCount})</Link>
             <div className="card-detail-rechts">
               <div className="card-detail-rechts-header">
                 <h1>{product.name}</h1>
@@ -146,6 +202,7 @@ export const CardDetails = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 /***update******/

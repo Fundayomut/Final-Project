@@ -51,7 +51,7 @@ function Home() {
             <div className="homebuttonmaindiv">
               <div class="homebuttondiv">
                 <button className="rezeptbutton">Rezept</button>
-                <button className="orderbutton">Order Now</button>
+                <Link to="/Products"><button className="orderbutton">Order Now</button></Link>
               </div>
             </div>
           </div>
@@ -88,14 +88,13 @@ function Home() {
               <Link to="/rezept">
                   <button className="rezeptbutton">Rezept</button>
                 </Link>
-                <button className="orderbutton">Order Now</button>
+                <Link to="/Products"><button className="orderbutton">Order Now</button></Link>
               </div>
             </div>
           </div>
           <Footer />
         </>
       )}
-
     </div>
   );
 }

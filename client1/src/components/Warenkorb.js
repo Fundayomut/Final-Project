@@ -34,21 +34,20 @@ const Warenkorb = () => {
         <div className="cart-items">
           {cartItems.map((item, index) => (
             <div key={index} className="cart-item">
+              <div className="cart-item-image">
+                <img src={item.image} alt="Product" />
+              </div>
               <div className="cart-item-details">
-                <p>
-                  <strong>Product Number :</strong> {item.productNumber}
-                </p>
-                <p>
-                  <strong>Quantity :</strong> {item.quantity}
-                </p>
-                <p>
-                  <strong> Per Stück Price :</strong> {item.price} €
-                </p>
-                <p>
-                  <strong>Size :</strong> {item.size}
-                </p>
-                <button onClick={() => removeItemFromCart(item.productNumber)}>
-                  Remove from Cart
+                <p>{item.name}</p>
+                <p>{item.size} Person</p>
+                <p><b>{item.price} € </b></p>
+              </div>
+              <div className="cart-item-menge">
+              <p>{item.quantity} Stück</p>
+              </div>
+              <div className="cart-item-buttondiv">
+              <button className="remove-button" onClick={() => removeItemFromCart(item.productNumber)}>
+                 Delete
                 </button>
               </div>
             </div>
@@ -60,6 +59,5 @@ const Warenkorb = () => {
     </div>
   );
 };
-
 export default Warenkorb;
 

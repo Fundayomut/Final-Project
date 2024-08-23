@@ -1,15 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
 
-export default function  NavNach  ()  {
-
-  const { logout } = useContext(AuthKontext); 
+export default function NavNach() {
+  const { logout, userNumber } = useContext(AuthKontext);
   const navigate = useNavigate();
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("warenkorb");
+    if (storedCartItems) {
+      const cartItems = JSON.parse(storedCartItems).filter(
+        (item) => item.userNumber === userNumber
+      );
+      let total = 0;
+      for (let i = 0; i < cartItems.length; i++) {
+        total += cartItems[i].quantity;
+      }
+      setTotalItems(total);
+    }
+  }, [userNumber]);
 
   const handleLogout = () => {
     logout();
-    navigate('/login'); // Redirect to login page after logout
+    navigate("/login"); // Redirect to login page after logout
   };
 
   return (
@@ -28,14 +42,20 @@ export default function  NavNach  ()  {
               Home
             </a>
           </li>
-         <li className="nav-item">
-         <Link className="nav-order" to="/Products">Order</Link>
+          <li className="nav-item">
+            <Link className="nav-order" to="/Products">
+              Order
+            </Link>
           </li>
           <li className="nav-item">
-                <Link className="nav-Contact" to="/Contact">Contact</Link>
-              </li>
+            <Link className="nav-Contact" to="/Contact">
+              Contact
+            </Link>
+          </li>
           <li className="nav-item">
-          <Link className="nav-order" to="/Profile">Profile</Link>
+            <Link className="nav-order" to="/Profile">
+              Profile
+            </Link>
           </li>
         </ul>
       </div>
@@ -50,21 +70,47 @@ export default function  NavNach  ()  {
             src="https://cdn0.iconfinder.com/data/icons/essentials-4/1687/search-512.png"
             width="20px"
             height="20px"
-            style={{ marginLeft: "10px"}}
+            alt="search"
+            style={{ marginLeft: "10px" }}
           />
         </div>
-        <img
-          src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
-          width="25px"
-          height="25px"
-        />
+        <Link to="/Warenkorb">
+          <div style={{ position: "relative", display: "inline-block" }}>
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
+              width="25px"
+              height="25px"
+              alt="basket"
+            />
+            {totalItems > 0 && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-5px",
+                  right: "-5px",
+                  backgroundColor: "red",
+                  color: "white",
+                  borderRadius: "50%",
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  lineHeight: "20px",
+                  fontSize: "12px",
+                }}
+              >
+                {totalItems}
+              </span>
+            )}
+          </div>
+        </Link>
         <img
           src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/login-64.png"
           width="25px"
           height="25px"
           onClick={handleLogout}
+          alt="login"
         />
       </div>
     </div>
   );
-};
+}
