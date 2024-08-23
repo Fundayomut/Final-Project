@@ -62,3 +62,4 @@ const Warenkorb = () => {
 };
 
 export default Warenkorb;
+
