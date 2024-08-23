@@ -352,15 +352,46 @@ body {
   display: flex;
   justify-content: end;
 }
-.card-detail-rechts-size{
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 25px;
+
+
+.cart-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.card-detail-size-select{
-  border: solid 1px gray;
+.cart-header {
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-size: 28px;
+  color: rgb(71, 71, 71);
+  margin-bottom: 20px;
 }
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-details {
+  font-size: 16px;
+  color: rgb(71, 71, 71);
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+}
+
 
 
 
