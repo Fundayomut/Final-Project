@@ -32,10 +32,8 @@ export default function  NavNach  ()  {
          <Link className="nav-order" to="/Products">Order</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-Contact" href="#">
-              Contact
-            </a>
-          </li>
+                <Link className="nav-Contact" to="/Contact">Contact</Link>
+              </li>
           <li className="nav-item">
           <Link className="nav-order" to="/Profile">Profile</Link>
           </li>
