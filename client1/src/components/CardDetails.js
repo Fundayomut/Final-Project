@@ -2,24 +2,39 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ObjectAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
 
 export const CardDetails = () => {
   const { productNumber } = useParams();
-  const { userNumber } = useContext(AuthKontext);
+  const { userNumber,erlaubnis } = useContext(AuthKontext);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
+  const [cartCount, setCartCount] = useState(0)
 
   useEffect(() => {
     ObjectAntwort(
       `/products/abruf/${productNumber}`,
       (res) => {
         setProduct(res[0]);
+       //console.log("carddetail produkt",res[0]);
       },
       (fehler) => {
         console.log(fehler);
       }
     );
   }, [productNumber]);
+
+  useEffect(() => {
+    const warenkorb = localStorage.getItem("warenkorb")
+      ? JSON.parse(localStorage.getItem("warenkorb"))
+      : [];
+    const totalItems = warenkorb.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    setCartCount(totalItems); // Sepet sayısını güncelle
+  }, []);
 
   const handleAddToCart = () => {
     const newCartItem = {
@@ -28,6 +43,8 @@ export const CardDetails = () => {
       quantity: quantity,
       price: product?.price,
       size: product?.size,
+      image:product?.image,
+      name: product?.name,
     };
 
     let warenkorb = localStorage.getItem("warenkorb")
@@ -46,9 +63,12 @@ export const CardDetails = () => {
     }
 
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+    setCartCount(cartCount + quantity);
   };
 
   return (
+    <>
+    {erlaubnis === true ? <NavNach /> : <NavVor />}
     <div className="card-detail-main">
       {product ? (
         <>
@@ -61,6 +81,9 @@ export const CardDetails = () => {
             </div>
             <div className="card-detail-rechts-description">
               <p>{product.description}</p>
+            </div>
+            <div className="card-detail-rechts-description">
+              <p>{product.size} Person</p>
             </div>
             <div>
               <input
@@ -76,7 +99,7 @@ export const CardDetails = () => {
               </button>
             </div>
             <div>
-              <Link to="/Warenkorb">Go to Cart</Link>
+            <Link to="/Warenkorb">Go to Cart ({cartCount})</Link>
             </div>
           </div>
         </>
@@ -84,6 +107,7 @@ export const CardDetails = () => {
         <p>Loading...</p>
       )}
     </div>
+    </>
   );
 };
 /***update******/
