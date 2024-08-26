@@ -5,6 +5,7 @@ const Warenkorb = () => {
   const { userNumber } = useContext(AuthKontext);
   const [cartItems, setCartItems] = useState([]);
 
+
   useEffect(() => {
     const storedCartItems = localStorage.getItem("warenkorb");
     if (storedCartItems) {
@@ -21,7 +22,9 @@ const Warenkorb = () => {
       : [];
     warenkorb = warenkorb.filter(
       (item) =>
-        !(item.productNumber === productNumber && item.userNumber === userNumber)
+        !(
+          item.productNumber === productNumber && item.userNumber === userNumber
+        )
     );
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
     setCartItems(warenkorb);
@@ -40,14 +43,21 @@ const Warenkorb = () => {
               <div className="cart-item-details">
                 <p>{item.name}</p>
                 <p>{item.size} Person</p>
-                <p><b>{item.price} € </b></p>
+                <p>
+                  <b>{item.price} € </b>
+                </p>
               </div>
-              <div className="cart-item-menge">
-              <p>{item.quantity} Stück</p>
-              </div>
+                <div className="cart-item-menge">
+                <button>+</button>
+                  <p>{item.quantity} Stück</p>
+                  <button>-</button>
+                </div>
               <div className="cart-item-buttondiv">
-              <button className="remove-button" onClick={() => removeItemFromCart(item.productNumber)}>
-                 Delete
+                <button
+                  className="remove-button"
+                  onClick={() => removeItemFromCart(item.productNumber)}
+                >
+                  Delete
                 </button>
               </div>
             </div>
@@ -60,4 +70,3 @@ const Warenkorb = () => {
   );
 };
 export default Warenkorb;
-
