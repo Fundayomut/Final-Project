@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ObjectAntwort, TextAntwort } from "./ServerCom";
+import { ObjectAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
 import { useContext } from "react";
 
 export const CardDetails = () => {
   const { productNumber } = useParams();
-  const { userNumber } = useContext(AuthKontext);
+  const { userNumber, erlaubnis } = useContext(AuthKontext);
   const [product, setProduct] = useState(null);
-  const [orderDate, setOrderDate] = useState("");
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(0);
+
   console.log("user number--->", userNumber);
+
+  const [cartCount, setCartCount] = useState(0);
+
 
   useEffect(() => {
     ObjectAntwort(
@@ -27,16 +30,16 @@ export const CardDetails = () => {
   }, [productNumber]);
 
   useEffect(() => {
-    const today = new Date().toISOString().split("T")[0];
-    setOrderDate(today);
+    updateCartCount();
   }, []);
 
-  useEffect(() => {
-    const storedCartItems = localStorage.getItem("warenkorb");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
+  const updateCartCount = () => {
+    const warenkorb = localStorage.getItem("warenkorb")
+      ? JSON.parse(localStorage.getItem("warenkorb"))
+      : [];
+    const totalItems = warenkorb.reduce((sum, item) => sum + item.quantity, 0);
+    setCartCount(totalItems);
+  };
 
   const Aktualisieren = () => {
     const neueDetails = {
@@ -44,6 +47,9 @@ export const CardDetails = () => {
       quantity: quantity,
       price: product?.price,
       size: product?.size,
+      image: product?.image,
+      name: product?.name,
+      userNumber:userNumber,
     };
 
     let warenkorb = localStorage.getItem("warenkorb")
@@ -54,62 +60,18 @@ export const CardDetails = () => {
       (item) => item.productNumber === productNumber
     );
     if (existingItemIndex >= 0) {
-      warenkorb[existingItemIndex].quantity = quantity;
+      warenkorb[existingItemIndex].quantity += quantity;
     } else {
       warenkorb.push(neueDetails);
     }
 
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
-    setCartItems(warenkorb);
-  };
-
-  const removeItemFromCart = (productNumber) => {
-    let warenkorb = localStorage.getItem("warenkorb")
-      ? JSON.parse(localStorage.getItem("warenkorb"))
-      : [];
-    warenkorb = warenkorb.filter(
-      (item) => item.productNumber !== productNumber
-    );
-    localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
-    setCartItems(warenkorb);
+    updateCartCount();
   };
 
   return (
-    <div>
-      <div>
-        <div className="cart-section">
-          <h2 className="cart-header">Ihre Warenkorb</h2>
-          {cartItems.length > 0 ? (
-            <div className="cart-items">
-              {cartItems.map((item, index) => (
-                <div key={index} className="cart-item">
-                  <div className="cart-item-details">
-                    <p>
-                      <strong>Product Number :</strong> {item.productNumber}
-                    </p>
-                    <p>
-                      <strong>Quantity :</strong> {item.quantity}
-                    </p>
-                    <p>
-                      <strong> Per Stück Price :</strong> {item.price} €
-                    </p>
-                    <p>
-                      <strong>Size :</strong> {item.size}
-                    </p>
-                    <button
-                      onClick={() => removeItemFromCart(item.productNumber)}
-                    >
-                      Remove from Cart
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>Es befinden sich keine Artikel in Ihrem Warenkorb.</p>
-          )}
-        </div>
-      </div>
+    <>
+      {erlaubnis === true ? <NavNach /> : <NavVor />}
       <div className="card-detail-main">
         {product ? (
           <>
@@ -122,6 +84,9 @@ export const CardDetails = () => {
               </div>
               <div className="card-detail-rechts-description">
                 <p>{product.description}</p>
+              </div>
+              <div className="card-detail-rechts-description">
+                <p>{product.size} Person</p>
               </div>
               <div>
                 <input
@@ -136,13 +101,15 @@ export const CardDetails = () => {
                   Add to Bag
                 </button>
               </div>
+              <div className="card-detail-warenkorb-link">
+                <Link to="/Warenkorb">Go to Cart ({cartCount})</Link>
+              </div>
             </div>
           </>
         ) : (
           <p>Loading...</p>
         )}
       </div>
-    </div>
+    </>
   );
 };
-/***update******/
