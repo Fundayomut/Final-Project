@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
 
-export default function NavNach() {
+export default function NavNach({productList}) {
   const { logout, userNumber } = useContext(AuthKontext);
   const navigate = useNavigate();
   const [totalItems, setTotalItems] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem("warenkorb");
@@ -24,6 +25,17 @@ export default function NavNach() {
   const handleLogout = () => {
     logout();
     navigate("/login"); // Redirect to login page after logout
+  };
+
+  const handleSearch = () => {
+    const product = productList.find(item =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    if (product) {
+      navigate(`/Products/${product.productNumber}`);
+    } else {
+      alert("Product not found!");
+    }
   };
 
   return (
@@ -61,17 +73,20 @@ export default function NavNach() {
       </div>
       <div className="search">
         <div className="navinputlink">
-          <input
+        <input
             className="inputsearch"
-            placeholder="search"
+            placeholder="Search..."
             style={{ height: "25px" }}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <img
             src="https://cdn0.iconfinder.com/data/icons/essentials-4/1687/search-512.png"
             width="20px"
             height="20px"
             alt="search"
-            style={{ marginLeft: "10px" }}
+            style={{ marginLeft: "10px" ,cursor: "pointer"  }}
+            onClick={handleSearch} 
           />
         </div>
         <Link to="/Warenkorb">

@@ -52,8 +52,15 @@ body {
   border-radius: 8px;
   border: none;
   flex-grow: 1;
+  outline: none;
+  font-size: 15px;
+  padding: 2px;
+  color: rgb(73, 73, 73);
 }
-
+.inputsearch::placeholder {
+  color: #cecece;
+  font-size: 14px;
+}
 .navinputlink {
   display: flex;
   align-items: center;
@@ -409,8 +416,8 @@ body {
 .cart-item-menge  {
 display: flex;
 justify-content: center;
-align-content: center;
 align-self: center;
+align-items: center;
 }
 .cart-item-buttondiv{
 display: flex;
@@ -434,6 +441,24 @@ margin-right: 7px;
 
 .remove-button:hover {
   background-color: rgb(220, 120, 220);
+}
+
+.btn-control {
+  background-color: rgb(255, 147, 250);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  margin:10px
+}
+
+.btn-control:hover {
+  background-color: rgb(220, 120, 220);
+  transform: scale(1.05);
 }
 
 

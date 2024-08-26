@@ -5,6 +5,7 @@ import { AuthKontext } from "./LoginSystem";
 import NavNach from "./NavNach";
 import NavVor from "./NavVor";
 import { useContext } from "react";
+import Modal from "./Modal";
 
 export const CardDetails = () => {
   const { productNumber } = useParams();
@@ -12,6 +13,7 @@ export const CardDetails = () => {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [cartCount, setCartCount] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     ObjectAntwort(
@@ -38,7 +40,12 @@ export const CardDetails = () => {
   };
 
   const Aktualisieren = () => {
-    const neueDetails = {
+
+    if (!erlaubnis) {
+      setShowModal(true);
+      return;}
+
+      const neueDetails = {
       productNumber: productNumber,
       quantity: quantity,
       price: product?.price,
@@ -98,7 +105,13 @@ export const CardDetails = () => {
                 </button>
               </div>
               <div className="card-detail-warenkorb-link">
-                <Link to="/Warenkorb">Go to Cart ({cartCount})</Link>
+                <Link to="/Warenkorb">
+                <img
+              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
+              width="25px"
+              height="25px"
+              alt="basket"
+            />({cartCount})</Link>
               </div>
             </div>
           </>
@@ -106,6 +119,11 @@ export const CardDetails = () => {
           <p>Loading...</p>
         )}
       </div>
+      <Modal show={showModal} onClose={() => setShowModal(false)}>
+        <h2>Login Required</h2>
+        <p>You need to log in to add items to the cart.</p>
+        <button onClick={() => setShowModal(false)}>Close</button>
+      </Modal>
     </>
   );
 };
