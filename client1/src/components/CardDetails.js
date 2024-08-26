@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { ObjectAntwort, TextAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
 import { useContext } from "react";
-//import { useNavigate } from "react-router-dom";
 
 export const CardDetails = () => {
   const { productNumber } = useParams();
@@ -13,8 +12,6 @@ export const CardDetails = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(0);
-  //const navi = useNavigate()
-
   console.log("user number--->", userNumber);
 
   useEffect(() => {

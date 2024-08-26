@@ -1,7 +1,9 @@
 import React from 'react';
-
 const Contact = () => {
+
     return (
+        <>
+        
         <div className="contact-background">
             <div className="contact-container">
                 <div className="contact-left">
@@ -38,6 +40,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
