@@ -38,9 +38,9 @@ export default function NavNach() {
       <div className="navVorBoot">
         <ul className="nav">
           <li className="nav-item">
-            <a className="nav-Home" aria-current="page" href="#">
+          <Link className="nav-Home" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-order" to="/Products">

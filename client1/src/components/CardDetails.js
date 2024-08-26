@@ -45,6 +45,7 @@ export const CardDetails = () => {
       size: product?.size,
       image: product?.image,
       name: product?.name,
+      userNumber:userNumber,
     };
 
     let warenkorb = localStorage.getItem("warenkorb")
@@ -61,7 +62,7 @@ export const CardDetails = () => {
     }
 
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
-    updateCartCount(); // Sepet sayısını güncelle
+    updateCartCount();
   };
 
   return (

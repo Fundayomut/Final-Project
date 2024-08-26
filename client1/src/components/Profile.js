@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { TextAntwort, ObjectAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
 import { ProfileDetails } from "./ProfileDetails";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
 
 const Profile = () => {
   const [userFirstName, setUserFirstName] = useState('');
@@ -18,7 +20,8 @@ const Profile = () => {
   const [country, setCountry] = useState('');
   const [userType, setUserType] = useState(0);
 
-  const { userNumber } = useContext(AuthKontext);
+  const { userNumber,erlaubnis } = useContext(AuthKontext);
+
 
   useEffect(() => {
     ObjectAntwort(
@@ -45,6 +48,8 @@ const Profile = () => {
   }, [userNumber]);
 
   return (
+    <>
+   {erlaubnis === true ? <NavNach/>:<NavVor/>}
     <div className="profile-container">
       <ProfileDetails 
         userNickName={userNickName}
@@ -62,6 +67,7 @@ const Profile = () => {
         userType={userType}
       />
     </div>
+    </>
   );
 };
 
