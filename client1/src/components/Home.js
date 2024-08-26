@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import NavNach from "./NavNach";
 import Footer from "./Footer";
 import Rezept from "./Rezept";
@@ -6,9 +6,30 @@ import { Link } from "react-router-dom";
 import { NavVor } from "./NavVor";
 import { TextAntwort, ServerCom } from "./ServerCom";
 import { LoginSystem, AuthDienst, AuthKontext } from "./LoginSystem";
+import { ObjectAntwort } from "./ServerCom";
 
 function Home() {
   const { erlaubnis, userNumber, logout, userType } = useContext(AuthKontext);
+  const [productList, setProductList] = useState([]);
+
+
+  const abrufList = () => {
+    ObjectAntwort(
+      `/products/abruf/alle`,
+      (res) => {
+        setProductList(res);
+        console.log(res);
+      },
+      (fehler) => {
+        console.log(fehler);
+      }
+    );
+  };
+
+  useEffect(() => {
+    abrufList();
+  }, []);
+
 
   useEffect(() => {
     if (userNumber)
@@ -24,7 +45,7 @@ function Home() {
     <div>
       {erlaubnis === true ? (
         <>
-          <NavNach />
+          <NavNach productList={productList} />
           <div className="homemain">
             <div className="hauptdiv">
               <div className="paragrafdiv">
@@ -59,7 +80,7 @@ function Home() {
         </>
       ) : (
         <>
-          <NavVor />
+          <NavVor productList={productList}/>
           <div className="homemain">
             <div className="hauptdiv">
               <div className="paragrafdiv">
