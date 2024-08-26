@@ -109,3 +109,4 @@ export const CardDetails = () => {
     </>
   );
 };
+/***Neu update carddetail***/
