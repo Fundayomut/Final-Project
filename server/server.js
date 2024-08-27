@@ -473,6 +473,66 @@ app.get("/orderdetail/neu/:orderNumber/:productNumber/:quantity/:price",
 
 /******************favorites*****************/
 
+app.get("/favorites/update/:userNumber/:productNumber/:favorite", (req, res) => {
+    db.run(
+        `UPDATE favorites SET favorite='${req.params.favorite}' 
+        WHERE userNumber='${req.params.userNumber}' AND productNumber='${req.params.productNumber}'`,
+        (fehler) => {
+            if (fehler) {
+                res.send("Fehler beim Aktualisieren des Favoritenstatus");
+                console.error(fehler);
+            } else {
+                res.send("Favoritenstatus erfolgreich aktualisiert");
+            }
+        }
+    );
+});
+
+
+app.get("/favorites/status/:userNumber/:productNumber", (req, res) => {
+    db.get(
+        `SELECT favorite FROM favorites WHERE userNumber='${req.params.userNumber}' AND productNumber='${req.params.productNumber}'`,
+        (fehler, zeile) => {
+            if (fehler) {
+                res.send("Fehler beim Abrufen des Favoritenstatus");
+                console.error(fehler);
+            } else {
+                res.send(zeile ? zeile.isFavorite.toString() : "0");
+            }
+        }
+    );
+});
+
+app.get("/favorites/:userNumber", (req, res) => {
+    db.all(
+        `SELECT productNumber FROM favorites WHERE userNumber='${req.params.userNumber}' AND favorite='1'`,
+        (fehler, zeilen) => {
+            if (fehler) {
+                res.send("Fehler beim Abrufen der Favoritenliste");
+                console.error(fehler);
+            } else {
+                res.send(zeilen);
+            }
+        }
+    );
+});
+
+app.get("/favorites/neupdate", (req, res) => {
+    const { userNumber, productNumber, favorite } = req.body;
+    db.run(
+        `UPDATE favorites SET favorite='${favorite}' WHERE userNumber='${userNumber}' AND productNumber='${productNumber}'`,
+        (fehler) => {
+            if (fehler) {
+                res.send("Fehler beim Aktualisieren des Favoritenstatus");
+                console.error(fehler);
+            } else {
+                res.send("Favoritenstatus erfolgreich aktualisiert");
+            }
+        }
+    );
+});
+
+/*****************************************************/
 
 
 const server = app.listen(

@@ -6,6 +6,7 @@ import NavVor from "./NavVor";
 import { AuthKontext } from "./LoginSystem";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Favorites from "./Favorites";
 
 export const ProductsCategorie = () => {
   const [categorieList, setCategorieList] = useState([]);
@@ -36,11 +37,11 @@ export const ProductsCategorie = () => {
         <div className="productcategorie">
           <p>
             {category === "Boutique" ? (
-              <span>Boutique-Kuchen</span>
+              <h2>Boutique-Kuchen</h2>
             ) : category === "Hochzeit" ? (
-              <span>Hochzeits und Verlobungstorten</span>
+              <h2>Hochzeits und Verlobungstorten</h2>
             ) : category === "Bild" ? (
-              <span>Figure Kuchen</span>
+              <h2>Figure Kuchen</h2>
             ) : null}
           </p>
         </div>
@@ -49,8 +50,10 @@ export const ProductsCategorie = () => {
             {categorieList.map((item) => (
               <div className="prodLiniecard" key={item.productNumber}>
                 <div className="cardratio">
-                  <p>herz</p>
-                  <p>stern</p>
+                <Favorites
+              productNumber={item.productNumber}
+              userNumber={userNumber}
+              />
                 </div>
                 <div className="cardimage">
                   <img
