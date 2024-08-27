@@ -4,26 +4,12 @@ import { Link } from "react-router-dom";
 import NavNach from "./NavNach";
 import NavVor from "./NavVor";
 import { AuthKontext } from "./LoginSystem";
+import Favorites from "./Favorites";
 
 export const Products = () => {
   const [productList, setProductList] = useState([]);
   const { userNumber,erlaubnis } = useContext(AuthKontext);
-  const [favorites,setFavorites]=useState([]);
 
-
-  const handleFavorites = (productNumber) => {
-    const currentFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    
-    if (currentFavorites.includes(productNumber)) {
-      const updatedFavorites = currentFavorites.filter(item => item !== productNumber);
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setFavorites(updatedFavorites);
-    } else {
-      const updatedFavorites = [...currentFavorites, productNumber];
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setFavorites(updatedFavorites);
-    }
-  };
 
 
   const abrufList = () => {
@@ -41,8 +27,6 @@ export const Products = () => {
 
   useEffect(() => {
     abrufList();
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(storedFavorites);
   }, []);
 
 
@@ -65,13 +49,10 @@ export const Products = () => {
         <div className="prodLiniemain">
           {productList.map((item) => (
             <div className="prodLiniecard" key={item.productNumber}>
-              <div className="cardratio">
-                <div onClick={(e)=>handleFavorites(item.productNumber)}>
-                  {favorites.includes(item.productNumber)?<img src="https://cdn4.iconfinder.com/data/icons/essentials-65/64/Essentials-40-64.png" width="40%"/>
-                  : <img src="https://cdn1.iconfinder.com/data/icons/app-user-interface-line/64/like_love_heart_app_user_interface-64.png" width="40%"/>} 
-                </div>
-                <p>stern</p>
-              </div>
+              <Favorites
+              productNumber={item.productNumber}
+              userNumber={userNumber}
+              />
               <div className="cardimage">
                 <img
                   src={item.image}
@@ -102,3 +83,5 @@ export const Products = () => {
     </>
   );
 };
+
+/*commit*/

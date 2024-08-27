@@ -63,6 +63,7 @@ export default function Login()
             <div style={{display:"flex",alignItems:"center", flexDirection:"column",marginTop:"15px"}}>
                 <p>Don`t have an account?</p>
                 <p style={{color:"rgb(250, 65, 241)"}}>REGISTER</p>
+                <Link to="/"><p>Without logging in to the home page</p></Link>
             </div>
         </div>
         </div>
