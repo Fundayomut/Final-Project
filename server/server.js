@@ -216,29 +216,6 @@ app.get(
     }
 )
 
-/*
-app.get(
-    "/products/abruf/wer/:category/:id",
-    (req, res) => {
-        db.all(
-            `SELECT * FROM products
-            WHERE category='${req.params.category}'
-            AND productNumber='${req.params.id}'
-            `,
-            (fehler, zeilen) => {
-                if (fehler) {
-                    console.log(fehler)
-                    res.send("[]");
-                }
-                else {
-                    res.send(JSON.stringify(zeilen))
-                }
-            }
-        )
-    }
-)
-    */
-
 
 app.get(
     "/products/abruf/:id",
@@ -496,7 +473,9 @@ app.get("/orderdetail/neu/:orderNumber/:productNumber/:quantity/:price",
 
 
 
-/*****************************************/
+/******************favorites*****************/
+
+
 const server = app.listen(
     Portnummer,
     () => {
