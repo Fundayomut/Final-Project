@@ -12,6 +12,7 @@ import Profile from './components/Profile';
 import Contact from './components/Contact';
 import { CardDetails } from './components/CardDetails';
 import Warenkorb from './components/Warenkorb';
+import Zahlen from './components/Zahlen';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/Profile' element={<Profile/>}  />
         <Route path="/Products/:productNumber" element={<CardDetails />} />
         <Route path="/Warenkorb" element={<Warenkorb />} />
+        <Route path='/Zahlen' element={<Zahlen/>}/>
       </Routes>
     </div>
   );
