@@ -12,8 +12,12 @@ export const CardDetails = () => {
   const { userNumber, erlaubnis } = useContext(AuthKontext);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
+
+  console.log("user number--->", userNumber);
+
   const [cartCount, setCartCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     ObjectAntwort(
