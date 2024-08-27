@@ -20,7 +20,6 @@ let db = new sqlite3.Database(
 )
 
 
-
 //************************************************
 //                   LOGIN
 //************************************************
@@ -149,27 +148,27 @@ app.get("/rezept/abruf/alle",
         )
     })
 
-    ///////////////////////////////
-    app.get(
-        "/rezept/abruf/wer/:id",
-        (req, res) => {
-            db.all(
-                `SELECT * FROM rezept
+///////////////////////////////
+app.get(
+    "/rezept/abruf/wer/:id",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM rezept
                 WHERE rezeptNumber='${req.params.id}'
                 `,
-                (fehler, zeilen) => {
-                    if (fehler) {
-                        console.log(fehler)
-                        res.send("[]");
-                    }
-                    else {
-                        res.send(JSON.stringify(zeilen))
-                    }
+            (fehler, zeilen) => {
+                if (fehler) {
+                    console.log(fehler)
+                    res.send("[]");
                 }
-            )
-        }
-    )
-    ////////////////////
+                else {
+                    res.send(JSON.stringify(zeilen))
+                }
+            }
+        )
+    }
+)
+////////////////////
 
 app.get("/products/update/:id/:name/:category/:size/:price/:image/:description",
     (req, res) => {
@@ -249,7 +248,7 @@ app.get(
             `,
             (fehler, zeilen) => {
                 if (fehler) {
-                    console.log("fehler--->",fehler)
+                    console.log("fehler--->", fehler)
                     res.send("[fehler]");
                 }
                 else {
@@ -306,10 +305,10 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
 
 
 
-    app.get("/user/register/:userNickName/:userFirstName/:userLastName/:eMail/:password",
-        (req, res) => {
-            db.run(
-                `INSERT INTO users
+app.get("/user/register/:userNickName/:userFirstName/:userLastName/:eMail/:password",
+    (req, res) => {
+        db.run(
+            `INSERT INTO users
             (userNickName,userFirstName,userLastName,eMail,password)
             VALUES
             (
@@ -320,17 +319,17 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
             '${req.params.password}'
             )
             `,
-                (fehler) => console.log(fehler)
-            )
-            res.send("User Register")
-        })
-    
+            (fehler) => console.log(fehler)
+        )
+        res.send("User Register")
+    })
 
 
-    app.get("/user/update/:userNumber/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:phone/:adresLine1/:adresLine2/:city/:state/:postalCode/:country/:password",
-        (req, res) => {
-            db.run(
-                `UPDATE users SET
+
+app.get("/user/update/:userNumber/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:phone/:adresLine1/:adresLine2/:city/:state/:postalCode/:country/:password",
+    (req, res) => {
+        db.run(
+            `UPDATE users SET
             userNickName='${req.params.userNickName}',
             userFirstName='${req.params.userFirstName}',
             userLastName='${req.params.userLastName}',
@@ -346,38 +345,38 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
             password='${req.params.password}'
             WHERE 
             userNumber=${req.params.userNumber}`,
-            )
-            res.send("user update sucsesfully")
-        })
-    
-    app.get("/user/delete/:userNumber",
-        (req, res) => {
-            db.run(
-                `DELETE FROM users
-                WHERE userNumber=${req.params.userNumber}`
-            );
-            res.send("User Entfernen")
-        })
+        )
+        res.send("user update sucsesfully")
+    })
 
-        app.get(
-            "/user/abruf/wer/:userNumber",
-            (req, res) => {
-                db.all(
-                    `SELECT * FROM users
+app.get("/user/delete/:userNumber",
+    (req, res) => {
+        db.run(
+            `DELETE FROM users
+                WHERE userNumber=${req.params.userNumber}`
+        );
+        res.send("User Entfernen")
+    })
+
+app.get(
+    "/user/abruf/wer/:userNumber",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM users
                     WHERE userNumber='${req.params.userNumber}'
                     `,
-                    (fehler, zeilen) => {
-                        if (fehler) {
-                            console.log(fehler)
-                            res.send("[]");
-                        }
-                        else {
-                            res.send(JSON.stringify(zeilen))
-                        }
-                    }
-                )
+            (fehler, zeilen) => {
+                if (fehler) {
+                    console.log(fehler)
+                    res.send("[]");
+                }
+                else {
+                    res.send(JSON.stringify(zeilen))
+                }
             }
         )
+    }
+)
 
 /**************Order***********************/
 app.get("/orders/abruf/alle",
@@ -420,14 +419,14 @@ app.get("/order/neu/:userNumber/:orderDate/:totalAmount",
     })
 
 
-    app.get("/order/delete/:orderNumber",
-        (req, res) => {
-            db.run(
-                `DELETE FROM orders
+app.get("/order/delete/:orderNumber",
+    (req, res) => {
+        db.run(
+            `DELETE FROM orders
                 WHERE orderNumber=${req.params.orderNumber}`
-            );
-            res.send("Order Entfernen")
-        })
+        );
+        res.send("Order Entfernen")
+    })
 
 
 /*************OrderDetail********************/
@@ -472,8 +471,8 @@ app.get("/orderdetail/neu/:orderNumber/:productNumber/:quantity/:price",
     })
 
 
-
 /******************favorites*****************/
+
 
 
 const server = app.listen(
