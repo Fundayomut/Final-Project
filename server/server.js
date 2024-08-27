@@ -532,8 +532,28 @@ app.get("/favorites/neupdate", (req, res) => {
     );
 });
 
-/*****************************************************/
+/********************Nutrition**************************/
+app.get(
+    "/nutrition/abruf/:productNumber",
+    (req, res) => {
+        db.all(
+            `SELECT * FROM nutrition
+                    WHERE productNumber='${req.params.productNumber}'
+                    `,
+            (fehler, zeilen) => {
+                if (fehler) {
+                    console.log(fehler)
+                    res.send("[]");
+                }
+                else {
+                    res.send(JSON.stringify(zeilen))
+                }
+            }
+        )
+    }
+)
 
+/**************************************************/
 
 const server = app.listen(
     Portnummer,

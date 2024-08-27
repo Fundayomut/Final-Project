@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from "react";
 import { ObjectAntwort } from './ServerCom';
+import { AuthKontext } from "./LoginSystem";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
 
 export const Rezept = () => {
     const [rezept, setRezept] = useState([]);
+    const { userNumber,erlaubnis } = useContext(AuthKontext);
 
     const abrufList = () => {
         ObjectAntwort(`/rezept/abruf/alle`,
@@ -20,6 +24,8 @@ export const Rezept = () => {
     }, []);
 
     return (
+    <>
+    {erlaubnis === true ? <NavNach /> : <NavVor />}
         <div className="rezeptListe">
             {rezept.length > 0 ? (
                 rezept.map((item) => (
@@ -44,6 +50,7 @@ export const Rezept = () => {
                 <p>Problem</p>
             )}
         </div>
+        </>
     );
 };
 

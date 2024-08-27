@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import { Link } from "react-router-dom";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
+import { AuthKontext } from "./LoginSystem";
 
 const Zahlen = () => {
   const [totalAmount, setTotalAmount] = useState(0);
+  const { erlaubnis } = useContext(AuthKontext);
 
   useEffect(() => {
     const amount = localStorage.getItem("totalAmount");
@@ -11,6 +16,8 @@ const Zahlen = () => {
   }, []);
 
   return (
+  <>
+   {erlaubnis === true ? <NavNach /> : <NavVor />}
     <div className="zahlen-container">
       <h1 className="main-heading">Complete Registration Payment</h1>
       <p className="sub-heading">Personal details</p>
@@ -63,9 +70,9 @@ const Zahlen = () => {
           alt="PayPal Logo"
         />
       </div>
-
-      <button className="zahlen-button">Zahlen</button>
+      <Link to={`/paypal?amount=${totalAmount}`}><button className="zahlen-button">Zahlen</button></Link>
     </div>
+    </>
   );
 };
 

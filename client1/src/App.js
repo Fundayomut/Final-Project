@@ -13,6 +13,8 @@ import Contact from './components/Contact';
 import { CardDetails } from './components/CardDetails';
 import Warenkorb from './components/Warenkorb';
 import Zahlen from './components/Zahlen';
+import PayPal from './components/PayPal';
+import FavoritesList from './components/FavoritesList';
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
         <Route path="/Products/:productNumber" element={<CardDetails />} />
         <Route path="/Warenkorb" element={<Warenkorb />} />
         <Route path='/Zahlen' element={<Zahlen/>}/>
+        <Route path='/Paypal' element={<PayPal/>}/>
+        <Route path='/FavoritesList' element={<FavoritesList/>}/>
       </Routes>
     </div>
   );
