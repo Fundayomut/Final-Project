@@ -419,12 +419,12 @@ justify-content: center;
 align-self: center;
 align-items: center;
 }
-.cart-item-buttondiv{
-display: flex;
-justify-content: center;
-align-content: center;
-align-self: center;
-margin-right: 7px;
+.cart-item-buttondiv {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  margin-right: 7px;
 }
 
 .remove-button {
@@ -434,14 +434,28 @@ margin-right: 7px;
   color: white;
   padding: 10px 15px;
   cursor: pointer;
-  font-size: 14px;
+  
   margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.zahlen-button {
+  background-color: rgb(255, 147, 250);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+ 
+  margin-top: 10px;
+  margin-left: 5px; /* تقليل المسافة إلى 5px */
   transition: background-color 0.3s ease;
 }
 
 .remove-button:hover {
   background-color: rgb(220, 120, 220);
 }
+
 
 .btn-control {
   background-color: rgb(255, 147, 250);
@@ -701,5 +715,91 @@ margin-right: 7px;
 }
 
 .contact-submit:hover {
+  background-color: rgb(220, 120, 220);
+}
+/**/
+.zahlen-container {
+  width: 50%;
+  margin: auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-heading {
+  text-align: center;
+  font-size: 28px;
+  color: rgb(71, 71, 71);
+  margin-bottom: 20px;
+}
+
+.sub-heading {
+  font-size: 20px;
+  color: rgb(71, 71, 71);
+  margin-bottom: 20px;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.input-group {
+  width: 48%;
+  
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 20px;
+  border-radius:8px;
+  border: 1px solid #ccc;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.total-input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.purchase-value {
+  font-size: 18px;
+  color: rgb(71, 71, 71);
+}
+
+.paypal-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 35px;
+}
+
+.zahlen-button {
+  width: 100%;
+  padding: 15px;
+  background-color: rgb(255, 147, 250);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.zahlen-button:hover {
   background-color: rgb(220, 120, 220);
 }

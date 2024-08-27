@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthKontext } from "./LoginSystem";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Warenkorb = () => {
   const { userNumber, erlaubnis } = useContext(AuthKontext);
@@ -16,6 +16,12 @@ const Warenkorb = () => {
       setCartItems(filteredCartItems);
     }
   }, [userNumber]);
+
+  useEffect(() => {
+    // Toplam sepet tutarını hesapla ve localStorage'a kaydet
+    const totalAmount = calculateTotalCartAmount();
+    localStorage.setItem("totalAmount", totalAmount);
+  }, [cartItems]); // cartItems değiştiğinde totalAmount güncellenecek
 
   if (!erlaubnis) {
     navigate("/login");
@@ -36,32 +42,37 @@ const Warenkorb = () => {
     setCartItems(warenkorb);
   };
 
-  const quantityHöhen=(productNumber)=>{
-    let erhöhen=[...cartItems];
-    const itemIndex=erhöhen.findIndex(
-      (item)=>item.productNumber===productNumber&&item.userNumber===userNumber)
-      if (itemIndex>=0){
-        erhöhen[itemIndex].quantity+=1;
-        setCartItems(erhöhen)
-        localStorage.setItem("warenkorb",JSON.stringify(erhöhen));
-      }
+  const quantityHöhen = (productNumber) => {
+    let erhöhen = [...cartItems];
+    const itemIndex = erhöhen.findIndex(
+      (item) => item.productNumber === productNumber && item.userNumber === userNumber
+    );
+    if (itemIndex >= 0) {
+      erhöhen[itemIndex].quantity += 1;
+      setCartItems(erhöhen);
+      localStorage.setItem("warenkorb", JSON.stringify(erhöhen));
+    }
   };
 
   const quantityVerringern = (productNumber) => {
     let verringern = [...cartItems];
     const itemIndex = verringern.findIndex(
-        (item) => item.productNumber === productNumber && item.userNumber === userNumber
+      (item) => item.productNumber === productNumber && item.userNumber === userNumber
     );
     if (itemIndex >= 0 && verringern[itemIndex].quantity > 1) {
       verringern[itemIndex].quantity -= 1;
-        setCartItems(verringern);
-        localStorage.setItem("warenkorb", JSON.stringify(verringern));
+      setCartItems(verringern);
+      localStorage.setItem("warenkorb", JSON.stringify(verringern));
     }
-};
+  };
 
-const calculateTotalPrice = (price, quantity) => {
-  return price * quantity;
-};
+  const calculateTotalPrice = (price, quantity) => {
+    return price * quantity;
+  };
+
+  const calculateTotalCartAmount = () => {
+    return cartItems.reduce((total, item) => total + calculateTotalPrice(item.price, item.quantity), 0);
+  };
 
   return (
     <div className="cart-section">
@@ -80,14 +91,14 @@ const calculateTotalPrice = (price, quantity) => {
                   <b>{item.price} € </b>
                 </p>
                 <p>
-                <b>Total Price: {calculateTotalPrice(item.price, item.quantity)} € </b>
+                  <b>Total Price: {calculateTotalPrice(item.price, item.quantity)} € </b>
                 </p>
               </div>
-                <div className="cart-item-menge">
-                <button className="btn-control" onClick={()=>quantityHöhen(item.productNumber)}>+</button>
-                  <p style={{marginTop:"15px"}}>{item.quantity} Stück</p>
-                  <button className="btn-control" onClick={()=>quantityVerringern(item.productNumber)}>-</button>
-                </div>
+              <div className="cart-item-menge">
+                <button className="btn-control" onClick={() => quantityHöhen(item.productNumber)}>+</button>
+                <p style={{ marginTop: "15px" }}>{item.quantity} Stück</p>
+                <button className="btn-control" onClick={() => quantityVerringern(item.productNumber)}>-</button>
+              </div>
               <div className="cart-item-buttondiv">
                 <button
                   className="remove-button"
@@ -95,6 +106,9 @@ const calculateTotalPrice = (price, quantity) => {
                 >
                   Delete
                 </button>
+                <Link to="/Zahlen">
+                  <button className="zahlen-button">Zahlen</button>
+                </Link>
               </div>
             </div>
           ))}
@@ -105,4 +119,5 @@ const calculateTotalPrice = (price, quantity) => {
     </div>
   );
 };
+
 export default Warenkorb;
