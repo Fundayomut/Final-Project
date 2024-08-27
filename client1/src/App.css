@@ -292,6 +292,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 30px;
 }
 
 .profile-edit-item {
@@ -303,13 +304,15 @@ body {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: rgb(94, 94, 94);
 }
 
 .profile-edit-item input {
   width: 100%;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 12px;
   border: 1px solid #ccc;
+  color: #6b6b6b;
 }
 
 .update-button {
@@ -334,16 +337,18 @@ body {
  margin-top: 10%;
 }
 
-.card-detail-link{
+
+.card-detail-image{
   width: 50%;
   padding: 20px;
 }
 
-.card-detail-rechts{
+.card-detail-info{
   width: 50%;
   padding: 20px;
 }
-.card-detail-rechts-header{
+
+.card-detail-header{
   font-family: "Satisfy", cursive;
   font-weight: 400;
   font-style: normal;
@@ -351,15 +356,25 @@ body {
   color: rgb(71, 71, 71);
 }
 
-.card-detail-rechts-description{
-  margin-top: 30px;
+.nutrition-item{
+ background-color: rgb(233, 233, 233);
+width: 110px;
+ height: 50px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
-
-.card-detail-rechts-button{
+.card-detail-input-div{
   display: flex;
-  justify-content: end;
+  justify-content:center;
+ 
 }
-
+.card-detail-input{
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 10px;
+}
 
 .cart-section {
   background-color: #f9f9f9;
@@ -475,6 +490,67 @@ align-items: center;
   transform: scale(1.05);
 }
 
+.paypal-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.amount-display {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+}
+
+.card-detail-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-detail-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card-detail-image {
+  flex: 1;
+}
+
+.card-detail-info {
+  flex: 2;
+}
+
+.card-detail-nutrition {
+  margin-top: 10px;
+}
+
+.nutrition-details {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nutrition-item {
+  /*flex: 1 1 150px; /* Her besin bilgisi öğesi için genişlik ayarı */
+  margin-bottom: 30px;
+}
+
+
+.favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.favorite-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  width: 120px;
+}
 
 @media only screen and (max-width: 600px) {
   .homecakeblur{
@@ -491,7 +567,67 @@ align-items: center;
   .homebottom{
     margin-left: 50px;
   }
+
+  .card-detail-content {
+    flex-direction: column;
+    gap: 10px; 
+  }
+
+  .card-detail-image,
+  .card-detail-info {
+    width: 100%; 
+    padding: 10px; 
+  }
+
+  .card-detail-info {
+    font-size: 14px;
+  }
+
+  .nutrition-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nutrition-item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card-detail-input-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-detail-input {
+    width: 80%;
+    margin-right: 0;
+  }
+
+  .rezeptbutton,
+  .orderbutton {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .rezeptListe {
+    flex-direction: column; 
+    gap: 10px; 
+  }
+
+  .rezeptItem {
+    width: 100%;
+  }
+
+  .contact-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
 }
+
+
+
 
 @media only screen and (max-width: 768px) {
   .navVor {
@@ -546,10 +682,61 @@ align-items: center;
   .update-button {
     width: auto;
   }
+
+.card-detail-content {
+  flex-direction: column; 
+  gap: 15px; 
+}
+
+.card-detail-image,
+.card-detail-info {
+  width: 100%; 
+  padding: 15px;
+}
+
+.card-detail-info {
+  font-size: 20px; 
+}
+
+.nutrition-details {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+
+.nutrition-item {
+  width: 40%;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+/*.card-detail-input-div {
+  flex-direction: column; 
+}
+
+.card-detail-input {
+  width: 100%;
+  margin-bottom: 10px;
+}*/
+
+.rezeptbutton,
+.orderbutton {
+  width: auto;
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+
+.rezeptListe {
+  flex-direction: column; 
+  gap: 15px; 
+}
+
+.rezeptItem {
+  width: 100%;
+}
+
 }
  
-
-
 .rezeptListe{
   display: flex;
   justify-content: space-between;
@@ -583,6 +770,29 @@ align-items: center;
     width: 34%;
     height:auto;
   }
+
+.card-detail-content {
+  gap: 30px; 
+}
+
+.card-detail-image {
+  width: 40%; 
+}
+
+.card-detail-info {
+  width: 60%; 
+}
+.nutrition-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+ }
+ 
+ .nutrition-item {
+   width: 110px;
+   margin-bottom: 15px;
+   font-size: 15px;
+ }
 
 }
 

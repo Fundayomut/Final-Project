@@ -41,11 +41,11 @@ export default function NavNach({productList}) {
   return (
     <div className="navVor">
       <div className="logo">
-        <img
+      <Link to="/"><img
           src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
           width="200px"
           height="100px"
-        />
+        /></Link>
       </div>
       <div className="navVorBoot">
         <ul className="nav">
@@ -67,6 +67,11 @@ export default function NavNach({productList}) {
           <li className="nav-item">
             <Link className="nav-order" to="/Profile">
               Profile
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-order" to="/FavoritesList">
+              Favorites
             </Link>
           </li>
         </ul>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthKontext } from "./LoginSystem";
 import { useNavigate, Link } from "react-router-dom";
+import NavNach from "./NavNach";
+import NavVor from "./NavVor";
 
 const Warenkorb = () => {
   const { userNumber, erlaubnis } = useContext(AuthKontext);
@@ -75,6 +77,8 @@ const Warenkorb = () => {
   };
 
   return (
+    <>
+    {erlaubnis === true ? <NavNach /> : <NavVor />}
     <div className="cart-section">
       <h2 className="cart-header">Ihre Warenkorb</h2>
       {cartItems.length > 0 ? (
@@ -117,6 +121,7 @@ const Warenkorb = () => {
         <p>Es befinden sich keine Artikel in Ihrem Warenkorb.</p>
       )}
     </div>
+    </>
   );
 };
 

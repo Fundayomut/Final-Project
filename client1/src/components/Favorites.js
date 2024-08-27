@@ -3,55 +3,90 @@ import { TextAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
 
 const Favorites = ({ productNumber }) => {
-  const { userNumber } = useContext(AuthKontext);
+  const { userNumber, erlaubnis } = useContext(AuthKontext);
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
-    if (userNumber && productNumber) {
+    if (!erlaubnis) {
+      setFavorite(false);
+      return;
+    }
+
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    if (userNumber && storedFavorites[userNumber] && storedFavorites[userNumber][productNumber]) {
+      setFavorite(true);
+    } else if (userNumber && productNumber) {
+     
       TextAntwort(
         `/favorites/status/${userNumber}/${productNumber}`,
         (res) => {
-          setFavorite(res === "1");
+          const isFavorite = res === "1";
+          setFavorite(isFavorite);
+
+          if (isFavorite) {
+            storedFavorites[userNumber] = storedFavorites[userNumber] || {};
+            storedFavorites[userNumber][productNumber] = true;
+          } else {
+            if (storedFavorites[userNumber]) {
+              delete storedFavorites[userNumber][productNumber];
+              if (Object.keys(storedFavorites[userNumber]).length === 0) {
+                delete storedFavorites[userNumber];
+              }
+            }
+          }
+          localStorage.setItem('favorites', JSON.stringify(storedFavorites));
         },
         (fehler) => {
           console.log(fehler);
         }
       );
     }
-  }, [userNumber, productNumber]);
+  }, [userNumber, productNumber, erlaubnis]);
 
-  const handleFavorites = () => {
-    const newFavorite = !favorite;
-    setFavorite(newFavorite);
+  const handleFavorites = (e) => {
+  e.preventDefault();
 
-    // Güncellenmiş favori durumu localStorage'a kaydet
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
-    if (userNumber) {
-      if (newFavorite) {
-        storedFavorites[userNumber] = storedFavorites[userNumber] || {};
-        storedFavorites[userNumber][productNumber] = true;
-      } else {
-        if (storedFavorites[userNumber]) {
-          delete storedFavorites[userNumber][productNumber];
-          if (Object.keys(storedFavorites[userNumber]).length === 0) {
-            delete storedFavorites[userNumber];
-          }
+  if (!erlaubnis) {
+    alert("Bitte loggen Sie sich ein, um Favoriten hinzuzufügen.");
+    return;
+  }
+
+  const newFavorite = !favorite;
+  setFavorite(newFavorite);
+
+  // Ürün bilgilerini al
+  const productInfo = {
+    image: "https://example.com/path/to/image.jpg", // Ürünün gerçek resim URL'si
+    name: "Product Name", // Ürünün gerçek adı
+    description: "Product description" // Ürünün gerçek açıklaması
+  };
+
+  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+  if (userNumber) {
+    if (newFavorite) {
+      storedFavorites[userNumber] = storedFavorites[userNumber] || {};
+      storedFavorites[userNumber][productNumber] = productInfo;
+    } else {
+      if (storedFavorites[userNumber]) {
+        delete storedFavorites[userNumber][productNumber];
+        if (Object.keys(storedFavorites[userNumber]).length === 0) {
+          delete storedFavorites[userNumber];
         }
       }
-      localStorage.setItem('favorites', JSON.stringify(storedFavorites));
     }
+    localStorage.setItem('favorites', JSON.stringify(storedFavorites));
+  }
 
-    // Sunucu tarafında güncelle
-    TextAntwort(
-      `/favorites/update/${userNumber}/${productNumber}/${newFavorite ? 1 : 0}`,
-      (res) => {
-        console.log("Favoritenstatus erfolgreich aktualisiert", res);
-      },
-      (fehler) => {
-        console.log(fehler);
-      }
-    );
-  };
+  TextAntwort(
+    `/favorites/update/${userNumber}/${productNumber}/${newFavorite ? 1 : 0}`,
+    (res) => {
+      console.log("Favoritenstatus erfolgreich aktualisiert", res);
+    },
+    (fehler) => {
+      console.log(fehler);
+    }
+  );
+};
 
   return (
     <div className="cardratio">

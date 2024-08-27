@@ -19,13 +19,13 @@ export const NavVor = ({productList}) => {
 
     return (
         <div className="navVor">
-          <div className="logo">
-            <img
+         <div className="logo">
+         <Link to="/"><img
               src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
               width="200px"
               height="100px"
               alt="logo"
-            />
+            /></Link>
           </div>
           <div className="navVorBoot">
             <ul className="nav">
