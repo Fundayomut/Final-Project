@@ -326,7 +326,7 @@ app.get("/user/register/:userNickName/:userFirstName/:userLastName/:eMail/:passw
 
 
 
-app.get("/user/update/:userNumber/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:phone/:adresLine1/:adresLine2/:city/:state/:postalCode/:country/:password",
+app.get("/user/update/:userNumber/:userNickName/:userLastName/:userFirstName/:userType/:eMail/:phone/:adresLine1/:adresLine2/:city/:state/:postalCode/:country/:password",
     (req, res) => {
         db.run(
             `UPDATE users SET
@@ -392,14 +392,14 @@ app.get("/orders/abruf/alle",
             }
         )
     })
-
+/*
 app.get(
     "/",
     (req, res) => {
         res.send("Order list");
     }
 )
-
+*/
 
 app.get("/order/neu/:userNumber/:orderDate/:totalAmount",
     (req, res) => {

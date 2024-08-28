@@ -16,7 +16,7 @@ import Zahlen from './components/Zahlen';
 import PayPal from './components/PayPal';
 import FavoritesList from './components/FavoritesList';
 import { AdminUserList } from './components/AdminUserList';
-//import AdminUserZeilen from './components/AdminUserZeilen';
+import AdminUserZeilen from './components/AdminUserZeilen';
 
 function App() {
 
@@ -37,6 +37,7 @@ function App() {
         <Route path='/Paypal' element={<PayPal/>}/>
         <Route path='/FavoritesList' element={<FavoritesList/>}/>
         <Route path='/AdminUserList' element={<AdminUserList/>}/>
+        <Route path='/AdminUserZeilen' element={<AdminUserZeilen/>}/>
       </Routes>
     </div>
   );
@@ -53,3 +54,7 @@ function AppLaden()
 
 export default AppLaden;
 
+/*
+<Route path='/AdminUserList' element={<AdminUserList/>}/>
+        <Route path='/AdminUserZeilen' element={<AdminUserZeilen/>}/>
+*/
