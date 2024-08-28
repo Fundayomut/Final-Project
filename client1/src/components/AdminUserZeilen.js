@@ -4,8 +4,8 @@ import { TextAntwort } from './ServerCom';
 
 
 const AdminUserZeilen = ({data}) => {
-    const{userNumber}=useContext(AuthKontext);
-
+//const{userNumber}=useContext(AuthKontext);
+ const userNumber = data.userNumber;
   const[firstName,setFirstName]=useState("");
   const[lastName,setLastName]=useState("");
   const[nickName,setNickName]=useState("");
@@ -24,7 +24,7 @@ const AdminUserZeilen = ({data}) => {
   
   const bearbeiten=()=>{
     TextAntwort(
-      `/user/update/${userNumber}/${nickName}/${firstName}/${lastName}/${type}/${eMail}/${phone}/${adresLine1}/${adresLine2}/${city}/${state}/${postalCode}/${country}/${password}`
+      `/user/update/${userNumber}/${nickName}/${lastName}/${firstName}/${type}/${eMail}/${phone}/${adresLine1}/${adresLine2}/${city}/${state}/${postalCode}/${country}/${password}`
       ,
       (antwort)=>{
         console.log("user update",antwort);
@@ -93,19 +93,7 @@ setPassword(data.password);
                 </tbody>
     ):(
         <tr>
-            
-        </tr>
-    )}
-   
-                </> 
-
-  )
-}
-
-export default AdminUserZeilen
-
-/*
-<td><input type='text' value={nickName} onChange={(e)=>setNickName(e.target.value)}/></td>
+           <td><input type='text' value={nickName} onChange={(e)=>setNickName(e.target.value)}/></td>
             <td><input type='text' value={firstName} onChange={(e)=>setFirstName(e.target.value)}/></td>
             <td><input type='text' value={lastName} onChange={(e)=>setLastName(e.target.value)}/></td>
             <td><input type='number' value={type} onChange={(e)=>setType(e.target.value)}/></td>
@@ -119,5 +107,13 @@ export default AdminUserZeilen
             <td><input type='text' value={country} onChange={(e)=>setCountry(e.target.value)}/></td>
             <td><input type='text' value={password} onChange={(e)=>setPassword(e.target.value)}/></td>
             <td><button onClick={bearbeiten}>Change</button></td>
-            <td><button onClick={entfernen}>Delete</button></td>
-*/
+            <td><button onClick={entfernen}>Delete</button></td> 
+        </tr>
+    )}
+   
+                </> 
+
+  )
+}
+
+export default AdminUserZeilen
