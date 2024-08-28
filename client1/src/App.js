@@ -15,6 +15,8 @@ import Warenkorb from './components/Warenkorb';
 import Zahlen from './components/Zahlen';
 import PayPal from './components/PayPal';
 import FavoritesList from './components/FavoritesList';
+import { AdminUserList } from './components/AdminUserList';
+//import AdminUserZeilen from './components/AdminUserZeilen';
 
 function App() {
 
@@ -34,6 +36,7 @@ function App() {
         <Route path='/Zahlen' element={<Zahlen/>}/>
         <Route path='/Paypal' element={<PayPal/>}/>
         <Route path='/FavoritesList' element={<FavoritesList/>}/>
+        <Route path='/AdminUserList' element={<AdminUserList/>}/>
       </Routes>
     </div>
   );
