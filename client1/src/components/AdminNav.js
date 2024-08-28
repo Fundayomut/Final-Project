@@ -24,7 +24,7 @@ export default function AdminNav({productList}) {
 
   const handleLogout = () => {
     logout();
-    navigate("/login"); // Redirect to login page after logout
+    navigate("/login");
   };
 
   const handleSearch = () => {

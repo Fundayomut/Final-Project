@@ -1,6 +1,4 @@
-
-import React, { useEffect, useState, useContext } from "react";
-import { AuthKontext } from "./LoginSystem";
+import React, { useEffect, useState } from "react";
 import { ObjectAntwort } from "./ServerCom";
 import AdminNav from "./AdminNav";
 import "./Admin.css";
@@ -8,7 +6,6 @@ import AdminUserZeilen from "./AdminUserZeilen";
 
 export const AdminUserList = () => {
   const [userList, setUserList] = useState([]);
-  const { userNumber } = useContext(AuthKontext);
 
   const abrufUserList = () => {
     ObjectAntwort(
@@ -28,46 +25,19 @@ export const AdminUserList = () => {
   }, []);
 
   return (
-    <>
-      <AdminNav />
-      <table>
-        <thead>
-          <tr>
-            <th>User Nick Name</th>
-            <th>User Firt Name</th>
-            <th>User Last Name</th>
-            <th>User Type</th>
-            <th>E-mail</th>
-            <th>Phone</th>
-            <th>AdresLine1</th>
-            <th>AdresLine2</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Postal Code</th>
-            <th>Country</th>
-            <th>Password</th>
-          </tr>
-        </thead>
+    <div className="admin-user-main-div">
+      <div className="admin-user-nav-div">
+        <AdminNav />
+      </div>
+      <div>
         {typeof userList === "object" && userList.length > 0 ? (
-    userList.map((item) => {
-        return (
-            <>
-            <AdminUserZeilen data={item}/>
-            </>
-        )
-    })
-) : <p>Keine Datei</p>}
-
-      </table>
-    </>
+          userList.map((item) => (
+            <AdminUserZeilen key={item.userNumber} data={item} />
+          ))
+        ) : (
+          <p>Keine Datei</p>
+        )}
+      </div>
+    </div>
   );
 };
-/*{typeof userList === "object" && userList.length > 0 ? (
-    userList.map((item) => {
-        return (
-            <>
-            <AdminUserZeilen data={item}/>
-            </>
-        )
-    })
-) : <p>Keine Datei</p>}*/
