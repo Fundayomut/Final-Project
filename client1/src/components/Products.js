@@ -51,7 +51,7 @@ export const Products = () => {
             <div className="prodLiniecard" key={item.productNumber}>
               <Favorites
               productNumber={item.productNumber}
-              userNumber={userNumber}
+              item={item}
               />
               <div className="cardimage">
                 <img

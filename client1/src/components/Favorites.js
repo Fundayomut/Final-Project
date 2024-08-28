@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { TextAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
 
-const Favorites = ({ productNumber }) => {
+const Favorites = ({ productNumber, item }) => {
   const { userNumber, erlaubnis } = useContext(AuthKontext);
   const [favorite, setFavorite] = useState(false);
 
@@ -16,7 +16,6 @@ const Favorites = ({ productNumber }) => {
     if (userNumber && storedFavorites[userNumber] && storedFavorites[userNumber][productNumber]) {
       setFavorite(true);
     } else if (userNumber && productNumber) {
-     
       TextAntwort(
         `/favorites/status/${userNumber}/${productNumber}`,
         (res) => {
@@ -25,7 +24,7 @@ const Favorites = ({ productNumber }) => {
 
           if (isFavorite) {
             storedFavorites[userNumber] = storedFavorites[userNumber] || {};
-            storedFavorites[userNumber][productNumber] = true;
+            storedFavorites[userNumber][productNumber] = item; // Burada item kullanılıyor
           } else {
             if (storedFavorites[userNumber]) {
               delete storedFavorites[userNumber][productNumber];
@@ -41,52 +40,45 @@ const Favorites = ({ productNumber }) => {
         }
       );
     }
-  }, [userNumber, productNumber, erlaubnis]);
+  }, [userNumber, productNumber, erlaubnis, item]);
 
   const handleFavorites = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!erlaubnis) {
-    alert("Bitte loggen Sie sich ein, um Favoriten hinzuzufügen.");
-    return;
-  }
+    if (!erlaubnis) {
+      alert("Bitte loggen Sie sich ein, um Favoriten hinzuzufügen.");
+      return;
+    }
 
-  const newFavorite = !favorite;
-  setFavorite(newFavorite);
+    const newFavorite = !favorite;
+    setFavorite(newFavorite);
 
-  // Ürün bilgilerini al
-  const productInfo = {
-    image: "https://example.com/path/to/image.jpg", // Ürünün gerçek resim URL'si
-    name: "Product Name", // Ürünün gerçek adı
-    description: "Product description" // Ürünün gerçek açıklaması
-  };
-
-  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
-  if (userNumber) {
-    if (newFavorite) {
-      storedFavorites[userNumber] = storedFavorites[userNumber] || {};
-      storedFavorites[userNumber][productNumber] = productInfo;
-    } else {
-      if (storedFavorites[userNumber]) {
-        delete storedFavorites[userNumber][productNumber];
-        if (Object.keys(storedFavorites[userNumber]).length === 0) {
-          delete storedFavorites[userNumber];
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    if (userNumber) {
+      if (newFavorite) {
+        storedFavorites[userNumber] = storedFavorites[userNumber] || {};
+        storedFavorites[userNumber][productNumber] = item; // Burada item kullanılıyor
+      } else {
+        if (storedFavorites[userNumber]) {
+          delete storedFavorites[userNumber][productNumber];
+          if (Object.keys(storedFavorites[userNumber]).length === 0) {
+            delete storedFavorites[userNumber];
+          }
         }
       }
+      localStorage.setItem('favorites', JSON.stringify(storedFavorites));
     }
-    localStorage.setItem('favorites', JSON.stringify(storedFavorites));
-  }
 
-  TextAntwort(
-    `/favorites/update/${userNumber}/${productNumber}/${newFavorite ? 1 : 0}`,
-    (res) => {
-      console.log("Favoritenstatus erfolgreich aktualisiert", res);
-    },
-    (fehler) => {
-      console.log(fehler);
-    }
-  );
-};
+    TextAntwort(
+      `/favorites/update/${userNumber}/${productNumber}/${newFavorite ? 1 : 0}`,
+      (res) => {
+        console.log("Favoritenstatus erfolgreich aktualisiert", res);
+      },
+      (fehler) => {
+        console.log(fehler);
+      }
+    );
+  };
 
   return (
     <div className="cardratio">
