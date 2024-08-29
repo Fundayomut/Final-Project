@@ -40,6 +40,7 @@ const AdminUserZeilen = ({ data }) => {
       `/user/delete/${userNumber}`,
       (antwort) => {
         console.log(antwort);
+        window.location.reload();
       },
       (fehler) => {
         console.log(fehler);

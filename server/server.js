@@ -305,18 +305,19 @@ app.get("/user/neu/:userNickName/:userFirstName/:userLastName/:userType/:eMail/:
 
 
 
-app.get("/user/register/:userNickName/:userFirstName/:userLastName/:eMail/:password",
+app.get("/user/register/:userNickName/:userFirstName/:userLastName/:eMail/:password/:userType",
     (req, res) => {
         db.run(
             `INSERT INTO users
-            (userNickName,userFirstName,userLastName,eMail,password)
+            (userNickName,userFirstName,userLastName,eMail,password,userType)
             VALUES
             (
             '${req.params.userNickName}',
             '${req.params.userFirstName}',
             '${req.params.userLastName}',
             '${req.params.eMail}',
-            '${req.params.password}'
+            '${req.params.password}',
+            '${req.params.userType}'
             )
             `,
             (fehler) => console.log(fehler)

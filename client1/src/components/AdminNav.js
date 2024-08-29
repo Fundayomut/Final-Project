@@ -39,6 +39,7 @@ export default function AdminNav({productList}) {
   };
 
   return (
+    <>
     <div className="navVor">
       <div className="logo">
       <Link to="/"><img
@@ -57,21 +58,6 @@ export default function AdminNav({productList}) {
           <li className="nav-item">
             <Link className="nav-order" to="/Products">
               Order
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-Contact" to="/Contact">
-              Contact
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-order" to="/Profile">
-              Profile
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-order" to="/FavoritesList">
-              Favorites
             </Link>
           </li>
           <li className="nav-item">
@@ -137,5 +123,9 @@ export default function AdminNav({productList}) {
         />
       </div>
     </div>
+    <div>
+    <p className="admin-willkommen">" 😊 Willkommen! Bevor du auf all diese Tasten drückst, bist du dir wirklich sicher, dass du weißt, was du tust? 😊"</p>
+  </div>
+  </>
   );
 }

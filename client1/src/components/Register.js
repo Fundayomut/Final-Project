@@ -10,12 +10,13 @@ export const Register = () => {
     const [userNickName,setUserName]=useState("");
     const [eMail,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const [userType,setUserType]=useState(0);
 
 const navi=useNavigate();
 
 const newPerson=()=>{
     if(userFirstName!=="" && userLastName!=="" && userNickName!== "" && eMail !=="" && password !==""){
-        TextAntwort(`/user/register/${userNickName}/${userFirstName}/${userLastName}/${eMail}/${password}`,
+        TextAntwort(`/user/register/${userNickName}/${userFirstName}/${userLastName}/${eMail}/${password}/${userType}`,
             (res)=>{
                 console.log("Hinzugefuged",res)
             },
