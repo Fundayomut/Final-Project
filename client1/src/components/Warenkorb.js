@@ -110,12 +110,12 @@ const Warenkorb = () => {
                 >
                   Delete
                 </button>
-                <Link to="/Zahlen">
-                  <button className="zahlen-button">Zahlen</button>
-                </Link>
               </div>
             </div>
           ))}
+          <Link to="/Zahlen">
+                  <button className="zahlen-button">Zahlen</button>
+                </Link>
         </div>
       ) : (
         <p>Es befinden sich keine Artikel in Ihrem Warenkorb.</p>

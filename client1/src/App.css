@@ -351,12 +351,19 @@ body {
  margin-top: 10%;
 }
 
-
 .card-detail-image{
   width: 50%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
+.card-detail-image img{
+  object-fit: cover;
+  object-position: center;
+  width: 80%;
+  padding: 20px;
+}
 .card-detail-info{
   width: 50%;
   padding: 20px;
@@ -533,10 +540,13 @@ align-items: center;
 
 .card-detail-info {
   flex: 2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .card-detail-nutrition {
-  margin-top: 10px;
+  margin-top: 70px;
 }
 
 .nutrition-details {

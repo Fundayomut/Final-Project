@@ -90,7 +90,7 @@ export const CardDetails = () => {
           <div className="card-detail-content">
             <div className="card-detail-image">
               <img src={product.image} alt={product.name} width="100%" />
-              <div>
+              <div className="card-detail-p">
                 <p style={{fontSize:"12px", marginTop:"20px"}}>
                   Allergy Notice: Some of our products may contain nuts. Our
                   facility is NOT a nut-free facility, and as a result it is
@@ -139,7 +139,7 @@ export const CardDetails = () => {
                   <p>Loading nutrition information...</p>
                 )}
               </div>
-              <div>
+              <div style={{marginTop:"100px"}}>
                 <div className="card-detail-input-div">
                   <input
                     className="card-detail-input"
