@@ -110,7 +110,7 @@ export const CardDetails = () => {
                 <p>{product.size} Person</p>
               </div>
               <div className="card-detail-nutrition">
-                <h4 style={{color:"gray"}}>Nutrition Information</h4>
+                <h4 style={{color:"red"}}>Nutrition Information</h4>
                 {nutrition ? (
                   <div className="nutrition-details">
                     <div className="nutrition-item">
@@ -148,24 +148,23 @@ export const CardDetails = () => {
                     onChange={(e) => setQuantity(Number(e.target.value))}
                     value={quantity}
                   />
-
-                  <div className="card-detail-button">
-                    <button onClick={Aktualisieren} className="rezeptbutton">
+                  <div className="card-detail-button-div">
+                    <button onClick={Aktualisieren} className="rezeptbutton addButton">
                       Add to Bag
                     </button>
                   </div>
-                </div>
-              </div>
-              <div className="card-detail-warenkorb-link">
+                  <div className="card-detail-warenkorb-link">
                 <Link to="/Warenkorb">
                   <img
-                    src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
-                    width="25px"
-                    height="25px"
+                    src="https://cdn2.iconfinder.com/data/icons/neutro-essential/32/cart-64.png"
+                    width="50px"
+                    height="50px"
                     alt="basket"
                   />
                   ({cartCount})
                 </Link>
+              </div>
+                </div>
               </div>
             </div>
           </div>

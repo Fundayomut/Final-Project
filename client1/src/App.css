@@ -3,22 +3,35 @@ body {
     to right,
     rgba(255, 255, 255, 0),
     rgb(253, 224, 252),
-    rgb(255, 168, 251)
+    rgb(255, 213, 253)
   );
   height: 100%;
   padding: 20px;
 }
+
 .navVor {
   display: flex;
   justify-content: space-between;
   align-content: center;
-  background-image: linear-gradient(to right, red);
   font-size: 22px;
+  box-shadow: 2px 7px 15px rgba(66, 66, 66, 0.808); 
+  border-radius: 15px;
+  padding: 30px;
+
+}
+
+.navVor :hover{
+  color: #696969;
+  text-decoration: none;
 }
 
 .logo {
   width: 25%;
 }
+.icon-black{
+  color: rgb(58, 58, 58);
+}
+
 
 .navVorBoot {
   display: flex;
@@ -32,7 +45,17 @@ body {
   justify-content: space-around;
   width: 100%;
   align-items: center;
+
 }
+.navfont{
+  font-family: "Boogaloo", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 30px;
+  color: #c553cf;
+  text-decoration: none;
+}
+
 
 .search {
   display: flex;
@@ -69,6 +92,7 @@ body {
   font-family: "New Amsterdam", sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin-bottom: 10px;
 }
 .homemain {
   margin-top: 50px;
@@ -80,6 +104,7 @@ body {
   font-style: normal;
   font-size: 40px;
   color: rgb(71, 71, 71);
+  margin-top: 70px;
 }
 .homeptop{
   margin-top: 70px;
@@ -120,6 +145,24 @@ body {
   color: rgb(71, 71, 71);
 }
 
+.homebutton{
+  height: 50px;
+  width: 150px;
+}
+
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease-in-out; /* Geçiş efekti */
+}
+
+.carousel-item-next .carousel-image,
+.carousel-item-prev .carousel-image,
+.carousel-item-active .carousel-image {
+  transform: scale(1.05); /* Aktif slayttaki resmi büyütme */
+}
+
 .input{
   background-color: rgb(255, 147, 250);
   box-shadow: 5px 5px 5px 1px rgb(209, 209, 209);
@@ -130,7 +173,7 @@ body {
 }
 .homebuttonmaindiv {
   margin-top: 70px;
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -216,6 +259,7 @@ body {
 }
 .cardtext{
   width: 100%;
+  height: auto;
   font-size: 13px;
   margin-bottom: 10px;
 }
@@ -223,25 +267,33 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  
+  padding-left: 50px;
 }
+
 .cardfooter{
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   font-size: 13px;
   color: brown;
+  padding-top: 10px;
 }
 .productcategorie{
   display: flex;
   justify-content: space-evenly;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  text-decoration: none;
   font-family: "Satisfy", cursive;
   font-weight: 400;
   font-style: normal;
-  font-size: 20px;
-  color: rgb(71, 71, 71);
-  margin-top: 30px;
-  margin-bottom: 25px;
+  font-size: 35px;
+  color:  #6e6e6e;
+  text-decoration: none;
+}
+.productcategorie a{
+  color: #6e6e6e;
+  text-decoration: none;
 }
 
 .loginmaindiv{
@@ -250,21 +302,21 @@ body {
   margin-top: 70px;
 }
 .logincontainer{
-  width: 700px;
-  height: 500px;
+ 
   background-color: rgba(255, 255, 255, 0.596);
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 20px;
+  padding: 10px 60px 20px 60px;
   border-radius: 30px;
-
+  padding-top: 50px;
 }
 .logininnencontainer{
   background-color: white;
   border-radius: 30px;
   display: flex;
   justify-content: center;
+  padding: 80px;
 }
 .loginbuttondiv{
   margin-bottom: 30px;
@@ -348,9 +400,24 @@ body {
   display: flex;
   justify-content: center;
  align-content: center;
- margin-top: 10%;
+ margin-top: 5%;
+ padding-top: 6%;
 }
-
+.card-detail-size{
+  font-family: "Boogaloo", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  color: #313131;
+  font-size: 25px;
+}
+.card-detail-description{
+  font-family: "Boogaloo", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  color: #313131;
+  font-size: 25px;
+  margin-top: 20px;
+}
 .card-detail-image{
   width: 50%;
   padding: 20px;
@@ -374,7 +441,7 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 40px;
-  color: rgb(71, 71, 71);
+  color: #c553cf;
 }
 
 .nutrition-item{
@@ -384,6 +451,7 @@ width: 110px;
  display: flex;
  justify-content: center;
  align-items: center;
+ box-shadow: 5px 5px 5px black;
 }
 .card-detail-input-div{
   display: flex;
@@ -395,6 +463,10 @@ width: 110px;
   border: none;
   border-radius: 10px;
   margin-right: 10px;
+}
+.addButton{
+  width: 150px;
+  height: 50px;
 }
 
 .cart-section {
@@ -546,7 +618,7 @@ align-items: center;
 }
 
 .card-detail-nutrition {
-  margin-top: 70px;
+  margin-top: 30px;
 }
 
 .nutrition-details {
@@ -556,9 +628,11 @@ align-items: center;
 
 .nutrition-item {
   /*flex: 1 1 150px; /* Her besin bilgisi öğesi için genişlik ayarı */
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
-
+.card-detail-warenkorb-link{
+  text-align: center;
+}
 
 .favorites-list {
   display: flex;
@@ -575,6 +649,7 @@ align-items: center;
   padding: 8px;
   width: 120px;
 }
+
 
 @media only screen and (max-width: 600px) {
   .homecakeblur{
@@ -677,6 +752,7 @@ align-items: center;
   .maindiv {
     position: static;
     margin-top: 20px;
+    width: 200px;
   }
 
   .homecakeblur{
@@ -734,14 +810,14 @@ align-items: center;
   font-size: 15px;
 }
 
-/*.card-detail-input-div {
-  flex-direction: column; 
+.card-detail-input-div {
+  flex-direction: column;
 }
 
 .card-detail-input {
   width: 100%;
   margin-bottom: 10px;
-}*/
+}
 
 .rezeptbutton,
 .orderbutton {
@@ -868,6 +944,7 @@ align-items: center;
 .contact-background {
   background: linear-gradient(to bottom, rgb(255, 255, 255), white);
   padding: 50px ;
+  margin-top: 20px;
 }
 
 .contact-container {
@@ -951,16 +1028,29 @@ align-items: center;
 .contact-submit:hover {
   background-color: rgb(220, 120, 220);
 }
-/**/
+
+.zahlen-main-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .zahlen-container {
   width: 50%;
-  margin: auto;
+  margin-top: 5%;
   background-color: #fff;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.paypal-main-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
 .main-heading {
   text-align: center;
   font-size: 28px;

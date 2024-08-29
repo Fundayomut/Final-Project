@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
+import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap';
+import { FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';  // Icons from react-icons
 
-export default function AdminNav({productList}) {
+export default function AdminNav({ productList }) {
   const { logout, userNumber } = useContext(AuthKontext);
   const navigate = useNavigate();
   const [totalItems, setTotalItems] = useState(0);
@@ -40,92 +42,63 @@ export default function AdminNav({productList}) {
 
   return (
     <>
-    <div className="navVor">
-      <div className="logo">
-      <Link to="/"><img
-          src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
-          width="200px"
-          height="100px"
-        /></Link>
-      </div>
-      <div className="navVorBoot">
-        <ul className="nav">
-          <li className="nav-item">
-          <Link className="nav-Home" to="/">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-order" to="/Products">
-              Order
-            </Link>
-          </li>
-          <li className="nav-item">
-          <Link className="nav-order" to="/AdminUserList">
-              User List
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="search">
-        <div className="navinputlink">
-        <input
-            className="inputsearch"
-            placeholder="Search..."
-            style={{ height: "25px" }}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <img
-            src="https://cdn0.iconfinder.com/data/icons/essentials-4/1687/search-512.png"
-            width="20px"
-            height="20px"
-            alt="search"
-            style={{ marginLeft: "10px" ,cursor: "pointer"  }}
-            onClick={handleSearch} 
-          />
-        </div>
-        <Link to="/Warenkorb">
-          <div style={{ position: "relative", display: "inline-block" }}>
+      <Navbar expand="lg" className="custom-navbar mb-4 shadow-sm rounded">
+        <Container>
+          <Navbar.Brand as={Link} to="/">
             <img
-              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
-              width="25px"
-              height="25px"
-              alt="basket"
+              src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
+              width="200"
+              height="100"
+              alt="Logo"
             />
-            {totalItems > 0 && (
-              <span
-                style={{
-                  position: "absolute",
-                  top: "-5px",
-                  right: "-5px",
-                  backgroundColor: "red",
-                  color: "white",
-                  borderRadius: "50%",
-                  width: "20px",
-                  height: "20px",
-                  textAlign: "center",
-                  lineHeight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                {totalItems}
-              </span>
-            )}
-          </div>
-        </Link>
-        <img
-          src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/login-64.png"
-          width="25px"
-          height="25px"
-          onClick={handleLogout}
-          alt="login"
-        />
-      </div>
-    </div>
-    <div>
-    <p className="admin-willkommen">" 😊 Willkommen! Bevor du auf all diese Tasten drückst, bist du dir wirklich sicher, dass du weißt, was du tust? 😊"</p>
-  </div>
-  </>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mx-auto">
+              <Nav.Link as={Link} to="/" className="nav-link">
+                <strong>Home</strong>
+              </Nav.Link>
+              <Nav.Link as={Link} to="/Products" className="nav-link">
+                <strong>Order</strong>
+              </Nav.Link>
+              <Nav.Link as={Link} to="/AdminUserList" className="nav-link">
+                <strong>User List</strong>
+              </Nav.Link>
+            </Nav>
+            <Form className="d-flex ms-3">
+              <FormControl
+                type="search"
+                placeholder="Search..."
+                className="me-2"
+                aria-label="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Button variant="outline-none" onClick={handleSearch}>
+                <FaSearch size={27} className="icon-black" />
+              </Button>
+            </Form>
+            <div className="d-flex align-items-center ms-3">
+              <Link to="/Warenkorb" className="position-relative me-3">
+                <FaShoppingCart className="icon-black" size={25} />
+                {totalItems > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
+              <Button variant="link" onClick={handleLogout}>
+                <FaUser className="icon-black" size={25} />
+              </Button>
+            </div>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <footer>
+        <p className="admin-willkommen">
+          " 😊 Willkommen! Bevor du auf all diese Tasten drückst, bist du dir wirklich sicher, dass du weißt, was du tust? "
+        </p>
+      </footer>
+    </>
   );
 }
