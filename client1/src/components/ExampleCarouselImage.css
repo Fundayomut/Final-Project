@@ -1,0 +1,29 @@
+.carousel-image {
+    max-width: 45%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 5px 15px 30px rgb(61, 61, 61);
+    border-radius: 10px;
+  }
+  
+.carousel-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.carousel-caption {
+
+    font-size: 14px;
+    max-width: 50%;
+    margin: 20px auto 0 auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 3px 8px; 
+    border-radius: 5px; 
+    line-height: 1;
+}
+
+
+.carousel-item {
+    text-align: center; /* Ortalamak için */
+}

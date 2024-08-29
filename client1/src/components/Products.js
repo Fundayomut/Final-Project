@@ -36,13 +36,13 @@ export const Products = () => {
     <div>
       <div className="productcategorie">
         <Link to="/Products/ProductsCategorie/Boutique">
-          <p>Boutique-Kuchen</p>
+          <p className="products-categorie-head">Boutique-Kuchen</p>
         </Link>
         <Link to="/Products/ProductsCategorie/Hochzeit">
-          <p>Hochzeits und Verlobungstorten</p>
+          <p className="products-categorie-head">Hochzeits und Verlobungstorten</p>
         </Link>
         <Link to="/Products/ProductsCategorie/Bild">
-          <p>Figure Kuchen</p>
+          <p className="products-categorie-head">Figure Kuchen</p>
         </Link>
       </div>
       {productList.length > 0 ? (

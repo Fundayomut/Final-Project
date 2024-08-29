@@ -18,10 +18,10 @@ const Zahlen = () => {
   return (
   <>
    {erlaubnis === true ? <NavNach /> : <NavVor />}
+   <div className="zahlen-main-div">
     <div className="zahlen-container">
       <h1 className="main-heading">Complete Registration Payment</h1>
       <p className="sub-heading">Personal details</p>
-
       <div className="input-row">
         <div className="input-group">
           <label>Address line</label>
@@ -71,6 +71,7 @@ const Zahlen = () => {
         />
       </div>
       <Link to={`/paypal?amount=${totalAmount}`}><button className="zahlen-button">Zahlen</button></Link>
+    </div>
     </div>
     </>
   );

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
+import { FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';  // Yeni ikonlar
 
-export default function NavNach({productList}) {
+export default function NavNach({ productList }) {
   const { logout, userNumber } = useContext(AuthKontext);
   const navigate = useNavigate();
   const [totalItems, setTotalItems] = useState(0);
@@ -24,7 +25,7 @@ export default function NavNach({productList}) {
 
   const handleLogout = () => {
     logout();
-    navigate("/login"); // Redirect to login page after logout
+    navigate("/login");
   };
 
   const handleSearch = () => {
@@ -41,66 +42,55 @@ export default function NavNach({productList}) {
   return (
     <div className="navVor">
       <div className="logo">
-      <Link to="/"><img
-          src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
-          width="200px"
-          height="100px"
-        /></Link>
+        <Link to="/">
+          <img
+            src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
+            width="200px"
+            height="100px"
+          />
+        </Link>
       </div>
       <div className="navVorBoot">
         <ul className="nav">
-          <li className="nav-item">
-          <Link className="nav-Home" to="/">
-              Home
-            </Link>
+          <li className="nav-item"> 
+            <Link className="nav-Home navfont" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order" to="/Products">
-              Order
-            </Link>
+            <Link className="nav-order navfont" to="/Products">Order</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-Contact" to="/Contact">
-              Contact
-            </Link>
+            <Link className="nav-Contact navfont" to="/Contact">Contact</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order" to="/Profile">
-              Profile
-            </Link>
+            <Link className="nav-order navfont" to="/Profile">Profile</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order" to="/FavoritesList">
-              Favorites
-            </Link>
+            <Link className="nav-order navfont" to="/FavoritesList">Favorites</Link>
           </li>
         </ul>
       </div>
       <div className="search">
         <div className="navinputlink">
-        <input
+          <input
             className="inputsearch"
             placeholder="Search..."
             style={{ height: "25px" }}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <img
-            src="https://cdn0.iconfinder.com/data/icons/essentials-4/1687/search-512.png"
-            width="20px"
-            height="20px"
-            alt="search"
-            style={{ marginLeft: "10px" ,cursor: "pointer"  }}
-            onClick={handleSearch} 
+          <FaSearch
+           className="icon-black"
+            size={25}
+            style={{ marginLeft: "10px", cursor: "pointer" }}
+            onClick={handleSearch}
           />
         </div>
         <Link to="/Warenkorb">
           <div style={{ position: "relative", display: "inline-block" }}>
-            <img
-              src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-12-512.png"
-              width="25px"
-              height="25px"
-              alt="basket"
+            <FaShoppingCart
+             className="icon-black"
+              size={25}
+              style={{ marginLeft: "10px" }}
             />
             {totalItems > 0 && (
               <span
@@ -123,12 +113,11 @@ export default function NavNach({productList}) {
             )}
           </div>
         </Link>
-        <img
-          src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/login-64.png"
-          width="25px"
-          height="25px"
+        <FaUser
+         className="icon-black"
+          size={25}
+          style={{ marginLeft: "10px", cursor: "pointer" }}
           onClick={handleLogout}
-          alt="login"
         />
       </div>
     </div>

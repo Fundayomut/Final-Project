@@ -16,6 +16,7 @@ function PayPal() {
   return (
     <>
       {erlaubnis === true ? <NavNach /> : <NavVor />}
+      <div className='paypal-main-div'>
       <div className="zahlen-container">
       <h3>Total Amount</h3>
       <p className="amount-display">{totalAmount} €</p>
@@ -41,6 +42,7 @@ function PayPal() {
           }}
         />
       </div>
+    </div>
     </>
   );
 }
