@@ -29,3 +29,29 @@
     font-size: 16px;
     cursor: pointer;
   }
+
+  .modal-inhalt {
+    background-color: #f9f9f9;
+}
+
+.modal-login {
+    background-color: #fff0f0; 
+}
+.schlissen-button{
+  background-color: rgb(255, 147, 250);
+  box-shadow: 5px 5px 5px 1px rgb(209, 209, 209);
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 100px;
+  color: white;
+  margin-right: 50px;
+}
+.modal-inhalt-p{
+  font-family: "Boogaloo", sans-serif;
+  font-weight: 50;
+  font-style: normal;
+  color: #313131;
+  font-size: 15px;
+  margin-top: 20px;
+}
