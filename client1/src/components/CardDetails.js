@@ -84,10 +84,8 @@ export const CardDetails = () => {
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
     updateCartCount();
 
-    // Başarı mesajını göster
     setShowSuccessMessage(true);
 
-    // Başarı mesajını belirli bir süre sonra gizle
     setTimeout(() => {
       setShowSuccessMessage(false);
     }, 2000); // 2000 ms = 2 saniye
@@ -96,6 +94,12 @@ export const CardDetails = () => {
   const inhaltShow = () => {
     setShowInhaltModal(true);
   };
+
+  useEffect(() => {
+    if (erlaubnis) {
+      updateCartCount();
+    }
+  }, [erlaubnis]);
 
   return (
     <>
@@ -125,7 +129,9 @@ export const CardDetails = () => {
                 <p>{product.size} Person</p>
               </div>
               <div className="card-detail-inhalt">
-                <button className="rezeptbutton" onClick={inhaltShow}>Inhalt</button>
+                <button className="rezeptbutton" onClick={inhaltShow}>
+                  Inhalt
+                </button>
               </div>
               <div className="card-detail-nutrition">
                 <h5>Nutrition Information</h5>
@@ -174,17 +180,19 @@ export const CardDetails = () => {
                       Add to Bag
                     </button>
                   </div>
-                  <div className="card-detail-warenkorb-link">
-                    <Link to="/Warenkorb">
-                      <img
-                        src="https://cdn2.iconfinder.com/data/icons/neutro-essential/32/cart-64.png"
-                        width="50px"
-                        height="50px"
-                        alt="basket"
-                      />
-                      ({cartCount})
-                    </Link>
-                  </div>
+                  {erlaubnis && (
+                    <div className="card-detail-warenkorb-link">
+                      <Link to="/Warenkorb">
+                        <img
+                          src="https://cdn2.iconfinder.com/data/icons/neutro-essential/32/cart-64.png"
+                          width="50px"
+                          height="50px"
+                          alt="basket"
+                        />
+                        ({cartCount})
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -198,16 +206,34 @@ export const CardDetails = () => {
           </div>
         )}
       </div>
-      <Modal show={showModal} onClose={() => setShowModal(false)} className="modal-login">
-  <h2>Sie müssen sich anmelden</h2>
-  <p>Sie müssen sich anmelden, um Produkte zum Warenkorb hinzuzufügen.</p>
-  <button className="schlissen-button" onClick={() => setShowModal(false)}>Schließen</button>
-</Modal>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        className="modal-login"
+      >
+        <h2>Sie müssen sich anmelden</h2>
+        <p>Sie müssen sich anmelden, um Produkte zum Warenkorb hinzuzufügen.</p>
+        <button
+          className="schlissen-button"
+          onClick={() => setShowModal(false)}
+        >
+          Schließen
+        </button>
+      </Modal>
 
-<Modal show={showInhaltModal} onClose={() => setShowInhaltModal(false)} className="modal-inhalt">
-  <p className="modal-inhalt-p">{product?.inhalt}</p>
-  <button className="schlissen-button" onClick={() => setShowInhaltModal(false)}>Schließen</button>
-</Modal>
+      <Modal
+        show={showInhaltModal}
+        onClose={() => setShowInhaltModal(false)}
+        className="modal-inhalt"
+      >
+        <p className="modal-inhalt-p">{product?.inhalt}</p>
+        <button
+          className="schlissen-button"
+          onClick={() => setShowInhaltModal(false)}
+        >
+          Schließen
+        </button>
+      </Modal>
     </>
   );
 };

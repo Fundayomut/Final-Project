@@ -31,8 +31,8 @@ const FavoritesList = () => {
   return (
     <>
       {erlaubnis ? <NavNach /> : <NavVor />}
-      <div style={{ marginTop: "0px" }} className="card-detail-main">
-        <div className="productcategorie">Your Favorites</div>
+      <div style={{ marginTop: "0px" }} className="card-favoritelist-main">
+        <div className="favorite-header">Your Favorites</div>
         {favorites.length > 0 ? (
           <div className="prodLiniemain">
             {favorites.map((item) => (

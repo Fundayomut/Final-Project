@@ -29,15 +29,21 @@ export default function NavNach({ productList }) {
   };
 
   const handleSearch = () => {
+    if (!productList || productList.length === 0) {
+      alert("Product list was not loaded. Please refresh the page.");
+      return;
+    }
+  
     const product = productList.find(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     if (product) {
       navigate(`/Products/${product.productNumber}`);
     } else {
-      alert("Product not found!");
+      alert("No product found!");
     }
   };
+
 
   return (
     <div className="navVor">

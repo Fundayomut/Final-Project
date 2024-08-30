@@ -17,6 +17,8 @@ import PayPal from './components/PayPal';
 import FavoritesList from './components/FavoritesList';
 import { AdminUserList } from './components/AdminUserList';
 import AdminUserZeilen from './components/AdminUserZeilen';
+import HomeUntenCard from './components/HomeUntenCard';
+import './MediaQuery.css';
 
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
         <Route path='/FavoritesList' element={<FavoritesList/>}/>
         <Route path='/AdminUserList' element={<AdminUserList/>}/>
         <Route path='/AdminUserZeilen' element={<AdminUserZeilen/>}/>
+        <Route path='/HomeUntenCard' element={<HomeUntenCard/>}/>
       </Routes>
     </div>
   );
