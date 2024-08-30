@@ -19,6 +19,8 @@ import { AdminUserList } from './components/AdminUserList';
 import AdminUserZeilen from './components/AdminUserZeilen';
 import HomeUntenCard from './components/HomeUntenCard';
 import './MediaQuery.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css'; 
 
 
 function App() {

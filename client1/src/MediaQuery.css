@@ -1,13 +1,21 @@
 
+@media (max-width: 480px) {
+  .kolaj-image {
+    width: 100%; 
+  }
+}
+
+
 @media only screen and (max-width: 600px) {
-    .homecakeblur{
-      width: 10%;
-      height:auto;
-    }
-    .homecake{
-      width: 10%;
-      height:auto;
-    }
+  .navVor {
+    padding: 2px;
+    font-size: 18px;
+  }
+
+  .search {
+    gap: 5px;
+  }  
+  
     .paragrafdiv {
       font-size: 1,2rem;
     }
@@ -81,6 +89,7 @@
     .navVor {
       flex-direction: column;
       align-items: center;
+      padding: 5px;
     }
     .logo {
       text-align: center;
@@ -182,17 +191,14 @@
   .rezeptItem {
     width: 100%;
   }
+
+  .kolaj-image {
+    width: calc(50% - 20px);
+  }
   
   }
    
-  .rezeptListe{
-    display: flex;
-    justify-content: space-between;
-    margin: 50px;
-  
-  }
-  
-  
+
   @media only screen and (max-width: 1381px) {
   
    body {
@@ -211,9 +217,9 @@
     align-items: center;
     font-size: 22px; 
     border-radius: 15px;
-    padding: 30px;
     width: 100%; 
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    padding: 5px; 
     }
   .navfont{
     font-size: 20px;
