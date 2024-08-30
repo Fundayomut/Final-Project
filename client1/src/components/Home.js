@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import Slider from "react-slick"; 
+import { Link } from "react-router-dom";
 import NavNach from "./NavNach";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
 import { NavVor } from "./NavVor";
 import { TextAntwort, ObjectAntwort } from "./ServerCom";
 import { AuthKontext } from "./LoginSystem";
@@ -47,30 +48,85 @@ function Home() {
     NavComponent = <NavVor productList={productList} />;
   }
 
+  // React-Slick için ayarlar
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+  };
+
   return (
     <>
       {NavComponent}
       <div className="homemain">
+        {/* Resim Kolajı Burada En Üstte */}
+        <div className="kolaj-container">
+          <img
+           src="https://images.pexels.com/photos/15376489/pexels-photo-15376489/free-photo-of-isiklar-masa-tablo-neon.jpeg?auto=compress&cs=tinysrgb&w=400"
+            alt="Kolaj 1"
+            className="kolaj-image"
+          />
+          <img
+          src="https://plus.unsplash.com/premium_photo-1692880430494-3bf9cfd56545?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNha2UlMjBCYW5uZXJ8ZW58MHx8MHx8fDA%3D"
+            
+            alt="Kolaj 2"
+            className="kolaj-image"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1502035618526-6b2f1f5bca1b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNha2UlMjBjYW5kbGV8ZW58MHwwfDB8fHwy"
+            alt="Kolaj 3"
+            className="kolaj-image"
+          />
+        </div>
+
+        <div className="paragrafdiv">
+          <p className="homeptop">
+            <span>Sie träumen es,</span>
+            <br />
+            <span className="homebottom">wir machen es...</span>
+          </p>
+        </div>
         <div className="hauptdiv">
-          <div className="paragrafdiv">
-            <p className="homeptop">Sie träumen es, </p>
-            <p className="homebottom">wir machen es...</p>
-          </div>
-          <div className="maindiv">
-            <img
-              className="homecakeblur"
-              src="https://www.pngall.com/wp-content/uploads/5/Cake-PNG-File-Download-Free.png"
-              width={erlaubnis ? "420px" : "200px"}
-              height={erlaubnis ? "420px" : "200px"}
-              alt="homecakeblur"
-            />
-            <img
-              className="homecake"
-              src="https://www.pngall.com/wp-content/uploads/5/Cake-PNG-File-Download-Free.png"
-              width={erlaubnis ? "400px" : "200px"}
-              height={erlaubnis ? "400px" : "200px"}
-              alt="homecake"
-            />
+          <div className="slider-container">
+            <Slider {...settings}>
+              <div className="slide">
+                <img
+                  src="https://images.pexels.com/photos/16120256/pexels-photo-16120256/free-photo-of-gida-yemek-yiyecek-restoran.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Slide 1"
+                  className="slide-image"
+                />
+                <div className="slide-content">
+                  <h4>Wir machen es...</h4>
+                  <p>Herzliche Vielfalt in jedem Bissen. Machen Sie Ihren Liebsten eine Freude mit unseren sorgfältig zubereiteten Kuchen.</p>
+                </div>
+              </div>
+              <div className="slide">
+                <img
+                  src="https://images.pexels.com/photos/25916370/pexels-photo-25916370/free-photo-of-plaka-tabak-cicekler-tac-yapraklar.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Slide 2"
+                  className="slide-image"
+                />
+                <div className="slide-content">
+                  <h4>Wir machen es...</h4>
+                  <p>Herzliche Vielfalt in jedem Bissen. Machen Sie Ihren Liebsten eine Freude mit unseren sorgfältig zubereiteten Kuchen.</p>
+                </div>
+              </div>
+              <div className="slide">
+                <img
+                  src="https://images.pexels.com/photos/14187989/pexels-photo-14187989.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                  alt="Slide 3"
+                  className="slide-image"
+                />
+                <div className="slide-content">
+                  <h4>Entdecken Sie die Welt der Aromen</h4>
+                  <p>Begeben Sie sich mit unserem großen Kuchensortiment auf eine unvergessliche Reise in die Welt der Desserts. Jedes Stück bir bir deneyim!</p>
+                </div>
+              </div>
+            </Slider>
           </div>
         </div>
         <div className="homebuttonmaindiv">
