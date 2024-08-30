@@ -1,6 +1,7 @@
 import React, { useState, useEffect, } from 'react'
 import {TextAntwort} from "./ServerCom";
 import {useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export const Register = () => {
@@ -64,14 +65,15 @@ const newPerson=()=>{
         onKeyUp={(e)=>setEmail(e.target.value)}/>
         <br/>
         <label>*Password</label>
-        <input className="input" type="text"
-        placeholder="***********"
+        <input className="input" type="password"
+        placeholder="*******"
         onChange={(e)=>setPassword(e.target.value)}
         onKeyUp={(e)=>setPassword(e.target.value)}/>
         <br/>
         <div className="loginbuttondiv">
         <button className="blackbutton" type="submit" onClick={newPerson}>REGISTER</button>
         </div>
+        <Link to="/"><p>Without registering on the home page</p></Link>
     </form>
         </div>
         <div style={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
