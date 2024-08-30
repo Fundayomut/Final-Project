@@ -1,13 +1,12 @@
-// Modal.js
 import React from "react";
-import "./Modal.css"; // Modal için stil dosyası
+import "./Modal.css"; 
 
-const Modal = ({ show, onClose, children }) => {
+const Modal = ({ show, onClose, children, className = "" }) => {
   if (!show) return null;
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
+      <div className={`modal-content ${className}`}>
         <button className="modal-close" onClick={onClose}>X</button>
         {children}
       </div>

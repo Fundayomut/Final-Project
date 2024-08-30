@@ -410,16 +410,18 @@ body {
   display: flex;
   justify-content: center;
  align-content: center;
- margin-top: 5%;
- padding-top: 6%;
+ margin-top: 2%;
+ padding-top: 2%;
 }
 .card-detail-size{
   font-family: "Boogaloo", sans-serif;
   font-weight: 100;
   font-style: normal;
-  color: #313131;
+  color: #c553cf;
   font-size: 25px;
 }
+
+
 .card-detail-description{
   font-family: "Boogaloo", sans-serif;
   font-weight: 100;
@@ -441,10 +443,6 @@ body {
   width: 80%;
   padding: 20px;
 }
-.card-detail-info{
-  width: 50%;
-  padding: 20px;
-}
 
 .card-detail-header{
   font-family: "Satisfy", cursive;
@@ -453,6 +451,29 @@ body {
   font-size: 40px;
   color: #c553cf;
 }
+.card-detail-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card-detail-image {
+  flex: 1;
+}
+
+.card-detail-info {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+  
+}
+.carcard-detail-p{
+  font-size: 12px;
+  margin-top:20px;
+  }
 
 .nutrition-item{
  background-color:#f9f9f9b2;
@@ -605,32 +626,27 @@ align-items: center;
   margin: 20px 0;
 }
 
+/*
 .card-detail-main {
   display: flex;
   flex-direction: column;
 }
+*/
 
-.card-detail-content {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
 
-.card-detail-image {
-  flex: 1;
-}
-
-.card-detail-info {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.carcard-detail-p{
-  font-size: 12px;
-  margin-top:20px;
+  .success-message {
+    position: fixed;
+    top: 20px;
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: #854abd; 
+    color: white;
+    padding: 15px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+    font-size: 16px; 
+    z-index: 1000;
   }
-
 .card-detail-nutrition {
   margin-top: 30px;
 }

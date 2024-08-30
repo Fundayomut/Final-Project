@@ -14,6 +14,8 @@ export const CardDetails = () => {
   const [quantity, setQuantity] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showInhaltModal, setShowInhaltModal] = useState(false);
 
   useEffect(() => {
     ObjectAntwort(
@@ -63,6 +65,7 @@ export const CardDetails = () => {
       image: product?.image,
       name: product?.name,
       userNumber: userNumber,
+      inhalt: product?.inhalt,
     };
 
     let warenkorb = localStorage.getItem("warenkorb")
@@ -80,6 +83,18 @@ export const CardDetails = () => {
 
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
     updateCartCount();
+
+    // Başarı mesajını göster
+    setShowSuccessMessage(true);
+
+    // Başarı mesajını belirli bir süre sonra gizle
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 2000); // 2000 ms = 2 saniye
+  };
+
+  const inhaltShow = () => {
+    setShowInhaltModal(true);
   };
 
   return (
@@ -108,6 +123,9 @@ export const CardDetails = () => {
               </div>
               <div className="card-detail-size">
                 <p>{product.size} Person</p>
+              </div>
+              <div className="card-detail-inhalt">
+                <button className="rezeptbutton" onClick={inhaltShow}>Inhalt</button>
               </div>
               <div className="card-detail-nutrition">
                 <h5>Nutrition Information</h5>
@@ -139,7 +157,7 @@ export const CardDetails = () => {
                   <p>Loading nutrition information...</p>
                 )}
               </div>
-              <div style={{marginTop:"50px"}}>
+              <div style={{ marginTop: "50px" }}>
                 <div className="card-detail-input-div">
                   <input
                     className="card-detail-input"
@@ -149,21 +167,24 @@ export const CardDetails = () => {
                     value={quantity}
                   />
                   <div className="card-detail-button-div">
-                    <button onClick={Aktualisieren} className="rezeptbutton addButton">
+                    <button
+                      onClick={Aktualisieren}
+                      className="rezeptbutton addButton"
+                    >
                       Add to Bag
                     </button>
                   </div>
                   <div className="card-detail-warenkorb-link">
-                <Link to="/Warenkorb">
-                  <img
-                    src="https://cdn2.iconfinder.com/data/icons/neutro-essential/32/cart-64.png"
-                    width="50px"
-                    height="50px"
-                    alt="basket"
-                  />
-                  ({cartCount})
-                </Link>
-              </div>
+                    <Link to="/Warenkorb">
+                      <img
+                        src="https://cdn2.iconfinder.com/data/icons/neutro-essential/32/cart-64.png"
+                        width="50px"
+                        height="50px"
+                        alt="basket"
+                      />
+                      ({cartCount})
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -171,12 +192,22 @@ export const CardDetails = () => {
         ) : (
           <p>Loading...</p>
         )}
+        {showSuccessMessage && (
+          <div className="success-message">
+            <p>Das Produkt wurde dem Warenkorb hinzugefügt!</p>
+          </div>
+        )}
       </div>
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <h2>Login Required</h2>
-        <p>You need to log in to add items to the cart.</p>
-        <button onClick={() => setShowModal(false)}>Close</button>
-      </Modal>
+      <Modal show={showModal} onClose={() => setShowModal(false)} className="modal-login">
+  <h2>Sie müssen sich anmelden</h2>
+  <p>Sie müssen sich anmelden, um Produkte zum Warenkorb hinzuzufügen.</p>
+  <button className="schlissen-button" onClick={() => setShowModal(false)}>Schließen</button>
+</Modal>
+
+<Modal show={showInhaltModal} onClose={() => setShowInhaltModal(false)} className="modal-inhalt">
+  <p className="modal-inhalt-p">{product?.inhalt}</p>
+  <button className="schlissen-button" onClick={() => setShowInhaltModal(false)}>Schließen</button>
+</Modal>
     </>
   );
 };
