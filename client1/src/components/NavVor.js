@@ -23,8 +23,7 @@ export const NavVor = ({ productList }) => {
         <Link to="/">
           <img
             src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
-            width="200px"
-            height="100px"
+            width="100%"
             alt="logo"
           />
         </Link>

@@ -45,8 +45,7 @@ export default function NavNach({ productList }) {
         <Link to="/">
           <img
             src="/kuchen-boutiqe-high-resolution-logo-transparent.png"
-            width="200px"
-            height="100px"
+            width="100%"
           />
         </Link>
       </div>
@@ -85,6 +84,7 @@ export default function NavNach({ productList }) {
             onClick={handleSearch}
           />
         </div>
+        <div className="navNach-ikon">
         <Link to="/Warenkorb">
           <div style={{ position: "relative", display: "inline-block" }}>
             <FaShoppingCart
@@ -111,14 +111,15 @@ export default function NavNach({ productList }) {
                 {totalItems}
               </span>
             )}
-          </div>
+          </div>  
         </Link>
         <FaUser
          className="icon-black"
-          size={25}
-          style={{ marginLeft: "10px", cursor: "pointer" }}
+          size={24}
+          style={{ marginLeft: "10px", cursor: "pointer", marginBottom:"2px" }}
           onClick={handleLogout}
         />
+        </div>
       </div>
     </div>
   );
