@@ -50,7 +50,7 @@ const newPerson=()=>{
         <input className="input" type="text"
         placeholder="Musterman"
         onChange={(e)=>setUserLastName(e.target.value)}
-        onKeyUp={(e)=>setUserFirstName(e.target.value)}/>
+        onKeyUp={(e)=>setUserLastName(e.target.value)}/>
         <br/>
         <label >*Nick Name</label>
         <input className="input" type="text"

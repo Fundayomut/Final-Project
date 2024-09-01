@@ -47,8 +47,17 @@ export const CardDetails = () => {
     const warenkorb = localStorage.getItem("warenkorb")
       ? JSON.parse(localStorage.getItem("warenkorb"))
       : [];
-    const totalItems = warenkorb.reduce((sum, item) => sum + item.quantity, 0);
-    setCartCount(totalItems);
+  
+    const userItems = warenkorb.filter(
+      (item) => item.userNumber === userNumber
+    );
+  
+    const totalUserItems = userItems.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+  
+    setCartCount(totalUserItems);
   };
 
   const Aktualisieren = () => {
@@ -220,7 +229,6 @@ export const CardDetails = () => {
           Schließen
         </button>
       </Modal>
-
       <Modal
         show={showInhaltModal}
         onClose={() => setShowInhaltModal(false)}

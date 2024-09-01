@@ -4,7 +4,7 @@ import { AuthKontext } from "./LoginSystem";
 import { FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';
 
 export default function AdminNav({ productList }) {
-  const { logout, userNumber } = useContext(AuthKontext);
+  const { logout, userNumber,userName } = useContext(AuthKontext);
   const navigate = useNavigate();
   const [totalItems, setTotalItems] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
@@ -114,6 +114,11 @@ export default function AdminNav({ productList }) {
               style={{ marginLeft: "10px", cursor: "pointer", marginBottom: "2px" }}
               onClick={handleLogout}
             />
+             {userName && (
+              <span style={{ marginLeft: "10px", fontSize: "14px", color: "#555" }}>
+               ADMIN-{userName}
+              </span>
+            )}
           </div>
         </div>
       </div>
