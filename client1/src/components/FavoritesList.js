@@ -15,7 +15,6 @@ const FavoritesList = () => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
     const userFavorites = storedFavorites[userNumber] || {};
 
-    // Favori listeyi güncelle
     const favoriteList = Object.keys(userFavorites).map(productNumber => ({
       productNumber,
       ...userFavorites[productNumber]
@@ -39,7 +38,7 @@ const FavoritesList = () => {
               <div className="prodLiniecard" key={item.productNumber}>
                 <Favorites 
                   productNumber={item.productNumber}
-                  item={item} // Burada item prop'u geçiliyor
+                  item={item} 
                 />
                 <div className="cardimage">
                   <img

@@ -44,6 +44,7 @@ function App() {
         <Route path='/AdminUserList' element={<AdminUserList/>}/>
         <Route path='/AdminUserZeilen' element={<AdminUserZeilen/>}/>
         <Route path='/HomeUntenCard' element={<HomeUntenCard/>}/>
+        <Route path="/category/:category" element={<ProductsCategorie/>} />
       </Routes>
     </div>
   );

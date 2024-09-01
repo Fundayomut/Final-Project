@@ -9,6 +9,7 @@ const AuthDienst = ({ children }) => {
     const [eMail, setEMail] = useState("");
     const [password, setPassword] = useState("");
     const [userNumber, setUserNumber] = useState("");
+    const [userName,setUserName]=useState("")
 
     async function login() {
         return new Promise((resolve, reject) => {
@@ -19,6 +20,7 @@ const AuthDienst = ({ children }) => {
                         setErlaubnis(true);
                         setUserType(antwort.kt);
                         setUserNumber(antwort.id);
+                        setUserName(antwort.vn);
                         resolve(true);
                     } else {
                         resolve(false);
@@ -37,10 +39,11 @@ const AuthDienst = ({ children }) => {
         setUserType(0);
         setEMail("");
         setPassword("");
+        setUserName("");
     }
 
     return (
-        <AuthKontext.Provider value={{ erlaubnis, userType, userNumber, eMail, password, setEMail, setPassword, login, logout }}>
+        <AuthKontext.Provider value={{ erlaubnis, userType, userNumber, eMail, password,userName, setEMail, setPassword, login, logout }}>
             {children}
         </AuthKontext.Provider>
     );

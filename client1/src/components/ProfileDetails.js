@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { TextAntwort } from './ServerCom';
 import { AuthKontext } from './LoginSystem';
+import Modal from "./Modal";
 
 export const ProfileDetails = ({
   userNickName,
@@ -32,6 +33,9 @@ export const ProfileDetails = ({
   const [userTypeUp,setUserTypeUp]=useState(0)
   const { userNumber } = useContext(AuthKontext);
 
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+
   useEffect(() => {
     setUserUpNickName(userNickName || '');
     setUserUpFirstName(userFirstName || '');
@@ -55,9 +59,11 @@ export const ProfileDetails = ({
       `/user/update/${userNumber}/${userUpNickName}/${userUpFirstName}/${userUpLastName}/${userTypeUp}/${eMailUp}/${phoneUp}/${adresLine1Up}/${adresLine2Up}/${cityUp}/${stateUp}/${postalCodeUp}/${countryUp}/${passwordUp}`,
       (res) => {
         console.log("Updated successfully", res);
+        setShowSuccessModal(true); 
       },
       (fehler) => {
         console.log(fehler);
+        setShowErrorModal(true);
       }
     );
   };
@@ -113,6 +119,17 @@ export const ProfileDetails = ({
         <input type='text' value={countryUp} onChange={(e) => setCountryUp(e.target.value)} />
       </div>
       <button onClick={updatePerson} className="update-button">Update</button>
+      <Modal show={showSuccessModal} onClose={() => setShowSuccessModal(false)}>
+        <h2>Successfull!</h2>
+        <p>User information has been updated successfully.</p>
+        <button className="schlissen-button" onClick={() => setShowSuccessModal(false)}>Kapat</button>
+      </Modal>
+
+      <Modal show={showErrorModal} onClose={() => setShowErrorModal(false)}>
+        <h2>Error!</h2>
+        <p>An error occurred while updating user information. Please try again.</p>
+        <button className="schlissen-button" onClick={() => setShowErrorModal(false)}>Kapat</button>
+      </Modal>
     </div>
   );
 };
