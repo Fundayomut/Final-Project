@@ -130,7 +130,7 @@ function Home() {
                 />
                 <div className="slide-content">
                   <h4>Entdecken Sie die Welt der Aromen</h4>
-                  <p>Begeben Sie sich mit unserem großen Kuchensortiment auf eine unvergessliche Reise in die Welt der Desserts. Jedes Stück bir bir deneyim!</p>
+                  <p>Begeben Sie sich mit unserem großen Kuchensortiment auf eine unvergessliche Reise in die Welt der Desserts. Jedes Stück ist ein Erlebnis!</p>
                 </div>
               </div>
             </Slider>
