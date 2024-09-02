@@ -66,30 +66,6 @@ function Home() {
     <>
       {NavComponent}
       <div className="homemain">
-        <div className="kolaj-container">
-          <Link to="/category/Hochzeit">
-            <img
-              src="https://images.pexels.com/photos/15376489/pexels-photo-15376489/free-photo-of-isiklar-masa-tablo-neon.jpeg?auto=compress&cs=tinysrgb&w=400"
-              alt="Kolaj 1"
-              className="kolaj-image"
-            />
-          </Link>
-          <Link to="/category/Bild">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1692880430494-3bf9cfd56545?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNha2UlMjBCYW5uZXJ8ZW58MHx8MHx8fDA%3D"
-              alt="Kolaj 2"
-              className="kolaj-image"
-            />
-          </Link>
-          <Link to="/category/Boutique">
-            <img
-              src="https://images.unsplash.com/photo-1502035618526-6b2f1f5bca1b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNha2UlMjBjYW5kbGV8ZW58MHwwfDB8fHwy"
-              alt="Kolaj 3"
-              className="kolaj-image"
-            />
-          </Link>
-        </div>
-
         <div className="paragrafdiv">
           <p className="homeptop">
             <span>Sie träumen es,</span>
@@ -136,6 +112,30 @@ function Home() {
             </Slider>
           </div>
         </div>
+        <div className="kolaj-container">
+          <Link to="/category/Hochzeit">
+            <img
+              src="https://images.pexels.com/photos/15376489/pexels-photo-15376489/free-photo-of-isiklar-masa-tablo-neon.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Kolaj 1"
+              className="kolaj-image"
+            />
+          </Link>
+          <Link to="/category/Bild">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1692880430494-3bf9cfd56545?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNha2UlMjBCYW5uZXJ8ZW58MHx8MHx8fDA%3D"
+              alt="Kolaj 2"
+              className="kolaj-image"
+            />
+          </Link>
+          <Link to="/category/Boutique">
+            <img
+              src="https://images.unsplash.com/photo-1502035618526-6b2f1f5bca1b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNha2UlMjBjYW5kbGV8ZW58MHwwfDB8fHwy"
+              alt="Kolaj 3"
+              className="kolaj-image"
+            />
+          </Link>
+        </div>
+
         <div className="homebuttonmaindiv">
           <div className="homebuttondiv">
             <Link to="/rezept">

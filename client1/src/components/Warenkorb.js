@@ -31,18 +31,16 @@ const Warenkorb = () => {
   }
 
   const removeItemFromCart = (productNumber) => {
-    let warenkorb = localStorage.getItem("warenkorb")
-      ? JSON.parse(localStorage.getItem("warenkorb"))
-      : [];
-    warenkorb = warenkorb.filter(
-      (item) =>
-        !(
-          item.productNumber === productNumber && item.userNumber === userNumber
-        )
+    let warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+    
+    const updatedCartItems = warenkorb.filter(
+        (item) => !(item.productNumber === productNumber && item.userNumber === userNumber)
     );
-    localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
-    setCartItems(warenkorb);
-  };
+    
+    localStorage.setItem("warenkorb", JSON.stringify(updatedCartItems));
+    
+    setCartItems(updatedCartItems);
+};
 
   const quantityHöhen = (productNumber) => {
     let erhöhen = [...cartItems];
