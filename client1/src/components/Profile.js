@@ -6,27 +6,30 @@ import NavNach from "./NavNach";
 import NavVor from "./NavVor";
 
 const Profile = () => {
-  const [userFirstName, setUserFirstName] = useState('');
-  const [userLastName, setUserLastName] = useState('');
-  const [userNickName, setUserNickname] = useState('');
-  const [eMail, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [adresLine1, setAdresLine1] = useState('');
-  const [adresLine2, setAdresLine2] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [postalcode, setPostalCode] = useState('');
-  const [phone, setPhone] = useState('');
-  const [country, setCountry] = useState('');
+  // Zustand für die Benutzerdaten
+  const [userFirstName, setUserFirstName] = useState("");
+  const [userLastName, setUserLastName] = useState("");
+  const [userNickName, setUserNickname] = useState("");
+  const [eMail, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [adresLine1, setAdresLine1] = useState("");
+  const [adresLine2, setAdresLine2] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [postalcode, setPostalCode] = useState("");
+  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
   const [userType, setUserType] = useState(0);
 
-  const { userNumber,erlaubnis } = useContext(AuthKontext);
+  // Kontext für Authentifizierung und Benutzerinformationen
+  const { userNumber, erlaubnis } = useContext(AuthKontext);
 
-
+  // Effekt zum Abrufen der Benutzerdaten bei der Initialisierung
   useEffect(() => {
     ObjectAntwort(
-      `/user/abruf/wer/${userNumber}`,
+      `/user/abruf/wer/${userNumber}`, // API-Endpunkt zum Abrufen der Benutzerdaten
       (res) => {
+        // Erfolgsrückruf: Daten in den Zustand setzen
         setUserNickname(res[0].userNickName);
         setUserFirstName(res[0].userFirstName);
         setUserLastName(res[0].userLastName);
@@ -42,31 +45,32 @@ const Profile = () => {
         setUserType(res[0].userType);
       },
       (fehler) => {
+        // Fehlerbehandlung: Fehlerprotokollierung
         console.log(fehler);
       }
     );
-  }, [userNumber]);
+  }, [userNumber]); // Abhängigkeit: wird erneut ausgeführt, wenn sich 'userNumber' ändert
 
   return (
     <>
-   {erlaubnis === true ? <NavNach/>:<NavVor/>}
-    <div className="profile-container">
-      <ProfileDetails 
-        userNickName={userNickName}
-        userFirstName={userFirstName}
-        userLastName={userLastName}
-        eMail={eMail}
-        phone={phone}
-        adresLine1={adresLine1}
-        adresLine2={adresLine2}
-        city={city}
-        state={state}
-        postalcode={postalcode}
-        country={country}
-        password={password}
-        userType={userType}
-      />
-    </div>
+      {erlaubnis === true ? <NavNach /> : <NavVor />}
+      <div className="profile-container">
+        <ProfileDetails
+          userNickName={userNickName}
+          userFirstName={userFirstName}
+          userLastName={userLastName}
+          eMail={eMail}
+          phone={phone}
+          adresLine1={adresLine1}
+          adresLine2={adresLine2}
+          city={city}
+          state={state}
+          postalcode={postalcode}
+          country={country}
+          password={password}
+          userType={userType}
+        />
+      </div>
     </>
   );
 };

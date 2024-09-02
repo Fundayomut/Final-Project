@@ -7,43 +7,41 @@ import NavVor from "./NavVor";
 
 const FavoritesList = () => {
   const [favorites, setFavorites] = useState([]);
-  const { userNumber, erlaubnis } = useContext(AuthKontext);
+  const { userNumber, erlaubnis } = useContext(AuthKontext); // Benutzer-Nummer und Erlaubnis aus dem AuthKontext
 
   useEffect(() => {
-    if (!erlaubnis || !userNumber) return;
+    if (!erlaubnis || !userNumber) return; // Wenn keine Erlaubnis oder keine Benutzer-Nummer vorhanden ist, wird nichts gemacht
 
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
-    const userFavorites = storedFavorites[userNumber] || {};
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || {}; // Favoriten aus dem localStorage abrufen
+    const userFavorites = storedFavorites[userNumber] || {}; // Favoriten des Benutzers abrufen
 
-    const favoriteList = Object.keys(userFavorites).map(productNumber => ({
+    const favoriteList = Object.keys(userFavorites).map((productNumber) => ({
       productNumber,
-      ...userFavorites[productNumber]
+      ...userFavorites[productNumber], // Jede Favoriten-Information zur Liste hinzufügen
     }));
 
-    setFavorites(favoriteList);
-  }, [userNumber, erlaubnis]);
+    setFavorites(favoriteList); // Favoriten-Liste im Zustand speichern
+  }, [userNumber, erlaubnis]); // Effekt hängt von der Benutzer-Nummer und der Erlaubnis ab
 
   if (!erlaubnis) {
-    return <p>Please log in to view your favorites</p>;
+    return <p>Please log in to view your favorites</p>; // Wenn der Benutzer nicht eingeloggt ist, wird eine Warnung angezeigt
   }
 
   return (
     <>
       {erlaubnis ? <NavNach /> : <NavVor />}
+      {/* Zeigt NavNach an, wenn der Benutzer berechtigt ist, andernfalls wird NavVor angezeigt */}
       <div style={{ marginTop: "0px" }} className="card-favoritelist-main">
         <div className="favorite-header">Your Favorites</div>
         {favorites.length > 0 ? (
           <div className="prodLiniemain">
             {favorites.map((item) => (
               <div className="prodLiniecard" key={item.productNumber}>
-                <Favorites 
-                  productNumber={item.productNumber}
-                  item={item} 
-                />
+                <Favorites productNumber={item.productNumber} item={item} />
                 <div className="cardimage">
                   <img
                     src={item.image}
-                    alt={item.name} 
+                    alt={item.name}
                     style={{ width: "100%", borderRadius: "12px" }}
                   />
                 </div>

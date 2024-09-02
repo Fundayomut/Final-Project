@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Slider from "react-slick"; 
+import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import NavNach from "./NavNach";
 import Footer from "./Footer";
@@ -28,12 +28,13 @@ function Home() {
     );
   };
 
-
   useEffect(() => {
+    // Produktliste beim Laden der Komponente abrufen
     abrufList();
   }, [category]);
 
   useEffect(() => {
+    // Benutzerinformationen abrufen, wenn eine Benutzer-ID vorhanden ist
     if (userNumber) {
       TextAntwort(
         `/userLastName/${userNumber}`,
@@ -45,13 +46,15 @@ function Home() {
 
   let NavComponent;
 
+  // Bestimmt, welche Navigationskomponente angezeigt wird
   if (erlaubnis) {
-    NavComponent = userType === 1 ? <AdminNav /> : <NavNach productList={productList} />;
+    NavComponent =
+      userType === 1 ? <AdminNav /> : <NavNach productList={productList} />;
   } else {
     NavComponent = <NavVor productList={productList} />;
   }
 
-  // React-Slick için ayarlar
+  // React-Slick Slider-Einstellungen
   const settings = {
     dots: true,
     infinite: true,
@@ -83,8 +86,11 @@ function Home() {
                   className="slide-image"
                 />
                 <div className="slide-content">
-                  <h4>Wir machen es...</h4>
-                  <p>Herzliche Vielfalt in jedem Bissen. Machen Sie Ihren Liebsten eine Freude mit unseren sorgfältig zubereiteten Kuchen.</p>
+                  <h4>Sie träumen es,</h4>
+                  <p>
+                    Erleben Sie die süße Verwandlung von Träumen in köstliche
+                    Realität. Unsere Cupcakes sind ein Fest für die Sinne.
+                  </p>
                 </div>
               </div>
               <div className="slide">
@@ -95,7 +101,11 @@ function Home() {
                 />
                 <div className="slide-content">
                   <h4>Wir machen es...</h4>
-                  <p>Herzliche Vielfalt in jedem Bissen. Machen Sie Ihren Liebsten eine Freude mit unseren sorgfältig zubereiteten Kuchen.</p>
+                  <p>
+                    Herzliche Vielfalt in jedem Bissen. Machen Sie Ihren
+                    Liebsten eine Freude mit unseren sorgfältig zubereiteten
+                    Kuchen.
+                  </p>
                 </div>
               </div>
               <div className="slide">
@@ -106,7 +116,11 @@ function Home() {
                 />
                 <div className="slide-content">
                   <h4>Entdecken Sie die Welt der Aromen</h4>
-                  <p>Begeben Sie sich mit unserem großen Kuchensortiment auf eine unvergessliche Reise in die Welt der Desserts. Jedes Stück ist ein Erlebnis!</p>
+                  <p>
+                    Begeben Sie sich mit unserem großen Kuchensortiment auf eine
+                    unvergessliche Reise in die Welt der Desserts. Jedes Stück
+                    ist ein Erlebnis!
+                  </p>
                 </div>
               </div>
             </Slider>

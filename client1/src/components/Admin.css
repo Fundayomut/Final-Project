@@ -29,24 +29,25 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: space-evenly;
-  border-bottom: 1px rgb(189, 189, 189)  solid;
+  border-bottom: 1px rgb(189, 189, 189) solid;
 }
 .admin-user-card-adres2 {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-evenly;
-  border-bottom: 1px rgb(189, 189, 189)  solid;
+  border-bottom: 1px rgb(189, 189, 189) solid;
 }
 
 .custom-navbar {
-  box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.808); 
+  box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.808);
 }
 
 button {
   margin-right: 10px;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -54,35 +55,34 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 main {
   flex: 1;
 }
 
-
-.admin-user-zeilen-input{
+.admin-user-zeilen-input {
   display: flex;
   flex-direction: column;
 }
-.admin-user-zeilen-input-main{
+.admin-user-zeilen-input-main {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgb(167, 167, 167);
 }
 
-.admin-user-zeilen-input-label{
+.admin-user-zeilen-input-label {
   display: flex;
   flex-direction: column;
   color: rgb(124, 124, 124);
   margin-top: 20px;
   font-weight: bold;
 }
-.admin-user-zeilen-input-button{
+.admin-user-zeilen-input-button {
   margin-top: 20px;
 }
-input{
+input {
   border: none;
   border-radius: 8px;
   padding: 2px;
@@ -90,7 +90,7 @@ input{
   padding-left: 5px;
 }
 
-.admin-user-zeilen-input-button{
+.admin-user-zeilen-input-button {
   display: flex;
   justify-content: center;
 }
@@ -108,7 +108,7 @@ footer {
   padding: 20px;
   margin: 20px auto;
   border-radius: 15px;
-  box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.808); 
+  box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.808);
   text-align: center;
   max-width: 600px;
   line-height: 1.5;
@@ -138,22 +138,20 @@ input[type="search"] {
   height: 38px;
 }
 
-
 @media only screen and (max-width: 600px) {
   .admin-willkommen {
     font-size: 0.8rem;
   }
-
 }
 
 @media (max-width: 768px) {
-.admin-willkommen {
-  font-size: 1rem;
-}
+  .admin-willkommen {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 1381px) {
-.admin-willkommen {
-  font-size: 1.25rem;
-}
+  .admin-willkommen {
+    font-size: 1.25rem;
+  }
 }

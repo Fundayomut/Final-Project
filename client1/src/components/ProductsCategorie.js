@@ -9,25 +9,26 @@ import { Link } from "react-router-dom";
 import Favorites from "./Favorites";
 
 export const ProductsCategorie = () => {
-  const [categorieList, setCategorieList] = useState([]);
-  const { category } = useParams();
-  const { userNumber, erlaubnis } = useContext(AuthKontext);
+  const [categorieList, setCategorieList] = useState([]); // Zustand für die Liste der Produkte in der Kategorie
+  const { category } = useParams(); // Zugriff auf die Kategorie aus den URL-Parametern
+  const { userNumber, erlaubnis } = useContext(AuthKontext); // Zugriff auf Authentifizierungsstatus und Benutzer-ID
 
+  // Funktion zum Abrufen der Produktliste für die angegebene Kategorie von der Server-API
   const abrufList = () => {
     ObjectAntwort(
       `/products/abruf/category/${category}`,
       (res) => {
-        setCategorieList(res);
-        console.log("category list", res);
+        setCategorieList(res); // Setzen der Produktliste im Zustand
+        console.log("category list", res); // Ausgabe der Kategorie-Liste im Konsolenprotokoll
       },
       (fehler) => {
-        console.log(fehler);
+        console.log(fehler); // Ausgabe von Fehlern im Konsolenprotokoll
       }
     );
   };
 
   useEffect(() => {
-    abrufList();
+    abrufList(); // Abrufen der Kategorie-Liste beim ersten Rendern des Komponenten
   }, []);
 
   return (
@@ -36,6 +37,7 @@ export const ProductsCategorie = () => {
       <div>
         <div className="productcategorie">
           <p>
+            {/* Anzeige der Kategorie-Überschrift basierend auf der URL-Kategorie */}
             {category === "Boutique" ? (
               <h2>Boutique-Kuchen</h2>
             ) : category === "Hochzeit" ? (
@@ -50,10 +52,10 @@ export const ProductsCategorie = () => {
             {categorieList.map((item) => (
               <div className="prodLiniecard" key={item.productNumber}>
                 <div className="cardratio">
-                <Favorites
-              productNumber={item.productNumber}
-              userNumber={userNumber}
-              />
+                  <Favorites
+                    productNumber={item.productNumber}
+                    userNumber={userNumber}
+                  />
                 </div>
                 <div className="cardimage">
                   <img
@@ -78,7 +80,9 @@ export const ProductsCategorie = () => {
             ))}
           </div>
         ) : (
-          <p>Problem</p>
+          <p>
+            Problem
+          </p> /* Anzeige einer Fehlermeldung, wenn keine Produkte vorhanden sind */
         )}
       </div>
     </>

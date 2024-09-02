@@ -7,17 +7,18 @@ import NavVor from "./NavVor";
 import Modal from "./Modal";
 
 export const CardDetails = () => {
-  const { productNumber } = useParams();
-  const { userNumber, erlaubnis } = useContext(AuthKontext);
+  const { productNumber } = useParams(); // Product-Nummer aus der URL abrufen
+  const { userNumber, erlaubnis } = useContext(AuthKontext); // Benutzer-Nummer und Erlaubnis aus dem AuthKontext abrufen
   const [product, setProduct] = useState(null);
   const [nutrition, setNutrition] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [cartCount, setCartCount] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showInhaltModal, setShowInhaltModal] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Zustand für die Sichtbarkeit des Modals
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // Zustand für die Erfolgsmeldung nach dem Hinzufügen zum Warenkorb
+  const [showInhaltModal, setShowInhaltModal] = useState(false); // Zustand für die Sichtbarkeit des Inhaltsmodals
 
   useEffect(() => {
+    // Abrufen der Produktinformationen
     ObjectAntwort(
       `/products/abruf/${productNumber}`,
       (res) => {
@@ -28,6 +29,7 @@ export const CardDetails = () => {
       }
     );
 
+    // Abrufen der Nährwertinformationen
     ObjectAntwort(
       `/nutrition/abruf/${productNumber}`,
       (res) => {
@@ -37,28 +39,31 @@ export const CardDetails = () => {
         console.log(fehler);
       }
     );
-  }, [productNumber]);
+  }, [productNumber]); // Effekt, um Produkt- und Nährwertinformationen basierend auf der Produktnummer abzurufen
 
   useEffect(() => {
     updateCartCount();
-  }, []);
+  }, []); // Effekt, um die Anzahl der Produkte im Warenkorb beim Laden der Komponente zu aktualisieren
 
   const updateCartCount = () => {
+    // Warenkorb aus dem lokalen Speicher abrufen
     const warenkorb = localStorage.getItem("warenkorb")
       ? JSON.parse(localStorage.getItem("warenkorb"))
       : [];
-  
+
+    // Filtert die Artikel für den aktuellen Benutzer heraus
     const userItems = warenkorb.filter(
       (item) => item.userNumber === userNumber
     );
-  
+
+    // Berechnet die Gesamtzahl der Artikel des Benutzers im Warenkorb
     const totalUserItems = userItems.reduce(
       (sum, item) => sum + item.quantity,
       0
     );
-  
-    setCartCount(totalUserItems);
-  };
+
+    setCartCount(totalUserItems); // Aktualisiert den Zustand für die Anzahl der Produkte im Warenkorb
+  }; // Funktion zur Aktualisierung der Anzahl der Produkte im Warenkorb für den aktuellen Benutzer
 
   const Aktualisieren = () => {
     if (!erlaubnis) {
@@ -66,6 +71,7 @@ export const CardDetails = () => {
       return;
     }
 
+    // Neue Details für das Produkt im Warenkorb erstellen
     const neueDetails = {
       productNumber: productNumber,
       quantity: quantity,
@@ -77,38 +83,43 @@ export const CardDetails = () => {
       inhalt: product?.inhalt,
     };
 
+    // Warenkorb aus dem lokalen Speicher abrufen
     let warenkorb = localStorage.getItem("warenkorb")
       ? JSON.parse(localStorage.getItem("warenkorb"))
       : [];
 
+    // Überprüft, ob das Produkt bereits im Warenkorb vorhanden ist.
+    // Wenn das Produkt bereits existiert, wird die Menge aktualisiert.
     const existingItemIndex = warenkorb.findIndex(
       (item) => item.productNumber === productNumber
     );
     if (existingItemIndex >= 0) {
-      warenkorb[existingItemIndex].quantity += quantity;
+      warenkorb[existingItemIndex].quantity += quantity; // Wenn das Produkt gefunden wurde, wird die Menge des bestehenden Eintrags erhöht.
     } else {
-      warenkorb.push(neueDetails);
+      warenkorb.push(neueDetails); // Wenn das Produkt nicht im Warenkorb ist, wird es neu hinzugefügt.
     }
 
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+    // Speichert den aktualisierten Warenkorb im lokalen Speicher.
     updateCartCount();
+    // Aktualisiert die Anzahl der Artikel im Warenkorb.
 
-    setShowSuccessMessage(true);
+    setShowSuccessMessage(true); // Zeigt die Erfolgsmeldung an
 
     setTimeout(() => {
-      setShowSuccessMessage(false);
+      setShowSuccessMessage(false); //Blendet die Erfolgsmeldung nach 2 Sekunden aus
     }, 2000); // 2000 ms = 2 saniye
-  };
+  }; // Funktion zum Hinzufügen des Produkts zum Warenkorb
 
   const inhaltShow = () => {
-    setShowInhaltModal(true);
-  };
+    setShowInhaltModal(true); // Zeigt das Inhaltsmodal an
+  }; // Funktion zum Anzeigen des Inhaltsmodals
 
   useEffect(() => {
     if (erlaubnis) {
-      updateCartCount();
+      updateCartCount(); // Aktualisiert die Warenkorbanzahl bei Änderung der Erlaubnis
     }
-  }, [erlaubnis]);
+  }, [erlaubnis]); // Effekt zur Aktualisierung der Warenkorbanzahl bei Änderung der Erlaubnis
 
   return (
     <>
