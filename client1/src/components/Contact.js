@@ -24,7 +24,12 @@ const Contact = () => {
                 }, 'lm4RgtxLGOXXfTnJn')
                 .then(response => {
                     console.log('Email ist succesfull:', response);
-                    alert("ihre email ist senden ")
+                    alert("ihre email ist senden ");
+                    setUserFirsName("");
+                    setUserLastName("");
+                    setEmail("");
+                    setPhone("");
+                    setMessage("");
                 })
                 .catch(error => {
                     console.log('error', error);

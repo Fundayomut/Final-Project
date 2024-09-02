@@ -114,7 +114,6 @@ body {
   font-style: normal;
   font-size: 35px;
   color: rgb(71, 71, 71);
-  margin-top: 30px;
   text-align: center;
 }
 .homeptop {
@@ -187,6 +186,7 @@ body {
   max-width: 900px;
   height: 500px; 
   position: relative;
+  margin-bottom: 200px;
 }
 .slide {
   position: relative;
@@ -273,7 +273,7 @@ body {
   padding-left: 7px;
 }
 .homebuttonmaindiv {
-  margin-top: 150px;
+  margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
