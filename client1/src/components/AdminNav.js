@@ -1,21 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
-import { FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';
+import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa";
+import { AdminProducts } from "./AdminProducts";
 
 export default function AdminNav({ productList }) {
-  const { logout, userNumber,userName } = useContext(AuthKontext);
+  // AuthKontext verwenden, um Abmeldefunktion und Benutzerdaten zu erhalten
+  const { logout, userNumber, userName } = useContext(AuthKontext);
   const navigate = useNavigate();
   const [totalItems, setTotalItems] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    // Warenkorb-Daten aus dem lokalen Speicher abrufen
     const storedCartItems = localStorage.getItem("warenkorb");
     if (storedCartItems) {
+      // Warenkorb nach Benutzer-ID filtern
       const cartItems = JSON.parse(storedCartItems).filter(
         (item) => item.userNumber === userNumber
       );
       let total = 0;
+      // Gesamtanzahl der Artikel im Warenkorb berechnen
       for (let i = 0; i < cartItems.length; i++) {
         total += cartItems[i].quantity;
       }
@@ -28,8 +33,9 @@ export default function AdminNav({ productList }) {
     navigate("/login");
   };
 
+  // Suchfunktion ausführen
   const handleSearch = () => {
-    const product = productList.find(item =>
+    const product = productList.find((item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     if (product) {
@@ -53,13 +59,24 @@ export default function AdminNav({ productList }) {
         <div className="navVorBoot">
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-Home navfont" to="/">Home</Link>
+              <Link className="nav-Home navfont" to="/">
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-order navfont" to="/Products">Order</Link>
+              <Link className="nav-order navfont" to="/Products">
+                Order
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-order navfont" to="/AdminUserList">User List</Link>
+              <Link className="nav-order navfont" to="/AdminUserList">
+                User List
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-order navfont" to="/AdminProducts">
+                Product
+              </Link>
             </li>
           </ul>
         </div>
@@ -111,12 +128,18 @@ export default function AdminNav({ productList }) {
             <FaUser
               className="icon-black"
               size={24}
-              style={{ marginLeft: "10px", cursor: "pointer", marginBottom: "2px" }}
+              style={{
+                marginLeft: "10px",
+                cursor: "pointer",
+                marginBottom: "2px",
+              }}
               onClick={handleLogout}
             />
-             {userName && (
-              <span style={{ marginLeft: "10px", fontSize: "14px", color: "#555" }}>
-               ADMIN-{userName}
+            {userName && (
+              <span
+                style={{ marginLeft: "10px", fontSize: "14px", color: "#555" }}
+              >
+                ADMIN-{userName}
               </span>
             )}
           </div>
@@ -124,7 +147,8 @@ export default function AdminNav({ productList }) {
       </div>
       <footer>
         <p className="admin-willkommen">
-          😊 Willkommen! Bevor du auf all diese Tasten drückst, bist du dir wirklich sicher, dass du weißt, was du tust?
+          😊 Willkommen! Bevor du auf all diese Tasten drückst, bist du dir
+          wirklich sicher, dass du weißt, was du tust?
         </p>
       </footer>
     </>

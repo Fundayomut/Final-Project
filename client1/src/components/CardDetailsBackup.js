@@ -1,3 +1,5 @@
+/*Diese Seite wird nicht verwendet*/
+
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ObjectAntwort, TextAntwort } from "./ServerCom";
@@ -46,7 +48,7 @@ export const CardDetailsBackup = () => {
 
   const Aktualisieren = () => {
     const neueDetails = {
-      userNumber:userNumber,
+      userNumber: userNumber,
       productNumber: productNumber,
       quantity: quantity,
       price: product?.price,
@@ -58,8 +60,9 @@ export const CardDetailsBackup = () => {
       : [];
 
     const existingItemIndex = warenkorb.findIndex(
-      (item) => item.productNumber === productNumber && item.userNumber === userNumber
-        );
+      (item) =>
+        item.productNumber === productNumber && item.userNumber === userNumber
+    );
     if (existingItemIndex >= 0) {
       warenkorb[existingItemIndex].quantity = quantity;
     } else {
@@ -75,7 +78,10 @@ export const CardDetailsBackup = () => {
       ? JSON.parse(localStorage.getItem("warenkorb"))
       : [];
     warenkorb = warenkorb.filter(
-      (item) => !(item.productNumber === productNumber && item.userNumber === userNumber)
+      (item) =>
+        !(
+          item.productNumber === productNumber && item.userNumber === userNumber
+        )
     );
     localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
     setCartItems(warenkorb);

@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';  // Yeni ikonlar
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa"; // Neue Icons
 
 export const NavVor = ({ productList }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
+  // Funktion zur Behandlung der Suchanfrage
   const handleSearch = () => {
+    // Überprüfen, ob die Produktliste leer oder nicht definiert ist
     if (!productList || productList.length === 0) {
       alert("Product list was not loaded. Please refresh the page.");
       return;
     }
-  
-    const product = productList.find(item =>
+
+    // Suchen nach einem Produkt, dessen Name den Suchbegriff enthält
+    const product = productList.find((item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    // Wenn ein passendes Produkt gefunden wird, navigiere zu dessen Detailseite
     if (product) {
       navigate(`/Products/${product.productNumber}`);
     } else {
+      // Wenn kein Produkt gefunden wird, zeige eine Warnung an
       alert("No product found!");
     }
   };
@@ -36,13 +41,19 @@ export const NavVor = ({ productList }) => {
       <div className="navVorBoot">
         <ul className="nav">
           <li className="nav-item">
-            <Link className="nav-Home navfont" to="/">Home</Link>
+            <Link className="nav-Home navfont" to="/">
+              Home
+            </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order navfont" to="/Products">Order</Link>
+            <Link className="nav-order navfont" to="/Products">
+              Order
+            </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-Contact navfont" to="/Contact">Contact</Link>
+            <Link className="nav-Contact navfont" to="/Contact">
+              Contact
+            </Link>
           </li>
         </ul>
       </div>
@@ -56,20 +67,20 @@ export const NavVor = ({ productList }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <FaSearch
-           className="icon-black"
+            className="icon-black"
             size={25}
             style={{ marginLeft: "10px", cursor: "pointer" }}
             onClick={handleSearch}
           />
         </div>
         <FaShoppingCart
-         className="icon-black"
+          className="icon-black"
           size={25}
           style={{ marginLeft: "10px" }}
         />
         <Link to="/Login">
           <FaUser
-           className="icon-black"
+            className="icon-black"
             size={25}
             style={{ marginLeft: "10px" }}
           />

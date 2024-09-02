@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
-import { FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';  // Yeni ikonlar
+import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa"; // Neue Icons aus der React-Bibliothek
 
 export default function NavNach({ productList }) {
-  const { logout, userNumber,userName } = useContext(AuthKontext);
+  const { logout, userNumber, userName } = useContext(AuthKontext);
   const navigate = useNavigate();
   const [totalItems, setTotalItems] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // useEffect Hook zum Abrufen und Berechnen der Artikelanzahl im Warenkorb
   useEffect(() => {
     const storedCartItems = localStorage.getItem("warenkorb");
     if (storedCartItems) {
@@ -23,27 +24,32 @@ export default function NavNach({ productList }) {
     }
   }, [userNumber]);
 
+  // Funktion zum Abmelden des Benutzers
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/login"); // Weiterleitung zur Login-Seite
   };
 
+  // Funktion zum Durchsuchen der Produktliste
   const handleSearch = () => {
     if (!productList || productList.length === 0) {
+      // Wenn die Produktliste leer ist oder nicht geladen wurde, wird eine Warnung angezeigt
       alert("Product list was not loaded. Please refresh the page.");
       return;
     }
-  
-    const product = productList.find(item =>
+
+    // Sucht ein Produkt in der Liste, dessen Name den Suchbegriff enthält
+    const product = productList.find((item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    // Wenn ein passendes Produkt gefunden wird, navigiere zu dessen Detailseite
     if (product) {
       navigate(`/Products/${product.productNumber}`);
     } else {
+      // Wenn kein Produkt gefunden wird, zeige eine Warnung an
       alert("No product found!");
     }
   };
-
 
   return (
     <div className="navVor">
@@ -57,20 +63,30 @@ export default function NavNach({ productList }) {
       </div>
       <div className="navVorBoot">
         <ul className="nav">
-          <li className="nav-item"> 
-            <Link className="nav-Home navfont" to="/">Home</Link>
+          <li className="nav-item">
+            <Link className="nav-Home navfont" to="/">
+              Home
+            </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order navfont" to="/Products">Order</Link>
+            <Link className="nav-order navfont" to="/Products">
+              Order
+            </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-Contact navfont" to="/Contact">Contact</Link>
+            <Link className="nav-Contact navfont" to="/Contact">
+              Contact
+            </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order navfont" to="/Profile">Profile</Link>
+            <Link className="nav-order navfont" to="/Profile">
+              Profile
+            </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-order navfont" to="/FavoritesList">Favorites</Link>
+            <Link className="nav-order navfont" to="/FavoritesList">
+              Favorites
+            </Link>
           </li>
         </ul>
       </div>
@@ -117,17 +133,23 @@ export default function NavNach({ productList }) {
                   {totalItems}
                 </span>
               )}
-            </div>  
+            </div>
           </Link>
           <div style={{ display: "flex", alignItems: "center" }}>
             <FaUser
               className="icon-black"
               size={24}
-              style={{ marginLeft: "10px", cursor: "pointer", marginBottom:"2px" }}
+              style={{
+                marginLeft: "10px",
+                cursor: "pointer",
+                marginBottom: "2px",
+              }}
               onClick={handleLogout}
             />
             {userName && (
-              <span style={{ marginLeft: "10px", fontSize: "14px", color: "#555" }}>
+              <span
+                style={{ marginLeft: "10px", fontSize: "14px", color: "#555" }}
+              >
                 {userName}
               </span>
             )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 export const ProductsLinie = ({ daten }) => {
   const [productNumber, setproductNumber] = useState();
@@ -9,6 +9,7 @@ export const ProductsLinie = ({ daten }) => {
   const [image, setImage] = useState();
   const [description, setDescription] = useState();
 
+  // Effekt, der die Produktdaten aus den Props in den Zustand setzt
   useEffect(() => {
     setproductNumber(daten.productNumber);
     setName(daten.name);
@@ -17,17 +18,21 @@ export const ProductsLinie = ({ daten }) => {
     setPrice(daten.price);
     setImage(daten.image);
     setDescription(daten.description);
-  }, [daten])
+  }, [daten]); // Abhängigkeit: wird erneut ausgeführt, wenn sich 'daten' ändert
   return (
-    <div className='prodLiniemain'>
-      <div className='prodLiniecard'>
+    <div className="prodLiniemain">
+      <div className="prodLiniecard">
         <div>ratio</div>
         <div>{image}</div>
         <div>{name}</div>
         <div>{description}</div>
-        <div><button>Details</button></div>
-        <div><p>Lieferung in 3 Tagen</p></div>
+        <div>
+          <button>Details</button>
+        </div>
+        <div>
+          <p>Lieferung in 3 Tagen</p>
+        </div>
       </div>
     </div>
-      )
-}
+  );
+};

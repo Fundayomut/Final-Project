@@ -1,10 +1,8 @@
-
 @media (max-width: 480px) {
   .kolaj-image {
-    width: 100%; 
+    width: 100%;
   }
 }
-
 
 @media only screen and (max-width: 600px) {
   .navVor {
@@ -14,180 +12,176 @@
 
   .search {
     gap: 5px;
-  }  
-  
-    .paragrafdiv {
-      font-size: 1,2rem;
-    }
-    .homebottom{
-      margin-left: 50px;
-    }
-  
-    .card-detail-content {
-      flex-direction: column;
-      gap: 10px; 
-    }
-  
-    .card-detail-image,
-    .card-detail-info {
-      width: 100%; 
-      padding: 10px; 
-    }
-  
-    .card-detail-info {
-      font-size: 14px;
-    }
-  
-    .nutrition-details {
-      display: flex;
-      justify-content: flex-start;
-      gap: 3px;
-    }
-  
-    .nutrition-item {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .card-detail-input-div {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .card-detail-input {
-      width: 80%;
-      margin-right: 0;
-    }
-  
-    .rezeptbutton,
-    .orderbutton {
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  
-    .rezeptListe {
-      flex-direction: column; 
-      gap: 10px; 
-    }
-  
-    .rezeptItem {
-      width: 100%;
-    }
-  
-    .contact-container {
-      flex-direction: column; 
-      align-items: center; 
-    }
-  
   }
-  
-  
-  
-  
-  @media only screen and (max-width: 768px) {
-    .navVor {
-      flex-direction: column;
-      align-items: center;
-      padding: 5px;
-    }
-    .logo {
-      text-align: center;
-    }
-    .navVorBoot {
-      width: 100%;
-      justify-content: center;
-    }
-    .search {
-      width: 100%;
-      justify-content: center;
-    }
-    .paragrafdiv {
-      font-size: 1.5rem;
-    }
-  
-    .maindiv {
-      position: static;
-      margin-top: 20px;
-      width: 200px;
-    }
-  
-    .homecakeblur{
-      width: 30%;
-      height:auto;
-    }
-    .homecake{
-      width: 30%;
-      height:auto;
-    }
-  
-    .homebuttonmaindiv {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .rezeptbutton,
-    .orderbutton {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  
-    .profile-edit-item {
-      flex: 1 1 100%; 
-    }
-    
-    .update-button {
-      width: auto;
-    }
-  
+
+  .paragrafdiv {
+    font-size: 1, 2rem;
+  }
+  .homebottom {
+    margin-left: 50px;
+  }
+
   .card-detail-content {
-    flex-direction: column; 
-    gap: 15px; 
+    flex-direction: column;
+    gap: 10px;
   }
-  
+
   .card-detail-image,
   .card-detail-info {
-    width: 100%; 
-    padding: 15px;
+    width: 100%;
+    padding: 10px;
   }
-  
+
   .card-detail-info {
-    font-size: 20px; 
+    font-size: 14px;
   }
-  
+
   .nutrition-details {
     display: flex;
     justify-content: flex-start;
     gap: 3px;
   }
-  
+
+  .nutrition-item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card-detail-input-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-detail-input {
+    width: 80%;
+    margin-right: 0;
+  }
+
+  .rezeptbutton,
+  .orderbutton {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .rezeptListe {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .rezeptItem {
+    width: 100%;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navVor {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+  .logo {
+    text-align: center;
+  }
+  .navVorBoot {
+    width: 100%;
+    justify-content: center;
+  }
+  .search {
+    width: 100%;
+    justify-content: center;
+  }
+  .paragrafdiv {
+    font-size: 1.5rem;
+  }
+
+  .maindiv {
+    position: static;
+    margin-top: 20px;
+    width: 200px;
+  }
+
+  .homecakeblur {
+    width: 30%;
+    height: auto;
+  }
+  .homecake {
+    width: 30%;
+    height: auto;
+  }
+
+  .homebuttonmaindiv {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rezeptbutton,
+  .orderbutton {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .profile-edit-item {
+    flex: 1 1 100%;
+  }
+
+  .update-button {
+    width: auto;
+  }
+
+  .card-detail-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card-detail-image,
+  .card-detail-info {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .card-detail-info {
+    font-size: 20px;
+  }
+
+  .nutrition-details {
+    display: flex;
+    justify-content: flex-start;
+    gap: 3px;
+  }
+
   .nutrition-item {
     width: 40%;
     margin-bottom: 15px;
     font-size: 15px;
   }
-  
+
   .card-detail-input-div {
     flex-direction: column;
   }
-  
+
   .card-detail-input {
     width: 100%;
     margin-bottom: 10px;
   }
-  
+
   .rezeptbutton,
   .orderbutton {
     width: auto;
     margin-right: 0;
     margin-bottom: 10px;
   }
-  
+
   .rezeptListe {
-    flex-direction: column; 
-    gap: 15px; 
+    flex-direction: column;
+    gap: 15px;
   }
-  
+
   .rezeptItem {
     width: 100%;
   }
@@ -195,13 +189,10 @@
   .kolaj-image {
     width: calc(50% - 20px);
   }
-  
-  }
-   
+}
 
-  @media only screen and (max-width: 1381px) {
-  
-   body {
+@media only screen and (max-width: 1381px) {
+  body {
     background-image: linear-gradient(
       to right,
       rgba(255, 255, 255, 0),
@@ -211,68 +202,68 @@
     height: 100%;
     padding: 20px;
   }
-    .navVor {
+  .navVor {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 22px; 
+    font-size: 22px;
     border-radius: 15px;
-    width: 100%; 
+    width: 100%;
     box-sizing: border-box;
-    padding: 5px; 
-    }
+    padding: 5px;
+  }
 
-  .navfont{
+  .navfont {
     font-size: 30px;
   }
-    .logo {
-      text-align: center;
-      width: 20%;
-    }
-    .logo .img{
-      text-align: center;
-      width: 150px;
-      height: 80px;
-    }
-  
-    .homecakeblur{
-      margin-top: 100px;
-      width: 31%;
-      height:auto;
-    }
-  
-    .homecake {
-      margin-top: 100px;
-      width: 30%;
-      height:auto;
-    }
-  
-    .productcategorie{
-      font-size: 30px;
-    }
+  .logo {
+    text-align: center;
+    width: 20%;
+  }
+  .logo .img {
+    text-align: center;
+    width: 150px;
+    height: 80px;
+  }
+
+  .homecakeblur {
+    margin-top: 100px;
+    width: 31%;
+    height: auto;
+  }
+
+  .homecake {
+    margin-top: 100px;
+    width: 30%;
+    height: auto;
+  }
+
+  .productcategorie {
+    font-size: 30px;
+  }
   .card-detail-content {
-    gap: 30px; 
+    gap: 30px;
   }
-  
+
   .card-detail-image {
-    width: 35%; 
+    width: 35%;
   }
-  
+
   .card-detail-info {
-    width: 60%; 
+    width: 60%;
   }
-  
-  .card-detail-description{
+
+  .card-detail-description {
     font-size: 18px;
   }
-  .card-detail-main{
+  .card-detail-main {
     margin-top: 0px;
   }
-  
-  .card-detail-p{
-  font-size: 8px;
+
+  .card-detail-p {
+    font-size: 8px;
   }
-  .card-detail-size{
+  .card-detail-size {
     font-size: 20px;
   }
   .nutrition-details {
@@ -280,12 +271,12 @@
     justify-content: flex-start;
     gap: 3px;
     flex-wrap: wrap;
-   }
-   
-   .nutrition-item {
-     width: 100px;
-     margin-bottom: 15px;
-     font-size: 12px;
-     height: 30px;
-   }
+  }
+
+  .nutrition-item {
+    width: 100px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    height: 30px;
+  }
 }
