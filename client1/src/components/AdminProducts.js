@@ -29,7 +29,7 @@ export const AdminProducts = () => {
     return (
         <div className="admin-user-main-div">
           <div className="admin-user-nav-div">
-            <AdminNav />
+            <AdminNav/>
           </div>
           <div className="admin-product-continer-div">
             {typeof productList === "object" && productList.length > 0 ? (

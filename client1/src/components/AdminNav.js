@@ -4,7 +4,7 @@ import { AuthKontext } from "./LoginSystem";
 import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa";
 import { AdminProducts } from "./AdminProductsAdd";
 
-export default function AdminNav({ productList }) {
+export default function AdminNav() {
   // AuthKontext verwenden, um Abmeldefunktion und Benutzerdaten zu erhalten
   const { logout, userNumber, userName } = useContext(AuthKontext);
   const navigate = useNavigate();
@@ -33,17 +33,6 @@ export default function AdminNav({ productList }) {
     navigate("/login");
   };
 
-  // Suchfunktion ausführen
-  const handleSearch = () => {
-    const product = productList.find((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    if (product) {
-      navigate(`/Products/${product.productNumber}`);
-    } else {
-      alert("Product not found!");
-    }
-  };
 
   return (
     <>
@@ -81,21 +70,6 @@ export default function AdminNav({ productList }) {
           </ul>
         </div>
         <div className="search">
-          <div className="navinputlink">
-            <input
-              className="inputsearch"
-              placeholder="Search..."
-              style={{ height: "25px" }}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <FaSearch
-              className="icon-black"
-              size={25}
-              style={{ marginLeft: "10px", cursor: "pointer" }}
-              onClick={handleSearch}
-            />
-          </div>
           <div className="navNach-ikon">
             <Link to="/Warenkorb">
               <div style={{ position: "relative", display: "inline-block" }}>
