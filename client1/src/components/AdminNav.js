@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthKontext } from "./LoginSystem";
 import { FaShoppingCart, FaSearch, FaUser } from "react-icons/fa";
-import { AdminProducts } from "./AdminProducts";
+import { AdminProducts } from "./AdminProductsAdd";
 
 export default function AdminNav({ productList }) {
   // AuthKontext verwenden, um Abmeldefunktion und Benutzerdaten zu erhalten
@@ -59,23 +59,23 @@ export default function AdminNav({ productList }) {
         <div className="navVorBoot">
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-Home navfont" to="/">
+              <Link className="nav-Home navfont" to="/AdminHome">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-order navfont" to="/Products">
-                Order
+              <Link className="nav-order navfont" to="/AdminProducts">
+               Products
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-order navfont" to="/AdminProductsAdd">
+                Add Product
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-order navfont" to="/AdminUserList">
                 User List
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-order navfont" to="/AdminProducts">
-                Product
               </Link>
             </li>
           </ul>
@@ -145,12 +145,6 @@ export default function AdminNav({ productList }) {
           </div>
         </div>
       </div>
-      <footer>
-        <p className="admin-willkommen">
-          😊 Willkommen! Bevor du auf all diese Tasten drückst, bist du dir
-          wirklich sicher, dass du weißt, was du tust?
-        </p>
-      </footer>
     </>
   );
 }
