@@ -21,7 +21,9 @@ import HomeUntenCard from "./components/HomeUntenCard";
 import "./MediaQuery.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { AdminProductsAdd } from "./components/AdminProductsAdd";
 import { AdminProducts } from "./components/AdminProducts";
+import { AdminHome } from "./components/AdminHome";
 
 function App() {
   return (
@@ -47,7 +49,9 @@ function App() {
         <Route path="/AdminUserZeilen" element={<AdminUserZeilen />} />
         <Route path="/HomeUntenCard" element={<HomeUntenCard />} />
         <Route path="/category/:category" element={<ProductsCategorie />} />
-        <Route path="/AdminProducts" element={<AdminProducts />} />
+        <Route path="/AdminProductsAdd" element={<AdminProductsAdd />} />
+        <Route path="/AdminProducts" element={<AdminProducts/>} />
+        <Route path="/AdminHome" element={<AdminHome/>} />
       </Routes>
     </div>
   );

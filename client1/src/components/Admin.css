@@ -138,6 +138,129 @@ input[type="search"] {
   height: 38px;
 }
 
+
+.admin-product-main-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+.admin-product-continer-div{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; 
+  justify-content: center; 
+
+}
+.admin-product-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f4f4f442;
+  border-radius: 10px;
+  box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.1);
+}
+
+.admin-product-input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #bdc3c7;
+  color: rgb(90, 90, 90);
+  font-size: 1rem;
+}
+/***********/
+.prodLiniecard {
+  width: 350px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.cardimage img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.cardheadtext p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.cardtext {
+  margin: 16px 0;
+}
+
+.cardbuttondiv {
+  margin-bottom: 16px;
+}
+
+.cardbuttondiv button {
+  margin-right: 8px;
+}
+
+.cardfooter {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.admin-product-edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-product-edit-main {
+  margin-bottom: 16px;
+}
+
+.admin-product-edit-label {
+  margin-bottom: 12px;
+}
+
+.admin-product-edit-label label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.admin-product-edit-label input,
+.admin-product-edit-label textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.admin-product-edit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
 @media only screen and (max-width: 600px) {
   .admin-willkommen {
     font-size: 0.8rem;
@@ -147,6 +270,10 @@ input[type="search"] {
 @media (max-width: 768px) {
   .admin-willkommen {
     font-size: 1rem;
+  }
+  .admin-product-continer-div {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
